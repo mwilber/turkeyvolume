@@ -41,19 +41,33 @@ function FaceInitF(){
     stage.update();
 }
 
-function UpdateCubeP(pPos){
+function UpdateCubeP(){
 
     //console.log(fface.graphics.getBounds().width);
     var fb = fface.getTransformedBounds();
 
-    fface.x = pPos.x - (fb.width/2);
-    fface.y = pPos.y - (fb.height/2);
+    fface.x = tabp.x - (fb.width/2);
+    fface.y = tabp.y - (fb.height/2);
 
     tabh.x = fface.x + (fb.width/2);
     tabh.y = fface.y;
 
     tabw.x = fface.x;
     tabw.y = fface.y + (fb.height/2);
+}
+
+function UpdateCubeH(){
+    //console.log( ((fface.y+(fface.getTransformedBounds().height/2))-this.y)/(fface.getBounds().height/2) );
+    fface.scaleY = (((fface.y+(fface.getTransformedBounds().height/2))-tabh.y)/(fface.getBounds().height/2));
+    //console.log(fface.getBounds().height);
+    //console.log((((fface.y+(fface.getTransformedBounds().height/2))-tabh.y)/(fface.getBounds().height/2)));
+
+    UpdateCubeP();
+}
+
+function UpdateCubeW(){
+    fface.scaleX = (((fface.x+(fface.getTransformedBounds().width/2))-tabw.x)/(fface.getBounds().width/2));
+    UpdateCubeP();
 }
 
 function TabInitH(){
@@ -77,6 +91,8 @@ function TabInitH(){
 		this.y = evt.stageY + this.offset.y;
 		// indicate that the stage should be updated on the next tick:
 		update = true;
+
+        UpdateCubeH();
 	});
 }
 
@@ -101,6 +117,7 @@ function TabInitW(){
 		//this.y = evt.stageY + this.offset.y;
 		// indicate that the stage should be updated on the next tick:
 		update = true;
+        UpdateCubeW();
 	});
 }
 
