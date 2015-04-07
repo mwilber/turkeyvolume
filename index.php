@@ -24,7 +24,7 @@
         <div class="main-container">
             <div class="main wrapper clearfix">
 
-                <canvas id="volumizer"></canvas>
+                <canvas id="volumizer" width="500" height="500"></canvas>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
