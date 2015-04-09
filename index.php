@@ -25,6 +25,7 @@
             <div class="main wrapper clearfix">
 
                 <canvas id="volumizer" width="500" height="500"></canvas>
+                <a href="#" onclick="TurkeyFill(); return false;">Fill</a>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->

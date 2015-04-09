@@ -3,8 +3,9 @@ var OUTER_MARGIN = 10;
 var F_COLOR = "#000000";
 var M_COLOR = "#333333";
 var B_COLOR = "#666666";
+var TURKEY_SIZE = 50;
 
-var canvas, stage;
+var canvas, stage, image, bitmap;
 
 var mouseTarget;	// the display object currently under the mouse, or being dragged
 var dragStarted;	// indicates whether we are currently in a drag operation
@@ -25,6 +26,11 @@ $(document).ready(function(){
 	// enabled mouse over / out events
 	stage.enableMouseOver(10);
 	stage.mouseMoveOutside = true; // keep tracking the mouse even when it leaves the canvas
+
+    // load the source image:
+	var image = new Image();
+	image.src = "img/roast_turkey.png";
+	image.onload = handleImageLoad;
 
     FaceInitB();
 
@@ -47,6 +53,44 @@ $(document).ready(function(){
     stage.update();
 
 });
+
+function handleImageLoad(event) {
+	image = event.target;
+}
+
+function TurkeyFill(){
+    var hct = Math.round(bface.getTransformedBounds().width/TURKEY_SIZE);
+    var vct = Math.round(bface.getTransformedBounds().height/TURKEY_SIZE);
+
+    for(var idx=0; idx<hct; idx++){
+        for(var jdx=0; jdx<vct; jdx++){
+            console.log();
+            bitmap = new createjs.Bitmap(image);
+        	stage.addChild(bitmap);
+        	bitmap.x = bface.x + TURKEY_SIZE*idx;
+        	bitmap.y = bface.y + TURKEY_SIZE*jdx;
+            bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
+            bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
+        }
+    }
+
+    hct = Math.round(fface.getTransformedBounds().width/TURKEY_SIZE);
+    vct = Math.round(fface.getTransformedBounds().height/TURKEY_SIZE);
+
+    for(var idx=0; idx<hct; idx++){
+        for(var jdx=0; jdx<vct; jdx++){
+            console.log();
+            bitmap = new createjs.Bitmap(image);
+        	stage.addChild(bitmap);
+        	bitmap.x = fface.x + TURKEY_SIZE*idx;
+        	bitmap.y = fface.y + TURKEY_SIZE*jdx;
+            bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
+            bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
+        }
+    }
+
+    stage.update();
+}
 
 function FaceInitF(){
     fface = new createjs.Shape();
