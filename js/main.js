@@ -3,7 +3,9 @@ var OUTER_MARGIN = 10;
 var F_COLOR = "#000000";
 var M_COLOR = "#333333";
 var B_COLOR = "#666666";
-var TURKEY_SIZE = 50;
+var TURKEY_SPACE = 50;
+var TURKEY_SIZE = 75;
+
 
 var canvas, stage, image, bitmap;
 
@@ -59,34 +61,52 @@ function handleImageLoad(event) {
 }
 
 function TurkeyFill(){
-    var hct = Math.round(bface.getTransformedBounds().width/TURKEY_SIZE);
-    var vct = Math.round(bface.getTransformedBounds().height/TURKEY_SIZE);
+    // var hct = Math.round(bface.getTransformedBounds().width/TURKEY_SPACE);
+    // var vct = Math.round(bface.getTransformedBounds().height/TURKEY_SPACE);
+    //
+    // for(var idx=0; idx<hct; idx++){
+    //     for(var jdx=0; jdx<vct; jdx++){
+    //         console.log();
+    //         bitmap = new createjs.Bitmap(image);
+    //     	stage.addChild(bitmap);
+    //     	bitmap.x = bface.x + TURKEY_SPACE*idx;
+    //     	bitmap.y = bface.y + TURKEY_SPACE*jdx;
+    //         bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
+    //         bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
+    //     }
+    // }
+    var xoffset = ((stage.getBounds().width/2)-(stage.getBounds().width-tabp.x))/(stage.getBounds().width/2);
+    var yoffset = ((stage.getBounds().height/2)-(stage.getBounds().height-tabp.y))/(stage.getBounds().height/2);
+    var ddx = dscale;
 
-    for(var idx=0; idx<hct; idx++){
-        for(var jdx=0; jdx<vct; jdx++){
-            console.log();
-            bitmap = new createjs.Bitmap(image);
-        	stage.addChild(bitmap);
-        	bitmap.x = bface.x + TURKEY_SIZE*idx;
-        	bitmap.y = bface.y + TURKEY_SIZE*jdx;
-            bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
-            bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
+    //ddx = 1;
+
+    while(ddx <= 1){
+
+        console.log("ddx", ddx);
+        console.log("xoffset", (xoffset), "percent", (((1-ddx)*1)/(1-dscale)));
+        console.log("xoffsetb", (xoffset*(((1-ddx)*1)/(1-dscale))));
+
+
+        hct = Math.round((fface.getTransformedBounds().width*ddx)/(TURKEY_SPACE*ddx));
+        vct = Math.round((fface.getTransformedBounds().height*ddx)/(TURKEY_SPACE*ddx));
+
+        for(var idx=0; idx<hct; idx++){
+
+            for(var jdx=0; jdx<vct; jdx++){
+                bitmap = new createjs.Bitmap(image);
+            	stage.addChild(bitmap);
+                bitmap.rotation = Math.floor((Math.random() * 30) -15);
+            	bitmap.x = (fface.x+(fface.getTransformedBounds().width/2)-((fface.getTransformedBounds().width*ddx)/2)) + ((TURKEY_SPACE*ddx)*idx) - ((xoffset*(((1-ddx)*1)/(1-dscale)))*EXTRUDE_MULTIPLIER) -10;
+            	bitmap.y = (fface.y+(fface.getTransformedBounds().height/2)-((fface.getTransformedBounds().height*ddx)/2)) + ((TURKEY_SPACE*ddx)*jdx) - ((yoffset*(((1-ddx)*1)/(1-dscale)))*EXTRUDE_MULTIPLIER) -5;
+                bitmap.scaleX = (TURKEY_SIZE*ddx)/bitmap.image.width;
+                bitmap.scaleY = (TURKEY_SIZE*ddx)/bitmap.image.height;
+
+            }
         }
-    }
 
-    hct = Math.round(fface.getTransformedBounds().width/TURKEY_SIZE);
-    vct = Math.round(fface.getTransformedBounds().height/TURKEY_SIZE);
+        ddx += .1;
 
-    for(var idx=0; idx<hct; idx++){
-        for(var jdx=0; jdx<vct; jdx++){
-            console.log();
-            bitmap = new createjs.Bitmap(image);
-        	stage.addChild(bitmap);
-        	bitmap.x = fface.x + TURKEY_SIZE*idx;
-        	bitmap.y = fface.y + TURKEY_SIZE*jdx;
-            bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
-            bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
-        }
     }
 
     stage.update();
