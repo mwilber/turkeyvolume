@@ -61,27 +61,14 @@ function handleImageLoad(event) {
 }
 
 function TurkeyFill(){
-    // var hct = Math.round(bface.getTransformedBounds().width/TURKEY_SPACE);
-    // var vct = Math.round(bface.getTransformedBounds().height/TURKEY_SPACE);
-    //
-    // for(var idx=0; idx<hct; idx++){
-    //     for(var jdx=0; jdx<vct; jdx++){
-    //         console.log();
-    //         bitmap = new createjs.Bitmap(image);
-    //     	stage.addChild(bitmap);
-    //     	bitmap.x = bface.x + TURKEY_SPACE*idx;
-    //     	bitmap.y = bface.y + TURKEY_SPACE*jdx;
-    //         bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
-    //         bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
-    //     }
-    // }
+
     var xoffset = ((stage.getBounds().width/2)-(stage.getBounds().width-tabp.x))/(stage.getBounds().width/2);
     var yoffset = ((stage.getBounds().height/2)-(stage.getBounds().height-tabp.y))/(stage.getBounds().height/2);
     var ddx = dscale;
 
     //ddx = 1;
 
-    while(ddx <= 1){
+    while(ddx < 1){
 
         console.log("ddx", ddx);
         console.log("xoffset", (xoffset), "percent", (((1-ddx)*1)/(1-dscale)));
@@ -107,6 +94,22 @@ function TurkeyFill(){
 
         ddx += .1;
 
+    }
+
+    var hct = Math.round(fface.getTransformedBounds().width/TURKEY_SPACE);
+    var vct = Math.round(fface.getTransformedBounds().height/TURKEY_SPACE);
+
+    for(var idx=0; idx<hct; idx++){
+        for(var jdx=0; jdx<vct; jdx++){
+            console.log();
+            bitmap = new createjs.Bitmap(image);
+            stage.addChild(bitmap);
+            bitmap.rotation = Math.floor((Math.random() * 20) -10);
+            bitmap.x = fface.x + TURKEY_SPACE*idx - 10;
+            bitmap.y = fface.y + TURKEY_SPACE*jdx - 5;
+            bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
+            bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
+        }
     }
 
     stage.update();
