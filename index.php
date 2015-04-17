@@ -26,7 +26,9 @@
 
                 <canvas id="volumizer" width="500" height="500"></canvas>
                 <a href="#" onclick="TurkeyFill(); return false;">Fill</a>
-
+                <a id="btn_height" href="#" onclick="SetDim('h'); return false;">Set Height</a>
+                <a id="btn_width" href="#" onclick="SetDim('w'); return false;">Set Width</a>
+                <a id="btn_depth" href="#" onclick="SetDim('d'); return false;">Set Depth</a>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 

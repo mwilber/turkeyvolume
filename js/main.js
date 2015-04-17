@@ -3,8 +3,8 @@ var OUTER_MARGIN = 10;
 var F_COLOR = "#000000";
 var M_COLOR = "#333333";
 var B_COLOR = "#666666";
-var TURKEY_SPACE = 50;
-var TURKEY_SIZE = 75;
+var TURKEY_SPACE = 1.25;
+var TURKEY_SIZE = 1.5;
 
 
 var canvas, stage, image, bitmap;
@@ -56,6 +56,40 @@ $(document).ready(function(){
 
 });
 
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function SetDim(pDim){
+    switch(pDim){
+        case 'h':
+            var th = prompt("Enter height");
+            $('#btn_height').html(th);
+            $('#btn_width').html(CalcWidth(th));
+            $('#btn_depth').html(CalcDepth(th, CalcWidth(th)));
+            break;
+        case 'w':
+            var tw = prompt("Enter width");
+            $('#btn_width').html(tw);
+            $('#btn_height').html(CalcHeight(tw));
+            $('#btn_depth').html(CalcDepth(CalcHeight(tw), tw));
+            break;
+    }
+}
+
+function CalcHeight(pW){
+    return (pW/fface.scaleX)*fface.scaleY;
+}
+
+function CalcWidth(pH){
+    return (pH/fface.scaleY)*fface.scaleX;
+}
+
+function CalcDepth(pH, pW){
+    console.log(pH, pW, ((parseFloat(pH)+parseFloat(pW))/2),dscale);
+    return ((parseFloat(pH)+parseFloat(pW))/2)*((1-dscale)*2);
+}
+
 function handleImageLoad(event) {
 	image = event.target;
 }
@@ -75,8 +109,20 @@ function TurkeyFill(){
         console.log("xoffsetb", (xoffset*(((1-ddx)*1)/(1-dscale))));
 
 
-        hct = Math.round((fface.getTransformedBounds().width*ddx)/(TURKEY_SPACE*ddx));
-        vct = Math.round((fface.getTransformedBounds().height*ddx)/(TURKEY_SPACE*ddx));
+        hct = (fface.getTransformedBounds().width*ddx)/(TURKEY_SPACE*ddx);
+        hct = (parseFloat($('#btn_width').html())*ddx)/(TURKEY_SIZE*ddx);
+        if(hct%1 > .5){
+            hct = Math.floor(hct);
+        }else{
+            hct = Math.ceil(hct);
+        }
+        vct = (fface.getTransformedBounds().height*ddx)/(TURKEY_SPACE*ddx);
+        vct = (parseFloat($('#btn_height').html())*ddx)/(TURKEY_SIZE*ddx);
+        if(vct%1 > .5){
+            vct = Math.floor(vct);
+        }else{
+            vct = Math.ceil(vct);
+        }
 
         for(var idx=0; idx<hct; idx++){
 
@@ -84,10 +130,10 @@ function TurkeyFill(){
                 bitmap = new createjs.Bitmap(image);
             	stage.addChild(bitmap);
                 bitmap.rotation = Math.floor((Math.random() * 30) -15);
-            	bitmap.x = (fface.x+(fface.getTransformedBounds().width/2)-((fface.getTransformedBounds().width*ddx)/2)) + ((TURKEY_SPACE*ddx)*idx) - ((xoffset*(((1-ddx)*1)/(1-dscale)))*EXTRUDE_MULTIPLIER) -10;
-            	bitmap.y = (fface.y+(fface.getTransformedBounds().height/2)-((fface.getTransformedBounds().height*ddx)/2)) + ((TURKEY_SPACE*ddx)*jdx) - ((yoffset*(((1-ddx)*1)/(1-dscale)))*EXTRUDE_MULTIPLIER) -5;
-                bitmap.scaleX = (TURKEY_SIZE*ddx)/bitmap.image.width;
-                bitmap.scaleY = (TURKEY_SIZE*ddx)/bitmap.image.height;
+            	bitmap.x = (fface.x+(fface.getTransformedBounds().width/2)-((fface.getTransformedBounds().width*ddx)/2)) + (((fface.getTransformedBounds().width*ddx)/hct)*idx) - ((xoffset*(((1-ddx)*1)/(1-dscale)))*EXTRUDE_MULTIPLIER) -5;
+            	bitmap.y = (fface.y+(fface.getTransformedBounds().height/2)-((fface.getTransformedBounds().height*ddx)/2)) + (((fface.getTransformedBounds().height*ddx)/vct)*jdx) - ((yoffset*(((1-ddx)*1)/(1-dscale)))*EXTRUDE_MULTIPLIER) -5;
+                bitmap.scaleX = (((fface.getTransformedBounds().width*ddx)/hct)/bitmap.image.width)*TURKEY_SPACE;
+                bitmap.scaleY = (((fface.getTransformedBounds().height*ddx)/vct)/bitmap.image.height)*TURKEY_SPACE;
 
             }
         }
@@ -96,8 +142,22 @@ function TurkeyFill(){
 
     }
 
-    var hct = Math.round(fface.getTransformedBounds().width/TURKEY_SPACE);
-    var vct = Math.round(fface.getTransformedBounds().height/TURKEY_SPACE);
+    ddx = 1;
+
+    hct = (fface.getTransformedBounds().width*ddx)/(TURKEY_SIZE*ddx);
+    hct = (parseFloat($('#btn_width').html())*ddx)/(TURKEY_SIZE*ddx);
+    if(hct%1 > .5){
+        hct = Math.floor(hct);
+    }else{
+        hct = Math.ceil(hct);
+    }
+    vct = (fface.getTransformedBounds().height*ddx)/(TURKEY_SIZE*ddx);
+    vct = (parseFloat($('#btn_height').html())*ddx)/(TURKEY_SIZE*ddx);
+    if(vct%1 > .5){
+        vct = Math.floor(vct);
+    }else{
+        vct = Math.ceil(vct);
+    }
 
     for(var idx=0; idx<hct; idx++){
         for(var jdx=0; jdx<vct; jdx++){
@@ -105,12 +165,25 @@ function TurkeyFill(){
             bitmap = new createjs.Bitmap(image);
             stage.addChild(bitmap);
             bitmap.rotation = Math.floor((Math.random() * 20) -10);
-            bitmap.x = fface.x + TURKEY_SPACE*idx - 10;
-            bitmap.y = fface.y + TURKEY_SPACE*jdx - 5;
-            bitmap.scaleX = TURKEY_SIZE/bitmap.image.width;
-            bitmap.scaleY = TURKEY_SIZE/bitmap.image.height;
+            bitmap.x = fface.x + ((fface.getTransformedBounds().width*ddx)/hct)*idx - 10;
+            bitmap.y = fface.y + ((fface.getTransformedBounds().height*ddx)/vct)*jdx - 5;
+            bitmap.scaleX = (((fface.getTransformedBounds().width*ddx)/hct)/bitmap.image.width)*TURKEY_SPACE;
+            bitmap.scaleY = (((fface.getTransformedBounds().height*ddx)/vct)/bitmap.image.height)*TURKEY_SPACE;
         }
     }
+
+    dct = (parseFloat($('#btn_depth').html()))/(TURKEY_SIZE);
+    if(dct <= 0){
+        dct = 1;
+    }
+    if(dct%1 > .5){
+        dct = Math.floor(dct);
+    }else{
+        dct = Math.ceil(dct);
+    }
+    tvol = hct * vct * dct;
+
+    console.log('Turkey Volume', tvol, hct, vct, dct);
 
     stage.update();
 }
@@ -188,12 +261,23 @@ function UpdateCubeH(){
     //console.log(fface.getBounds().height);
     //console.log((((fface.y+(fface.getTransformedBounds().height/2))-tabh.y)/(fface.getBounds().height/2)));
 
+    if( isNumeric($('#btn_height').html())){
+        var tw = $('#btn_width').html();
+        $('#btn_height').html(CalcHeight(tw));
+    }
+
     UpdateCubeP();
 }
 
 function UpdateCubeW(){
     fface.scaleX = (((fface.x+(fface.getTransformedBounds().width/2))-tabw.x)/(fface.getBounds().width/2));
     bface.scaleX = (fface.scaleX)/(1-( (tabd.x-(fface.x+fface.getTransformedBounds().width))/(fface.getBounds().width)));
+
+    if( isNumeric($('#btn_width').html())){
+        var th = $('#btn_height').html();
+        $('#btn_width').html(CalcWidth(th));
+    }
+
     UpdateCubeP();
 }
 
@@ -201,14 +285,17 @@ function UpdateCubeD(){
     //console.log(fface.x, (fface.getTransformedBounds().width),  tabd.x, (fface.getBounds().width/2));
     //console.log( 1-( (tabd.x-(fface.x+fface.getTransformedBounds().width))/(fface.getBounds().width/2)) );
     //console.log( ( (tabd.x-(fface.x+fface.getTransformedBounds().width))/(fface.getBounds().width/2))+1 );
-
-
-
     //dscale = (1-( (tabd.x-(fface.x+fface.getTransformedBounds().width))/(fface.getBounds().width)));
     dscale = ( ((tabd.x-(fface.x+fface.getTransformedBounds().width))/(fface.getTransformedBounds().width))+1 );
     //console.log(dscale);
     bface.scaleX = (fface.scaleX)*dscale;
     bface.scaleY = (fface.scaleY)*dscale;
+
+    if( isNumeric($('#btn_depth').html())){
+        var th = $('#btn_height').html();
+        $('#btn_depth').html(CalcDepth(th, CalcWidth(th)));
+    }
+
     UpdateCubeP();
 }
 
