@@ -25,10 +25,10 @@
             <div class="main wrapper clearfix">
 
                 <canvas id="volumizer" width="500" height="500"></canvas>
-                <a href="#" onclick="TurkeyFill(); return false;">Fill</a>
-                <a id="btn_height" href="#" onclick="SetDim('h'); return false;">Set Height</a>
-                <a id="btn_width" href="#" onclick="SetDim('w'); return false;">Set Width</a>
-                <a id="btn_depth" href="#" onclick="SetDim('d'); return false;">Set Depth</a>
+                <a href="#" onclick="tkyVol.Fill(); return false;">Fill</a>
+                <a id="btn_height" href="#" onclick="SetDim('h'); return false;">10</a>
+                <a id="btn_width" href="#" onclick="SetDim('w'); return false;">10</a>
+                <a id="btn_depth" href="#" onclick="SetDim('d'); return false;">0</a>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 
@@ -37,10 +37,15 @@
 		<script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script>
         <script src="js/cTurkeyVol.js"></script>
         <script type="text/javascript">
+            var tkyVol;
             $(document).ready(function(){
-                var tkyVol = new TurkeyVol();
+                tkyVol = new TurkeyVol();
 
             });
+
+            function isNumeric(n) {
+              return !isNaN(parseFloat(n)) && isFinite(n);
+            }
         </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
