@@ -26,9 +26,9 @@
 
                 <canvas id="volumizer" width="500" height="500"></canvas>
                 <a href="#" onclick="tkyVol.Fill(); return false;">Fill</a>
-                <a id="btn_height" href="#" onclick="SetDim('h'); return false;">10</a>
-                <a id="btn_width" href="#" onclick="SetDim('w'); return false;">10</a>
-                <a id="btn_depth" href="#" onclick="SetDim('d'); return false;">0</a>
+                <a id="btn_height" href="#">Set Height</a>
+                <a id="btn_width" href="#">SetWidth</a>
+                <a id="btn_depth" href="#">0</a>
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 
@@ -41,11 +41,33 @@
             $(document).ready(function(){
                 tkyVol = new TurkeyVol();
 
+                $("#btn_height").click(function(){
+                    var th = prompt("enter height");
+                    tkyVol.InitDim('h',th);
+                    return false;
+                });
+
+                $("#btn_width").click(function(){
+                    var tw = prompt("enter width");
+                    tkyVol.InitDim('w',tw);
+                    return false;
+                });
+
+                $(document).bind("seth", function(){
+                    $("#btn_height").html(tkyVol.GetDim('h'));
+                });
+                $(document).bind("setw", function(){
+                    $("#btn_width").html(tkyVol.GetDim('w'));
+                });
+                $(document).bind("setd", function(){
+                    $("#btn_depth").html(tkyVol.GetDim('d'));
+                });
+
             });
 
-            function isNumeric(n) {
-              return !isNaN(parseFloat(n)) && isFinite(n);
-            }
+            //function isNumeric(n) {
+            //  return !isNaN(parseFloat(n)) && isFinite(n);
+            //}
         </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

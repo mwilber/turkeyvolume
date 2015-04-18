@@ -17,12 +17,11 @@ function TurkeyVol(options){
         x:100,
         y:100,
     };
-
     this.canvas = $('#volumizer');
-    this.extcontrols = {
-        height:$('#btn_height'),
-        width:$('#btn_width'),
-        depth:$('#btn_depth'),
+    this.realsize = {
+        height:null,
+        width:null,
+        depth:null,
     }
 
 
@@ -83,6 +82,55 @@ function TurkeyVol(options){
 
     this.stage.update();
 
+};
+
+TurkeyVol.prototype.InitDim = function(pDim, pVal){
+    console.log('InitDim');
+    switch(pDim){
+        case 'h':
+            this.SetDim('h',pVal);
+            this.SetDim('w',this._CalcWidth(pVal));
+            this.SetDim('d',this._CalcDepth(pVal, this._CalcWidth(pVal)));
+            break;
+        case 'w':
+            this.SetDim('w',pVal);
+            this.SetDim('h',this._CalcHeight(pVal));
+            this.SetDim('d',this._CalcDepth(this._CalcHeight(pVal), pVal));
+            break;
+        case 'd':
+            break;
+    }
+};
+
+TurkeyVol.prototype.SetDim = function(pDim, pVal){
+    switch(pDim){
+        case 'h':
+            this.realsize.height = pVal;
+            $(document).trigger("seth");
+            break;
+        case 'w':
+            this.realsize.width = pVal;
+            $(document).trigger("setw");
+            break;
+        case 'd':
+            this.realsize.depth = pVal;
+            $(document).trigger("setd");
+            break;
+    }
+};
+
+TurkeyVol.prototype.GetDim = function(pDim){
+    switch(pDim){
+        case 'h':
+            return this.realsize.height;
+            break;
+        case 'w':
+            return this.realsize.width;
+            break;
+        case 'd':
+            return this.realsize.depth;
+            break;
+    }
 };
 
 TurkeyVol.prototype._CalcHeight = function(pW){
@@ -247,9 +295,8 @@ TurkeyVol.prototype.UpdateCubeH = function(){
     this.fface.scaleY = (((this.fface.y+(this.fface.getTransformedBounds().height/2))-this.tabh.y)/(this.fface.getBounds().height/2));
     this.bface.scaleY = (this.fface.scaleY)/(1-( (this.tabd.x-(this.fface.x+this.fface.getTransformedBounds().width))/(this.fface.getBounds().width)));
 
-    if( isNumeric(this.extcontrols.height.html())){
-        var tw = this.extcontrols.width.html();
-        this.extcontrols.height.html(this._CalcHeight(tw));
+    if( this.GetDim('h') != null ){
+        this.SetDim('h',this._CalcHeight(this.GetDim('w')));
     }
 
     this.UpdateCubeP();
@@ -260,9 +307,8 @@ TurkeyVol.prototype.UpdateCubeW = function(){
     this.fface.scaleX = (((this.fface.x+(this.fface.getTransformedBounds().width/2))-this.tabw.x)/(this.fface.getBounds().width/2));
     this.bface.scaleX = (this.fface.scaleX)/(1-( (this.tabd.x-(this.fface.x+this.fface.getTransformedBounds().width))/(this.fface.getBounds().width)));
 
-    if( isNumeric(this.extcontrols.width.html())){
-        var th = this.extcontrols.height.html();
-        this.extcontrols.width.html(this._CalcWidth(th));
+    if( this.GetDim('w') != null ){
+        this.SetDim('w',this._CalcWidth(this.GetDim('h')));
     }
 
     this.UpdateCubeP();
@@ -274,9 +320,8 @@ TurkeyVol.prototype.UpdateCubeD = function(){
     this.bface.scaleX = (this.fface.scaleX)*this.dscale;
     this.bface.scaleY = (this.fface.scaleY)*this.dscale;
 
-    if( isNumeric(this.extcontrols.depth.html())){
-        var th = this.extcontrols.height.html();
-        this.extcontrols.depth.html(this._CalcDepth(th, this._CalcWidth(th)));
+    if( this.GetDim('d') != null ){
+        this.SetDim('d',this._CalcDepth(this.GetDim('h'), this._CalcWidth(this.GetDim('h'))));
     }
 
     this.UpdateCubeP();
@@ -356,14 +401,14 @@ TurkeyVol.prototype.Fill = function(){
 
 
         hct = (this.fface.getTransformedBounds().width*ddx)/(this.TURKEY_SPACE*ddx);
-        hct = (parseFloat(this.extcontrols.width.html())*ddx)/(this.TURKEY_SIZE*ddx);
+        hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
         if(hct%1 > .5){
             hct = Math.floor(hct);
         }else{
             hct = Math.ceil(hct);
         }
         vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SPACE*ddx);
-        vct = (parseFloat(this.extcontrols.height.html())*ddx)/(this.TURKEY_SIZE*ddx);
+        vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
         if(vct%1 > .5){
             vct = Math.floor(vct);
         }else{
@@ -391,14 +436,14 @@ TurkeyVol.prototype.Fill = function(){
     ddx = 1;
 
     hct = (this.fface.getTransformedBounds().width*ddx)/(this.TURKEY_SIZE*ddx);
-    hct = (parseFloat(this.extcontrols.width.html())*ddx)/(this.TURKEY_SIZE*ddx);
+    hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
     if(hct%1 > .5){
         hct = Math.floor(hct);
     }else{
         hct = Math.ceil(hct);
     }
     vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SIZE*ddx);
-    vct = (parseFloat(this.extcontrols.height.html())*ddx)/(this.TURKEY_SIZE*ddx);
+    vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
     if(vct%1 > .5){
         vct = Math.floor(vct);
     }else{
@@ -417,7 +462,7 @@ TurkeyVol.prototype.Fill = function(){
         }
     }
 
-    dct = (parseFloat(this.extcontrols.depth.html()))/(this.TURKEY_SIZE);
+    dct = (parseFloat(this.realsize.depth))/(this.TURKEY_SIZE);
     if(dct <= 0){
         dct = 1;
     }
