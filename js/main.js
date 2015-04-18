@@ -1,8 +1,10 @@
 var EXTRUDE_MULTIPLIER = 50;
 var OUTER_MARGIN = 10;
+var COPY_MARGIN = 25;
 var F_COLOR = "#000000";
 var M_COLOR = "#333333";
 var B_COLOR = "#666666";
+var DOT_COLOR = "#00FF00";
 var TURKEY_SPACE = 1.25;
 var TURKEY_SIZE = 1.5;
 
@@ -96,6 +98,23 @@ function handleImageLoad(event) {
 
 function TurkeyFill(){
 
+
+
+    // Draw out the connecting lines
+    var mdot = mface.clone();
+    mdot.graphics.clear().beginStroke(DOT_COLOR)
+        .moveTo(fface.x, fface.y)
+        .lineTo(bface.x, bface.y)
+        .moveTo(fface.x+fface.getTransformedBounds().width, fface.y)
+        .lineTo(bface.x+bface.getTransformedBounds().width, bface.y)
+        .moveTo(fface.x, fface.y+fface.getTransformedBounds().height)
+        .lineTo(bface.x, bface.y+bface.getTransformedBounds().height)
+        .moveTo(fface.x+fface.getTransformedBounds().width, fface.y+fface.getTransformedBounds().height)
+        .lineTo(bface.x+bface.getTransformedBounds().width, bface.y+bface.getTransformedBounds().height);
+
+    stage.addChild(mdot);
+
+
     var xoffset = ((stage.getBounds().width/2)-(stage.getBounds().width-tabp.x))/(stage.getBounds().width/2);
     var yoffset = ((stage.getBounds().height/2)-(stage.getBounds().height-tabp.y))/(stage.getBounds().height/2);
     var ddx = dscale;
@@ -184,6 +203,29 @@ function TurkeyFill(){
     tvol = hct * vct * dct;
 
     console.log('Turkey Volume', tvol, hct, vct, dct);
+    var text = new createjs.Text(tvol+" TURKEYS", "30px Arial", "#ff7700");
+    text.x = COPY_MARGIN;
+    text.y = stage.getBounds().height-COPY_MARGIN;
+    text.textBaseline = "alphabetic";
+    stage.addChild(text);
+    console.log(text.getBounds());
+    text.scaleX = (stage.getBounds().width-(COPY_MARGIN*2))/text.getBounds().width;
+    text.scaleY = (stage.getBounds().width-(COPY_MARGIN*2))/text.getBounds().width;
+
+    var fdot = fface.clone();
+    fdot.graphics.clear().beginStroke(DOT_COLOR).drawRect(0, 0, 300, 300);
+    stage.addChild(fdot);
+
+    //Clear out the cube
+    stage.removeChild(fface);
+    stage.removeChild(mface);
+    stage.removeChild(bface);
+
+    // Remove the control tabs
+    stage.removeChild(tabh);
+    stage.removeChild(tabw);
+    stage.removeChild(tabd);
+    stage.removeChild(tabp);
 
     stage.update();
 }
