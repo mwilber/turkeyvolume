@@ -25,7 +25,7 @@
             <div class="main wrapper clearfix">
 
                 <canvas id="volumizer" width="500" height="500"></canvas>
-                <a href="#" onclick="tkyVol.Fill(); return false;">Fill</a>
+                <a id="btn_fill" href="#">Fill</a>
                 <a id="btn_height" href="#">Set Height</a>
                 <a id="btn_width" href="#">SetWidth</a>
                 <a id="btn_depth" href="#">0</a>
@@ -50,6 +50,15 @@
                 $("#btn_width").click(function(){
                     var tw = prompt("enter width");
                     tkyVol.InitDim('w',tw);
+                    return false;
+                });
+
+                $("#btn_fill").click(function(){
+                    if( tkyVol.CheckDim() ){
+                        tkyVol.Fill();
+                    }else{
+                        alert('set dimensions');
+                    }
                     return false;
                 });
 
