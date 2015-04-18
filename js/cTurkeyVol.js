@@ -1,6 +1,6 @@
 function TurkeyVol(options){
 
-    this.EXTRUDE_MULTIPLIER = 50;
+    this.EXTRUDE_MULTIPLIER = 100;
     this.OUTER_MARGIN = 10;
     this.COPY_MARGIN = 25;
     this.F_COLOR = "#000000";

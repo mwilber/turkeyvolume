@@ -54,16 +54,21 @@
                 });
 
                 $(document).bind("seth", function(){
-                    $("#btn_height").html(tkyVol.GetDim('h'));
+                    $("#btn_height").html(parseFloat(tkyVol.GetDim('h')).round(1));
                 });
                 $(document).bind("setw", function(){
-                    $("#btn_width").html(tkyVol.GetDim('w'));
+                    $("#btn_width").html(parseFloat(tkyVol.GetDim('w')).round(1));
                 });
                 $(document).bind("setd", function(){
-                    $("#btn_depth").html(tkyVol.GetDim('d'));
+                    $("#btn_depth").html(parseFloat(tkyVol.GetDim('d')).round(1));
                 });
 
             });
+
+            Number.prototype.round = function(p) {
+                p = p || 10;
+                return parseFloat( this.toFixed(p) );
+            };
 
             //function isNumeric(n) {
             //  return !isNaN(parseFloat(n)) && isFinite(n);
