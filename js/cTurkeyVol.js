@@ -3,9 +3,10 @@ function TurkeyVol(options){
     this.EXTRUDE_MULTIPLIER = 100;
     this.OUTER_MARGIN = 10;
     this.COPY_MARGIN = 25;
-    this.F_COLOR = "#000000";
-    this.M_COLOR = "#333333";
-    this.B_COLOR = "#666666";
+    this.BKG_COLOR = "#9999AA";
+    this.F_COLOR = "#FFFFFF";
+    this.M_COLOR = "#EEEEEE";
+    this.B_COLOR = "#CCCCCC";
     this.DOT_COLOR = "#00FF00";
     this.TAB_COLOR = "#CCCCDD";
     this.TAB_RADIUS = 25;
@@ -25,7 +26,7 @@ function TurkeyVol(options){
     }
 
 
-    this.stage; this.image; this.bitmap;
+    this.stage; this.imgtky; this.imgbkg; this.bitmap; this.background;
     this.mouseTarget;	// the display object currently under the mouse, or being dragged
     this.dragStarted;	// indicates whether we are currently in a drag operation
     this.offset;
@@ -45,12 +46,21 @@ function TurkeyVol(options){
 	this.stage.enableMouseOver(10);
 	this.stage.mouseMoveOutside = true; // keep tracking the mouse even when it leaves the canvas
 
+    this.background = new createjs.Shape();
+    this.background.x = 0;
+    this.background.y = 0;
+    // only the drawPolyStar call is needed for the mask to work:
+    this.background.graphics.beginFill(this.BKG_COLOR).drawRect(0,0,this.stage.getBounds().width,this.stage.getBounds().height).closePath();
+    this.stage.addChild(this.background);
+
+    this.SetBackground(options.backgroundData);
+
     // load the source image:
 	var image = new Image();
 	image.src = "img/roast_turkey.png";
 	image.onload = function(self){
         return function(event){
-            self.image = event.target;
+            self.imgtky = event.target;
         };
     }(this);
 
@@ -150,6 +160,35 @@ TurkeyVol.prototype._CalcDepth = function(pH, pW){
     return ((parseFloat(pH)+parseFloat(pW))/2)*((1-this.dscale)*2);
 };
 
+
+
+TurkeyVol.prototype.SetBackground = function(pImg){
+//    var image = new Image();
+//    image.src = pImg;
+//    image.onload = function(self){
+//        return function(event){
+
+            var tmpbkg = new createjs.Bitmap(pImg);
+            tmpbkg.x = 0;
+            tmpbkg.y = 0;
+            tmpbkg.rotation = 0;
+
+
+            console.log(tmpbkg.getBounds());
+
+            if( tmpbkg.getBounds().width > tmpbkg.getBounds().height ){
+                tmpbkg.scaleX = this.stage.getBounds().height/tmpbkg.getBounds().height;
+                tmpbkg.scaleY = this.stage.getBounds().height/tmpbkg.getBounds().height;
+            }else{
+                tmpbkg.scaleX = this.stage.getBounds().width/tmpbkg.getBounds().width;
+                tmpbkg.scaleY = this.stage.getBounds().width/tmpbkg.getBounds().width;
+            }
+
+            this.stage.addChild(tmpbkg);
+//        };
+//    }(this);
+};
+
 TurkeyVol.prototype.FaceInitB = function(){
 
     this.bface = new createjs.Shape();
@@ -167,7 +206,7 @@ TurkeyVol.prototype.FaceInitB = function(){
 TurkeyVol.prototype.FaceInitF = function(){
 
     this.fface = new createjs.Shape();
-    this.fface.graphics.beginStroke(this.B_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
+    this.fface.graphics.beginStroke(this.F_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
     this.fface.setBounds(0,0,this.START_RECT.width,this.START_RECT.height);
     this.fface.x = this.START_RECT.x;
     this.fface.y = this.START_RECT.y;
@@ -422,7 +461,7 @@ TurkeyVol.prototype.Fill = function(){
             for(var idx=0; idx<hct; idx++){
 
                 for(var jdx=0; jdx<vct; jdx++){
-                    this.bitmap = new createjs.Bitmap(this.image);
+                    this.bitmap = new createjs.Bitmap(this.imgtky);
                     this.stage.addChild(this.bitmap);
                     this.bitmap.rotation = Math.floor((Math.random() * 30) -15);
                     this.bitmap.x = (this.fface.x+(this.fface.getTransformedBounds().width/2)-((this.fface.getTransformedBounds().width*ddx)/2)) + (((this.fface.getTransformedBounds().width*ddx)/hct)*idx) - ((xoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
@@ -456,7 +495,7 @@ TurkeyVol.prototype.Fill = function(){
 
         for(var idx=0; idx<hct; idx++){
             for(var jdx=0; jdx<vct; jdx++){
-                this.bitmap = new createjs.Bitmap(this.image);
+                this.bitmap = new createjs.Bitmap(this.imgtky);
                 this.stage.addChild(this.bitmap);
                 this.bitmap.rotation = Math.floor((Math.random() * 20) -10);
                 this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 10;
