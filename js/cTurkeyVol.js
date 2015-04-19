@@ -1,13 +1,17 @@
 function TurkeyVol(options){
 
-    this.EXTRUDE_MULTIPLIER = 100;
+    this.EXTRUDE_MULTIPLIER = 50;
     this.OUTER_MARGIN = 10;
-    this.COPY_MARGIN = 25;
+    this.COPY_MARGIN = 50;
+    this.DOT_SIZE = 2;
+    this.FONT_STYLE = "30px Anton";
+    this.FONT_COLOR = "#FFFFFF";
+    this.FONT_SHADOW_COLOR = "#000000";
     this.BKG_COLOR = "#9999AA";
     this.F_COLOR = "#FFFFFF";
     this.M_COLOR = "#EEEEEE";
     this.B_COLOR = "#CCCCCC";
-    this.DOT_COLOR = "#00FF00";
+    this.DOT_COLOR = "rgba(0,255,0,0.6)";
     this.TAB_COLOR = "#CCCCDD";
     this.TAB_RADIUS = 25;
     this.TURKEY_SPACE = 1.25;
@@ -16,7 +20,7 @@ function TurkeyVol(options){
         width:300,
         height:300,
         x:100,
-        y:100,
+        y:50,
     };
     this.canvas = $('#volumizer');
     this.realsize = {
@@ -33,7 +37,7 @@ function TurkeyVol(options){
     this.update = true;
 
     this.fface; this.bface; this.mface; this.tabh; this.tabw; this.tabd; this.tabp;
-    this.dscale = 1;
+    this.dscale = 0.75;
 
 
     this.stage = new createjs.Stage(this.canvas.attr("id"));
@@ -78,8 +82,6 @@ function TurkeyVol(options){
     this.TabInitP();
     this.TabInitD();
 
-
-
     createjs.Ticker.addEventListener("tick", function(self){
         return function(event){
             // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
@@ -90,7 +92,19 @@ function TurkeyVol(options){
         };
     }(this));
 
+    var text = new createjs.Text("...", "bold 30px Anton", "#ffffff");
+    text.x = this.COPY_MARGIN;
+    text.y = this.stage.getBounds().height-this.COPY_MARGIN;
+    text.textBaseline = "alphabetic";
+    this.stage.addChild(text);
+
     this.stage.update();
+
+    this.stage.removeChild(text);
+
+    this.stage.update();
+
+    this.UpdateCubeD();
 
 };
 
@@ -163,30 +177,25 @@ TurkeyVol.prototype._CalcDepth = function(pH, pW){
 
 
 TurkeyVol.prototype.SetBackground = function(pImg){
-//    var image = new Image();
-//    image.src = pImg;
-//    image.onload = function(self){
-//        return function(event){
 
-            var tmpbkg = new createjs.Bitmap(pImg);
-            tmpbkg.x = 0;
-            tmpbkg.y = 0;
-            tmpbkg.rotation = 0;
+    var tmpbkg = new createjs.Bitmap(pImg);
+    tmpbkg.x = 0;
+    tmpbkg.y = 0;
+    tmpbkg.rotation = 0;
 
+    if( tmpbkg.getBounds() ){
+        if( tmpbkg.getBounds().width > tmpbkg.getBounds().height ){
+            tmpbkg.scaleX = this.stage.getBounds().height/tmpbkg.getBounds().height;
+            tmpbkg.scaleY = this.stage.getBounds().height/tmpbkg.getBounds().height;
+            tmpbkg.x = (this.stage.getBounds().width-tmpbkg.getTransformedBounds().width)/2
+        }else{
+            tmpbkg.scaleX = this.stage.getBounds().width/tmpbkg.getBounds().width;
+            tmpbkg.scaleY = this.stage.getBounds().width/tmpbkg.getBounds().width;
+            tmpbkg.y = (this.stage.getBounds().height-tmpbkg.getTransformedBounds().height)/2
+        }
+    }
 
-            console.log(tmpbkg.getBounds());
-
-            if( tmpbkg.getBounds().width > tmpbkg.getBounds().height ){
-                tmpbkg.scaleX = this.stage.getBounds().height/tmpbkg.getBounds().height;
-                tmpbkg.scaleY = this.stage.getBounds().height/tmpbkg.getBounds().height;
-            }else{
-                tmpbkg.scaleX = this.stage.getBounds().width/tmpbkg.getBounds().width;
-                tmpbkg.scaleY = this.stage.getBounds().width/tmpbkg.getBounds().width;
-            }
-
-            this.stage.addChild(tmpbkg);
-//        };
-//    }(this);
+    this.stage.addChild(tmpbkg);
 };
 
 TurkeyVol.prototype.FaceInitB = function(){
@@ -272,7 +281,7 @@ TurkeyVol.prototype.TabInitW = function(){
 TurkeyVol.prototype.TabInitD = function(){
     this.tabd = new createjs.Shape();
     this.tabd.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
-    this.tabd.x = this.START_RECT.x+(this.START_RECT.width);
+    this.tabd.x = this.START_RECT.x+(this.START_RECT.width-(this.START_RECT.width/4));
     this.tabd.y = this.START_RECT.y+(this.START_RECT.height);
 
     this.stage.addChild(this.tabd);
@@ -415,9 +424,14 @@ TurkeyVol.prototype.UpdateCubeP = function(){
 
 TurkeyVol.prototype.Fill = function(){
     if( this.CheckDim() ){
+
+        var bdot = new createjs.Shape();
+        bdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.bface.x, this.bface.y, this.bface.getTransformedBounds().width, this.bface.getTransformedBounds().height);
+        this.stage.addChild(bdot);
+
         // Draw out the connecting lines
-        var mdot = this.mface.clone();
-        mdot.graphics.clear().beginStroke(this.DOT_COLOR)
+        var mdot = new createjs.Shape();
+        mdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR)
             .moveTo(this.fface.x, this.fface.y)
             .lineTo(this.bface.x, this.bface.y)
             .moveTo(this.fface.x+this.fface.getTransformedBounds().width, this.fface.y)
@@ -498,12 +512,17 @@ TurkeyVol.prototype.Fill = function(){
                 this.bitmap = new createjs.Bitmap(this.imgtky);
                 this.stage.addChild(this.bitmap);
                 this.bitmap.rotation = Math.floor((Math.random() * 20) -10);
-                this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 10;
+                this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 5;
                 this.bitmap.y = this.fface.y + ((this.fface.getTransformedBounds().height*ddx)/vct)*jdx - 5;
                 this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
                 this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
             }
         }
+
+        var fdot = new createjs.Shape();
+        fdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.fface.x, this.fface.y, this.fface.getTransformedBounds().width, this.fface.getTransformedBounds().height);
+        fdot.shadow = new createjs.Shadow("#FFFFFF", 0, 0, 5);
+        this.stage.addChild(fdot);
 
         dct = (parseFloat(this.realsize.depth))/(this.TURKEY_SIZE);
         if(dct <= 0){
@@ -517,18 +536,26 @@ TurkeyVol.prototype.Fill = function(){
         tvol = hct * vct * dct;
 
         console.log('Turkey Volume', tvol, hct, vct, dct);
-        var text = new createjs.Text(tvol+" TURKEYS", "30px Arial", "#ff7700");
+
+        // var textshadow = new createjs.Text(tvol+" TURKEYS", this.FONT_SHADOW_STYLE, this.FONT_SHADOW_COLOR);
+        // textshadow.x = this.COPY_MARGIN-2;
+        // textshadow.y = this.stage.getBounds().height-this.COPY_MARGIN+2;
+        // textshadow.textBaseline = "alphabetic";
+        // this.stage.addChild(textshadow);
+        // textshadow.scaleX = (this.stage.getBounds().width-(this.COPY_MARGIN*2-4))/textshadow.getBounds().width;
+        // textshadow.scaleY = (this.stage.getBounds().width-(this.COPY_MARGIN*2-16))/textshadow.getBounds().width;
+
+        var text = new createjs.Text(tvol+" TURKEYS", this.FONT_STYLE, this.FONT_COLOR);
         text.x = this.COPY_MARGIN;
-        text.y = this.stage.getBounds().height-this.COPY_MARGIN;
+        text.y = this.stage.getBounds().height-(this.COPY_MARGIN/2);
         text.textBaseline = "alphabetic";
+        text.shadow = new createjs.Shadow(this.FONT_SHADOW_COLOR, 0, 0, 5);
         this.stage.addChild(text);
         console.log(text.getBounds());
         text.scaleX = (this.stage.getBounds().width-(this.COPY_MARGIN*2))/text.getBounds().width;
         text.scaleY = (this.stage.getBounds().width-(this.COPY_MARGIN*2))/text.getBounds().width;
 
-        var fdot = this.fface.clone();
-        fdot.graphics.clear().beginStroke(this.DOT_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
-        this.stage.addChild(fdot);
+
 
         //Clear out the cube
         this.stage.removeChild(this.fface);
