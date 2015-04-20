@@ -50,12 +50,16 @@ class JSONAPI extends CI_Controller {
 		$json = file_get_contents('php://input');
 		$obj = json_decode($json);
 
+        $obj['cloudName'] = "CrashOverride";
+
         $this->_response->request = $obj;
+        if( isset($obj['cloudImage'])){
         if( $obj['cloudImage'] != "" ){
             $imageData = explode('base64,',$obj['cloudImage']);
             $imageData = $this->$model_ref->manageFile64($imageData[1], UPLOAD_DIR, '');
             $this->load->library('s3');
             $obj['cloudImage'] = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
+        }
         }
 
         // Validation passes
