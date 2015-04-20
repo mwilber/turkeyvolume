@@ -64,7 +64,7 @@ class JSONAPI extends CI_Controller {
 
 		$this->_JSONout();
 
-		//list.shoplistId
+		//list.shoplistId .
 	}
 
 
