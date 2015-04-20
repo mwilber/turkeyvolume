@@ -43,10 +43,24 @@ class JSONAPI extends CI_Controller {
 
 
     function share(){
+
+        $model_ref = 'cloud_model';
+		$this->load->model($model_ref);
+
 		$json = file_get_contents('php://input');
 		$obj = json_decode($json);
 
         $this->_response->request = $obj;
+        if( $obj['cloudImage'] != "" ){
+            $imageData = explode('base64,',$obj['cloudImage']);
+            $imageData = $this->$model_ref->manageFile64($imageData[1], UPLOAD_DIR, '');
+            $this->load->library('s3');
+            $obj['cloudImage'] = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
+        }
+
+        // Validation passes
+        $nId = $this->$model_ref->Add($obj);
+        $this->_response->id = $nId;
 
 		$this->_JSONout();
 
