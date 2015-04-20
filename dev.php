@@ -43,7 +43,22 @@
             dummyphoto = "";
 
             $(document).ready(function(){
-                tkyVol = new TurkeyVol({backgroundData:dummyphoto});
+                var tkyOpts = {
+                    'copy_margin':50,
+                    'element':{
+                        'id':'volumizer',
+                        'height':$('#volumizer').height(),
+                        'width':$('#volumizer').width()
+                    },
+                    'start_rect':{
+                        width:300,
+                        height:300,
+                        x:100,
+                        y:50,
+                    },
+                    'backgroundData':dummyphoto,
+                };
+                tkyVol = new TurkeyVol(tkyOpts);
 
                 $("#btn_height").click(function(){
                     var th = prompt("enter height");

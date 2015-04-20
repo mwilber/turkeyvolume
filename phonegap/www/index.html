@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html ng-app="TVGA">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script>
+    <script src="components/loader.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        Number.prototype.round = function(p) {
+            p = p || 10;
+            return parseFloat( this.toFixed(p) );
+        };
+    
+        var tvgaControllers = angular.module('tvgaControllers', []);
+    </script>
+    <script src="js/cTurkeyVol.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/volumizer.js"></script>
+    <script>
+        angular.module('TVGA', ['onsen','tvgaControllers']);
+    </script>
+</head>
+<body>
+    <ons-navigator var="myNavigator" page="volumizer.html">
+    </ons-navigator> 
+</body>
+</html>

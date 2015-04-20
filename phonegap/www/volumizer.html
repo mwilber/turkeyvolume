@@ -1,0 +1,20 @@
+<ons-page ng-controller="VolumizerCtrl">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Page 2</div>
+    </ons-toolbar>
+
+    <div style="text-align: center">
+
+        <canvas id="volumizer" width="{{canvasWidth}}" height="{{canvasHeight}}" style="margin-top:{{canvasMarginTop}}px;"></canvas>
+
+    </div>
+    
+    <div style="clear:both;"></div>
+    
+    <form class="foot_ctrl">
+        <h3>Height: {{actualHeight}} Width: {{actualWidth}} Depth: {{actualDepth}}</h3>
+        <ons-button class="capture-btn" ng-click="SetHeight()"><span class="fa fa-arrows-v fa-lg"></span>Height</ons-button>
+        <ons-button class="capture-btn" ng-click="TurkeyFill()"><span class="fa fa-cube fa-lg"></span>Fill</ons-button>
+    </form>
+</ons-page>

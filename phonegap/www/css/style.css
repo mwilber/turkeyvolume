@@ -1,0 +1,45 @@
+#volumizer{
+    position: absolute;
+    left:0%;
+    top:50%;
+}
+
+.foot_ctrl{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    width: 100%;
+    background: #eee;
+    text-transform : uppercase;
+    z-index:2000 !important;
+}
+
+.foot_ctrl h3{
+    margin: 10px 0px 4px 0px;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 16px;
+    color: #666;
+}
+
+.foot_ctrl .button {
+    width: 49%;
+    border: solid 6px #eee;
+    height: 60px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.foot_ctrl .button.wide-btn {
+    width: 100%;
+}
+
+.foot_ctrl .button span.fa{
+    padding-right:10px;
+}
