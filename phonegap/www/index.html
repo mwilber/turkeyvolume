@@ -15,12 +15,15 @@
         };
     
         var tvgaControllers = angular.module('tvgaControllers', []);
+        var tvgaServices = angular.module('tvgaServices', []);
     </script>
     <script src="js/cTurkeyVol.js"></script>
+    <script src="js/services.js"></script>
     <script src="js/home.js"></script>
     <script src="js/volumizer.js"></script>
+    <script src="js/share.js"></script>
     <script>
-        angular.module('TVGA', ['onsen','tvgaControllers']);
+        angular.module('TVGA', ['onsen','tvgaControllers', 'tvgaServices']);
     </script>
 </head>
 <body>

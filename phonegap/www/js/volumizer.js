@@ -1,5 +1,5 @@
-tvgaControllers.controller('VolumizerCtrl', ['$scope', '$element', 
-function($scope, $element) {
+tvgaControllers.controller('VolumizerCtrl', ['$scope', '$element', '$http', 'tvgaImage', 
+function($scope, $element, $http, tvgaImage) {
     
     $scope.tkyVol;
     $scope.showHelp = false;
@@ -36,6 +36,8 @@ function($scope, $element) {
             'backgroundData':$scope.dummyphoto,
         };
         $scope.tkyVol = new TurkeyVol(tkyOpts);
+        
+        $scope.tkyVol.InitDim('h',10);
     };
     
     $scope.SetHeight = function(){
@@ -47,6 +49,15 @@ function($scope, $element) {
     $scope.TurkeyFill = function(){
         
         $scope.tkyVol.Fill();
+        var img = $scope.tkyVol.stage.canvas.toDataURL("image/png");
+        //console.log(img);
+        tvgaImage.SetImage(img);
+        myNavigator.pushPage('share.html');
+        
+    };
+    
+    $scope.TurkeySave = function(){
+        
     };
     
     $(document).bind("seth", function(){

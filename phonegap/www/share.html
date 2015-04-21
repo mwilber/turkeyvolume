@@ -1,0 +1,17 @@
+<ons-page ng-controller="ShareCtrl">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Page 2</div>
+    </ons-toolbar>
+
+    <div style="text-align: center">
+        <img src="{{ tkyImage }}"/>
+    </div>
+    
+    <div style="clear:both;"></div>
+    
+    <form class="foot_ctrl">
+        <h3>Share</h3>
+        <ons-button class="capture-btn" ng-click="TurkeySave()"><span class="fa fa-globe fa-lg"></span>Save</ons-button>
+    </form>
+</ons-page>
