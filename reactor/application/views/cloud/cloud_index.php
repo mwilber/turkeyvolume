@@ -33,7 +33,7 @@
 			<td><?=$record->$pk?></td>
 			<?php foreach( $fields as $name=>$props ): ?>
 			<?php if( $name == "cloudImage" ): ?>
-				<td><img src="<?=$record->$name?>" width="50"/></td>
+				<td><a href="<?=$record->$name?>" target="_blank"><img src="<?=$record->$name?>" width="100"/></a></td>
 			<?php elseif(substr_compare($name, 'Id', -2, 2) === 0): ?>
 				<td class="join" ref="<?=base_url()?><?=substr($name, 0, -2);?>/detail/<?=$record->$name?>"><a href='<?=base_url()?><?=substr($name, 0, -2);?>/edit/<?=$record->$name?>' ><?=$record->$name?></a></td>
 			<?php else: ?>
