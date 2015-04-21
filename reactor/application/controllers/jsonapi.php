@@ -64,7 +64,7 @@ class JSONAPI extends CI_Controller {
         // Validation passes
         $nId = $this->$model_ref->Add(array('cloudName'=>$obj->cloudName,'cloudImage'=>$obj->cloudImage));
         $this->_response->id = IdObfuscator::encode($nId);
-		$this->_response->url = base_url()."/".$this->_response->id;
+		$this->_response->url = str_replace("reactor/", "", base_url())."t/".$this->_response->id;
         }
 
 
