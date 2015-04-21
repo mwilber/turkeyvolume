@@ -46,6 +46,7 @@ class JSONAPI extends CI_Controller {
 
         $model_ref = 'cloud_model';
 		$this->load->model($model_ref);
+		$this->load->helpers('idobfuscator_helper');
 
 		$json = file_get_contents('php://input');
 		$obj = json_decode($json);
@@ -62,7 +63,8 @@ class JSONAPI extends CI_Controller {
         }
         // Validation passes
         $nId = $this->$model_ref->Add(array('cloudName'=>$obj->cloudName,'cloudImage'=>$obj->cloudImage));
-        $this->_response->id = $nId;
+        $this->_response->id = IdObfuscator::encode($nId);
+		$this->_response->url = base_url()."/".$this->_response->id;
         }
 
 
