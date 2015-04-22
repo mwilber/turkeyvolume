@@ -14,3 +14,20 @@ tvgaServices.service('tvgaImage', [
         };
     }
 ]);
+
+tvgaServices.service('cameraPhoto', [
+    function(){
+        
+        var imagedata = "";
+
+        return {
+            GetPhoto: function () {
+                return imagedata;
+            },
+            SetPhoto: function(value) {
+                imagedata = "data:image/jpeg;base64,"+value;
+                //localStorage.setItem("imagedata", imagedata);
+            }
+        };
+    }
+]);

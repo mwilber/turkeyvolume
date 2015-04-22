@@ -5,13 +5,17 @@
     </ons-toolbar>
 
     <div style="text-align: center">
-        <img src="{{ tkyImage }}"/>
+        <img src="{{ tkyImage }}" width="100%"/>
     </div>
     
     <div style="clear:both;"></div>
     
     <form class="foot_ctrl">
         <h3>Share</h3>
-        <ons-button class="capture-btn" ng-click="TurkeySave()"><span class="fa fa-globe fa-lg"></span>Save</ons-button>
+        <ons-button class="capture-btn" ng-click="TurkeySave()" ng-if="!shareUrl"><span class="fa fa-globe fa-lg"></span>Save</ons-button>
+        <ons-button class="tw-btn" ng-click="TwShare()" ng-if="shareUrl"><ons-icon icon="twitter"></ons-icon></ons-button>
+        <ons-button class="fb-btn" ng-click="FbShare()" ng-if="shareUrl"><ons-icon icon="facebook"></ons-icon></ons-button>
+        <ons-button class="pn-btn" ng-click="PnShare()" ng-if="shareUrl"><ons-icon icon="pinterest"></ons-icon></ons-button>
+        <ons-button class="gp-btn" ng-click="GpShare()" ng-if="shareUrl"><ons-icon icon="google-plus"></ons-icon></ons-button>
     </form>
 </ons-page>
