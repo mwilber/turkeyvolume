@@ -1,9 +1,10 @@
 function TurkeyVol(options){
 
-    this.EXTRUDE_MULTIPLIER = 50;
+    this.EXTRUDE_MULTIPLIER = options.extrude_multiplier;
     this.OUTER_MARGIN = 10;
+    this.LINE_SIZE = options.line_size;
     this.COPY_MARGIN = options.copy_margin;
-    this.DOT_SIZE = 2;
+    this.DOT_SIZE = options.dot_size;
     this.FONT_STYLE = "30px Anton";
     this.FONT_COLOR = "#FFFFFF";
     this.FONT_SHADOW_COLOR = "#000000";
@@ -12,8 +13,8 @@ function TurkeyVol(options){
     this.M_COLOR = "#EEEEEE";
     this.B_COLOR = "#CCCCCC";
     this.DOT_COLOR = "rgba(0,255,0,0.6)";
-    this.TAB_COLOR = "#CCCCDD";
-    this.TAB_RADIUS = 25;
+    this.TAB_COLOR = "rgba(255,255,255,0.8)";
+    this.TAB_RADIUS = options.tab_radius;
     this.TURKEY_SPACE = 1.25;
     this.TURKEY_SIZE = 1.5;
     this.START_RECT = options.start_rect;
@@ -196,7 +197,7 @@ TurkeyVol.prototype.SetBackground = function(pImg){
 TurkeyVol.prototype.FaceInitB = function(){
 
     this.bface = new createjs.Shape();
-    this.bface.graphics.beginStroke(this.B_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
+    this.bface.graphics.setStrokeStyle(this.LINE_SIZE).beginStroke(this.B_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
     this.bface.setBounds(0,0,this.START_RECT.width,this.START_RECT.height);
     this.bface.x = this.START_RECT.x;
     this.bface.y = this.START_RECT.y;
@@ -210,7 +211,7 @@ TurkeyVol.prototype.FaceInitB = function(){
 TurkeyVol.prototype.FaceInitF = function(){
 
     this.fface = new createjs.Shape();
-    this.fface.graphics.beginStroke(this.F_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
+    this.fface.graphics.setStrokeStyle(this.LINE_SIZE).beginStroke(this.F_COLOR).drawRect(0, 0, this.START_RECT.width, this.START_RECT.height);
     this.fface.setBounds(0,0,this.START_RECT.width,this.START_RECT.height);
     this.fface.x = this.START_RECT.x;
     this.fface.y = this.START_RECT.y;
@@ -391,7 +392,7 @@ TurkeyVol.prototype.UpdateCubeP = function(){
     this.bface.y = this.tabp.y - (bb.height/2) - (yoffset*this.EXTRUDE_MULTIPLIER);
 
     // Draw out the connecting lines
-    this.mface.graphics.clear().beginStroke(this.M_COLOR)
+    this.mface.graphics.clear().setStrokeStyle(this.LINE_SIZE).beginStroke(this.M_COLOR)
         .moveTo(this.fface.x, this.fface.y)
         .lineTo(this.bface.x, this.bface.y)
         .moveTo(this.fface.x+this.fface.getTransformedBounds().width, this.fface.y)

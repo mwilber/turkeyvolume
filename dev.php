@@ -44,7 +44,11 @@
 
             $(document).ready(function(){
                 var tkyOpts = {
+                    'extrude_multiplier':50,
                     'copy_margin':50,
+                    'line_size':5,
+                    'dot_size':3,
+                    'tab_radius':75,
                     'element':{
                         'id':'volumizer',
                         'height':$('#volumizer').height(),
