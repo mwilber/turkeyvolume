@@ -490,19 +490,27 @@ TurkeyVol.prototype.Fill = function(){
 
         hct = (this.fface.getTransformedBounds().width*ddx)/(this.TURKEY_SIZE*ddx);
         hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
-        if(hct%1 > .5){
-            hct = Math.floor(hct);
-        }else{
-            hct = Math.ceil(hct);
-        }
+        // Store the decimal for the numeric output
+        var thct = hct;
+        //if(hct%1 > .5){
+        // console.log('hct - 1a',hct);
+        // hct = Math.floor(hct);
+        //}else{
+        // console.log('hct - 1b',hct);
+        // hct = Math.ceil(hct);
+        //}
+        //if( hct == 0 ) hct = 1;
+        console.log('hct - 2',hct);
         vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SIZE*ddx);
         vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
-        if(vct%1 > .5){
-            vct = Math.floor(vct);
-        }else{
-            vct = Math.ceil(vct);
-        }
-
+        // Store the decimal for the numeric output
+        var tvct = vct;
+        // if(vct%1 > .5){
+        //  vct = Math.floor(vct);
+        // }else{
+        //  vct = Math.ceil(vct);
+        // }
+        //if( vct == 0 ) vct = 1;
         for(var idx=0; idx<hct; idx++){
             for(var jdx=0; jdx<vct; jdx++){
                 this.bitmap = new createjs.Bitmap(this.imgtky);
@@ -524,14 +532,19 @@ TurkeyVol.prototype.Fill = function(){
         if(dct <= 0){
             dct = 1;
         }
-        if(dct%1 > .5){
-            dct = Math.floor(dct);
-        }else{
-            dct = Math.ceil(dct);
-        }
-        tvol = hct * vct * dct;
+        // Store the decimal for the numeric output
+        var tdct = dct;
+        // if(dct%1 > .5){
+        //  dct = Math.floor(dct);
+        // }else{
+        //  dct = Math.ceil(dct);
+        // }
+        tvol = thct * tvct * tdct;
 
         console.log('Turkey Volume', tvol, hct, vct, dct);
+        
+        var tmprnd = 1 || 10;
+        tvol = parseFloat( tvol.toFixed(tmprnd) );
 
         // var textshadow = new createjs.Text(tvol+" TURKEYS", this.FONT_SHADOW_STYLE, this.FONT_SHADOW_COLOR);
         // textshadow.x = this.COPY_MARGIN-2;

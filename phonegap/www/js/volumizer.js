@@ -7,9 +7,10 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     $scope.dummyphoto = "";
     $scope.canvasWidth = 1024;
     $scope.canvasHeight = 1024;
-    $scope.canvasMarginTop = -($element[0].clientWidth);
-    $scope.canvasScale = $element[0].clientWidth/1024
-    $scope.canvasStyle = "margin-top:"+$scope.canvasMarginTop+"px; -ms-transform-origin:0%; -webkit-transform-origin: 0%; transform-origin: 0%; -ms-transform: scale("+$scope.canvasScale+"); -webkit-transform: scale("+$scope.canvasScale+"); transform: scale("+$scope.canvasScale+");"
+    $scope.canvasMarginTop = -($element[0].clientWidth*1.06);
+    $scope.canvasMarginLeft = ($element[0].clientWidth*0.03);
+    $scope.canvasScale = ($element[0].clientWidth*0.94)/1024
+    $scope.canvasStyle = "margin-left:"+$scope.canvasMarginLeft+"px; margin-top:"+$scope.canvasMarginTop+"px; -ms-transform-origin:0%; -webkit-transform-origin: 0%; transform-origin: 0%; -ms-transform: scale("+$scope.canvasScale+"); -webkit-transform: scale("+$scope.canvasScale+"); transform: scale("+$scope.canvasScale+");"
     $scope.actualHeight = "(not set)";
     $scope.actualWidth = "(not set)";
     $scope.actualDepth = "(not set)";
@@ -24,7 +25,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
         var tkyOpts = {
             'extrude_multiplier':250,
             'copy_margin':50,
-            'line_size':5,
+            'line_size':10,
             'dot_size':3,
             'tab_radius':75,
             'element':{
@@ -42,7 +43,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
         };
         $scope.tkyVol = new TurkeyVol(tkyOpts);
         
-        $scope.tkyVol.InitDim('h',10);
+        $scope.tkyVol.InitDim('h',3.5);
     };
     
     $scope.SetHeight = function(){
@@ -66,15 +67,15 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     };
     
     $(document).bind("seth", function(){
-        $scope.actualHeight = (parseFloat($scope.tkyVol.GetDim('h')).round(1));
+        $scope.actualHeight = (parseFloat($scope.tkyVol.GetDim('h')).round(1))+" feet";
         $scope.$apply();
     });
     $(document).bind("setw", function(){
-        $scope.actualWidth = (parseFloat($scope.tkyVol.GetDim('w')).round(1));
+        $scope.actualWidth = (parseFloat($scope.tkyVol.GetDim('w')).round(1))+" feet";
         $scope.$apply();
     });
     $(document).bind("setd", function(){
-        $scope.actualDepth = (parseFloat($scope.tkyVol.GetDim('d')).round(1));
+        $scope.actualDepth = (parseFloat($scope.tkyVol.GetDim('d')).round(1))+" feet";
         $scope.$apply();
     });
     

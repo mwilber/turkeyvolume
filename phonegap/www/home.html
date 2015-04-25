@@ -1,14 +1,18 @@
 <ons-page ng-controller="HomeCtrl">
     <ons-toolbar>
-        <div class="center">Navigator</div>
+        <div class="right"><ons-button><span class="fa fa-info-circle fa-lg"></span></ons-button></div>
     </ons-toolbar>
-
+    
     <div style="text-align: center">
-        <br>
-        <ons-button ng-click="GetPicture()">
-            <span class="fa fa-camera fa-lg"></span>
-            Take Picture
-        </ons-button>
+        <h1 class="logo">Turkey Volume<span>Guessing App</span></h1>
+        <img class="logo" src="img/logo.png"/>
+        <p style="display:none;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquam sem vitae velit eleifend cursus. Nulla varius volutpat felis sit amet faucibus. Nullam pharetra at nisi at tempus. Donec fermentum finibus mauris, a semper libero cursus at.
+        </p>
     </div>
+    
+    <form class="foot_ctrl">
+        <ons-button ng-click="GetPicture()" class="wide"><span class="fa fa-camera fa-lg"></span> Take Picture</ons-button>
+    </form>
 
 </ons-page>

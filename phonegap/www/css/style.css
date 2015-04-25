@@ -1,7 +1,95 @@
+html, body, .page__background{
+    background:#bb5500;
+    color:#fffddd;
+}
+
+html, body, .page__content{
+    color:#fffeee;
+}
+
+h1{
+    font-family:'Anton', sans-serif;
+    color:#fffeee;
+    font-weight:normal;
+    font-size: 2em;
+    line-height: 1em;
+    margin: 0% 0% -3% 0%;
+    text-transform:uppercase;
+}
+
+p{
+    text-align: justify;
+    margin:5% 10%;
+    width:80%;
+    font-size:14px;
+    line-height: 16px;
+}
+
+.navigation-bar{
+      background: transparent;
+  border: none;
+  color: #fffeee;
+}
+
+.navigation-bar__title, .toolbar-button, .toolbar-button--outline, .toolbar-button--quiet, .navigation-bar .button {
+    color:inherit;
+    background: inherit;
+}
+
+.navigation-bar .button{
+    font-size:24px;
+}
+
+h1.logo{
+    font-size:50px;
+    margin-top:15%;
+}
+
+h1.logo span{
+    display:block;
+      font-size: 57px;
+}
+
+img.logo{
+    width: 80%;
+    margin: 0% 10% 0% 10%;
+}
+
 #volumizer{
     /*position: absolute;
     left:0%;
     top:50%;*/
+}
+
+.dims{
+    margin-bottom:10px;
+}
+
+.dims label{
+    display:block;
+    float:left;
+    width:49%;
+    text-align:right;
+}
+
+.dims span{
+    display:block;
+    float:right;
+    width:49%;
+    text-align:left;
+    text-transform:lowercase;
+}
+
+img.tkyvol{
+    width:94%;
+}
+
+.listmas{
+    width:94%;
+    margin:3%;
+    background-color:#eee;
+    color:#ccc;
+    padding:25px 0%;
 }
 
 .foot_ctrl{
@@ -9,7 +97,7 @@
     bottom:0px;
     left:0px;
     width: 100%;
-    background: #eee;
+    background: transparent;
     text-transform : uppercase;
     z-index:2000 !important;
 }
@@ -19,25 +107,32 @@
     font-size: 16px;
     text-align: center;
     text-transform: uppercase;
-    line-height: 16px;
-    color: #666;
+    line-height: 22px;
+    color: #fffeee;
 }
 
 .foot_ctrl .button {
-    width: 49%;
-    border: solid 6px #eee;
-    height: 60px;
-    text-align: center;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    line-height: 40px;
-    font-size: 14px;
-    font-weight: bold;
+      width: 45%;
+  margin: 3% 0% 3% 3%;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  background:rgba(255,254,238,0.95);
+  color:#bb5500;
 }
 
-.foot_ctrl .button.wide-btn {
-    width: 100%;
+.foot_ctrl .button.wide {
+    width:94%;
+}
+
+.foot_ctrl .button.share-btn {
+    width: 20%;
+    font-size: 20px;
+    line-height: 40px;
 }
 
 .foot_ctrl .button span.fa{
