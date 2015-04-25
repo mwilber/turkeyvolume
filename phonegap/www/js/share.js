@@ -2,6 +2,7 @@ tvgaControllers.controller('ShareCtrl', ['$scope', '$element', '$http', 'tvgaIma
 function($scope, $element, $http, tvgaImage) {
     
     $scope.tkyImage;
+    $scope.publishStatus = false;
     $scope.shareUrl = "";
     $scope.shareUrlRoot = "";
     $scope.metadata = {
@@ -24,6 +25,7 @@ function($scope, $element, $http, tvgaImage) {
     };
     
     $scope.TurkeySave = function(){
+        $scope.publishStatus = true;
         //var img = $scope.tkyVol.stage.canvas.toDataURL("image/png");
         //console.log(img);
         
@@ -44,9 +46,11 @@ function($scope, $element, $http, tvgaImage) {
             console.log(response);
             $scope.shareUrl = response.url;
             $scope.metadata.image = response.img;
+            $scope.publishStatus = false;
 
         }).error(function(){
             alert('Something went wrong. Please try again.');
+            $scope.publishStatus = false;
         });
     };
     

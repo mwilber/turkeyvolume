@@ -13,7 +13,7 @@
     
     <form class="foot_ctrl">
         <h3 class="dims"><label>Height:</label><span>{{actualHeight}}</span><br/><label>Width:</label><span>{{actualWidth}}</span><br/><label>Depth:</label><span>{{actualDepth}}</span></h3>
-        <ons-button class="capture-btn" ng-click="SetHeight()"><span class="fa fa-arrows-v fa-lg"></span>Height</ons-button>
-        <ons-button class="capture-btn" ng-click="TurkeyFill()"><span class="fa fa-cube fa-lg"></span>Fill</ons-button>
+        <ons-button class="capture-btn" ng-click="SetHeight()" ng-class="{wide: !tkyVol.CheckDim()}"><span class="fa fa-arrows fa-lg"></span>Set Dimensions</ons-button>
+        <ons-button class="capture-btn" ng-click="TurkeyFill()" ng-if="tkyVol.CheckDim()"><span class="fa fa-cube fa-lg"></span>Guess</ons-button>
     </form>
 </ons-page>

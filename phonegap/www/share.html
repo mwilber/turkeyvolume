@@ -9,7 +9,7 @@
     <div style="clear:both;"></div>
     
     <form class="foot_ctrl">
-        <ons-button class="capture-btn wide" ng-click="TurkeySave()" ng-if="!shareUrl"><span class="fa fa-globe fa-lg"></span>Share</ons-button>
+        <ons-button class="capture-btn wide" ng-click="TurkeySave()" ng-if="!shareUrl" should-spin="{{publishStatus}}" animation="zoom-in"><span class="fa fa-globe fa-lg"></span>Share</ons-button>
         <ons-button class="tw-btn share-btn" ng-click="TwShare()" ng-if="shareUrl"><ons-icon icon="twitter"></ons-icon></ons-button>
         <ons-button class="fb-btn share-btn" ng-click="FbShare()" ng-if="shareUrl"><ons-icon icon="facebook"></ons-icon></ons-button>
         <ons-button class="pn-btn share-btn" ng-click="PnShare()" ng-if="shareUrl"><ons-icon icon="pinterest"></ons-icon></ons-button>

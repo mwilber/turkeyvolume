@@ -26,7 +26,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
             'extrude_multiplier':250,
             'copy_margin':50,
             'line_size':10,
-            'dot_size':3,
+            'dot_size':10,
             'tab_radius':75,
             'element':{
                 'id':'volumizer',
@@ -43,7 +43,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
         };
         $scope.tkyVol = new TurkeyVol(tkyOpts);
         
-        $scope.tkyVol.InitDim('h',3.5);
+        //$scope.tkyVol.InitDim('h',3.5);
     };
     
     $scope.SetHeight = function(){

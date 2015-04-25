@@ -15,7 +15,7 @@ function TurkeyVol(options){
     this.DOT_COLOR = "rgba(0,255,0,0.6)";
     this.TAB_COLOR = "rgba(255,255,255,0.8)";
     this.TAB_RADIUS = options.tab_radius;
-    this.TURKEY_SPACE = 1.25;
+    this.TURKEY_SPACE = 1;
     this.TURKEY_SIZE = 1.5;
     this.START_RECT = options.start_rect;
     this.canvas = options.element;
@@ -93,10 +93,17 @@ function TurkeyVol(options){
     text.y = this.stage.getBounds().height-this.COPY_MARGIN;
     text.textBaseline = "alphabetic";
     this.stage.addChild(text);
+    
+    var subtext = new createjs.Text("...", "bold 30px FontAwesome", "#ffffff");
+    subtext.x = this.COPY_MARGIN;
+    subtext.y = this.stage.getBounds().height-this.COPY_MARGIN;
+    subtext.textBaseline = "alphabetic";
+    this.stage.addChild(subtext);
 
     this.stage.update();
 
     this.stage.removeChild(text);
+    this.stage.removeChild(subtext);
 
     this.stage.update();
 
@@ -223,10 +230,24 @@ TurkeyVol.prototype.FaceInitF = function(){
 };
 
 TurkeyVol.prototype.TabInitH = function(){
-    this.tabh = new createjs.Shape();
-    this.tabh.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
+    this.tabh = new createjs.Container();
     this.tabh.x = this.START_RECT.x+(this.START_RECT.width/2);
     this.tabh.y = this.START_RECT.y;
+    
+    var tabcircle = new createjs.Shape();
+    tabcircle.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
+    tabcircle.x = 0;
+    tabcircle.y = 0;
+    
+    this.tabh.addChild(tabcircle);
+    
+    var text = new createjs.Text("\uf07d", "60px FontAwesome", "#666666");
+    text.x = -(this.TAB_RADIUS*0.25);
+    text.y = (this.TAB_RADIUS*0.4);
+    text.textBaseline = "alphabetic";
+    this.tabh.addChild(text);
+    text.scaleX = ((this.TAB_RADIUS*0.5)/text.getBounds().width);
+    text.scaleY = ((this.TAB_RADIUS*0.5)/text.getBounds().width);
 
     this.stage.addChild(this.tabh);
 
@@ -249,10 +270,25 @@ TurkeyVol.prototype.TabInitH = function(){
 };
 
 TurkeyVol.prototype.TabInitW = function(){
-    this.tabw = new createjs.Shape();
-    this.tabw.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
+    
+    this.tabw = new createjs.Container();
     this.tabw.x = this.START_RECT.x;
     this.tabw.y = this.START_RECT.y+(this.START_RECT.height/2);
+    
+    var tabcircle = new createjs.Shape();
+    tabcircle.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
+    tabcircle.x = 0;
+    tabcircle.y = 0;
+    
+    this.tabw.addChild(tabcircle);
+    
+    var text = new createjs.Text("\uf07e", "60px FontAwesome", "#666666");
+    text.x = -(this.TAB_RADIUS*0.6);
+    text.y = (this.TAB_RADIUS*0.4);
+    text.textBaseline = "alphabetic";
+    this.tabw.addChild(text);
+    text.scaleX = ((this.TAB_RADIUS*1.25)/text.getBounds().height);
+    text.scaleY = ((this.TAB_RADIUS*1.25)/text.getBounds().height);
 
     this.stage.addChild(this.tabw);
 
@@ -275,10 +311,28 @@ TurkeyVol.prototype.TabInitW = function(){
 };
 
 TurkeyVol.prototype.TabInitD = function(){
-    this.tabd = new createjs.Shape();
-    this.tabd.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
+
+    this.tabd = new createjs.Container();
     this.tabd.x = this.START_RECT.x+(this.START_RECT.width-(this.START_RECT.width/4));
     this.tabd.y = this.START_RECT.y+(this.START_RECT.height);
+    
+    var tabcircle = new createjs.Shape();
+    tabcircle.graphics.beginFill(this.TAB_COLOR).drawCircle(0, 0, this.TAB_RADIUS);
+    tabcircle.x = 0;
+    tabcircle.y = 0;
+    
+    this.tabd.addChild(tabcircle);
+    
+    var text = new createjs.Text("\uf065", "60px FontAwesome", "#666666");
+    text.x = (this.TAB_RADIUS*0.5);
+    text.y = (this.TAB_RADIUS*0.4);
+    text.textBaseline = "alphabetic";
+    this.tabd.addChild(text);
+    text.scaleX = -((this.TAB_RADIUS*1.25)/text.getBounds().height);
+    text.scaleY = ((this.TAB_RADIUS*1.25)/text.getBounds().height);
+    
+    
+    
 
     this.stage.addChild(this.tabd);
 
@@ -455,18 +509,18 @@ TurkeyVol.prototype.Fill = function(){
 
             hct = (this.fface.getTransformedBounds().width*ddx)/(this.TURKEY_SPACE*ddx);
             hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
-            if(hct%1 > .5){
-                hct = Math.floor(hct);
-            }else{
-                hct = Math.ceil(hct);
-            }
+             if(hct%1 > .5){
+                 hct = Math.ceil(hct);
+             }else{
+                 hct = Math.floor(hct);
+             }
             vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SPACE*ddx);
             vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
-            if(vct%1 > .5){
-                vct = Math.floor(vct);
-            }else{
-                vct = Math.ceil(vct);
-            }
+             if(vct%1 > .5){
+                 vct = Math.ceil(vct);
+             }else{
+                 vct = Math.floor(vct);
+             }
 
             for(var idx=0; idx<hct; idx++){
 
@@ -492,24 +546,24 @@ TurkeyVol.prototype.Fill = function(){
         hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
         // Store the decimal for the numeric output
         var thct = hct;
-        //if(hct%1 > .5){
+        if(hct%1 > .5){
         // console.log('hct - 1a',hct);
-        // hct = Math.floor(hct);
-        //}else{
+         hct = Math.ceil(hct);
+        }else{
         // console.log('hct - 1b',hct);
-        // hct = Math.ceil(hct);
-        //}
+         hct = Math.floor(hct);
+        }
         //if( hct == 0 ) hct = 1;
         console.log('hct - 2',hct);
         vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SIZE*ddx);
         vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
         // Store the decimal for the numeric output
         var tvct = vct;
-        // if(vct%1 > .5){
-        //  vct = Math.floor(vct);
-        // }else{
-        //  vct = Math.ceil(vct);
-        // }
+         if(vct%1 > .5){
+          vct = Math.ceil(vct);
+         }else{
+          vct = Math.floor(vct);
+        }
         //if( vct == 0 ) vct = 1;
         for(var idx=0; idx<hct; idx++){
             for(var jdx=0; jdx<vct; jdx++){
@@ -553,10 +607,23 @@ TurkeyVol.prototype.Fill = function(){
         // this.stage.addChild(textshadow);
         // textshadow.scaleX = (this.stage.getBounds().width-(this.COPY_MARGIN*2-4))/textshadow.getBounds().width;
         // textshadow.scaleY = (this.stage.getBounds().width-(this.COPY_MARGIN*2-16))/textshadow.getBounds().width;
+        
+        var txtout = " TURKEY";
+        if( tvol != 1 ) txtout += "S";
 
-        var text = new createjs.Text(tvol+" TURKEYS", this.FONT_STYLE, this.FONT_COLOR);
+        var subtext = new createjs.Text("WILL FIT IN THIS SPACE", this.FONT_STYLE, this.FONT_COLOR);
+        subtext.x = this.COPY_MARGIN;
+        subtext.y = this.stage.getBounds().height-(this.COPY_MARGIN/2);
+        subtext.textBaseline = "alphabetic";
+        subtext.shadow = new createjs.Shadow(this.FONT_SHADOW_COLOR, 0, 0, 5);
+        this.stage.addChild(subtext);
+        subtext.scaleX = (this.stage.getBounds().width-(this.COPY_MARGIN*2))/subtext.getBounds().width;
+        subtext.scaleY = (this.stage.getBounds().width-(this.COPY_MARGIN*2))/subtext.getBounds().width;
+        
+        
+        var text = new createjs.Text(tvol+txtout, this.FONT_STYLE, this.FONT_COLOR);
         text.x = this.COPY_MARGIN;
-        text.y = this.stage.getBounds().height-(this.COPY_MARGIN/2);
+        text.y = this.stage.getBounds().height-subtext.getTransformedBounds().height-(this.COPY_MARGIN/2);
         text.textBaseline = "alphabetic";
         text.shadow = new createjs.Shadow(this.FONT_SHADOW_COLOR, 0, 0, 5);
         this.stage.addChild(text);

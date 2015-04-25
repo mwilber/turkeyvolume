@@ -42,7 +42,7 @@ p{
 
 h1.logo{
     font-size:50px;
-    margin-top:15%;
+    margin-top:10%;
 }
 
 h1.logo span{
@@ -123,6 +123,10 @@ img.tkyvol{
   font-weight: bold;
   background:rgba(255,254,238,0.95);
   color:#bb5500;
+}
+
+.effeckt-button > .spinner {
+  border-color:#b50;
 }
 
 .foot_ctrl .button.wide {
