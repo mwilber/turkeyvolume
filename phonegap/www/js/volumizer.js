@@ -16,6 +16,10 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     $scope.actualDepth = "(not set)";
     $scope.fillReady = "true";
     
+    $scope.ddim = "h";
+    $scope.dval = "";
+    $scope.dunit = "f";
+    
     console.log($element[0]);
     //$element[0].clientWidth
     //$scope.canvasHeight-($scope.canvasHeight/3)
@@ -46,10 +50,14 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
         //$scope.tkyVol.InitDim('h',3.5);
     };
     
-    $scope.SetHeight = function(){
-        var th = prompt("enter height");
-        $scope.tkyVol.InitDim('h',th);
-        
+    $scope.OpenDimModal = function(){
+        mdim.show('modal');
+    };
+    
+    $scope.SetDim = function(){
+        //var th = prompt("enter height");
+        $scope.tkyVol.InitDim($scope.ddim,$scope.dval);
+        mdim.hide();
     };
     
     $scope.TurkeyFill = function(){

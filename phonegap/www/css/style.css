@@ -25,6 +25,15 @@ p{
     line-height: 16px;
 }
 
+.close-btn{
+      float: right;
+  margin: -15px;
+  padding: 5px 15px;
+  font-size: 24px;
+  color: #b50;
+  background: transparent;
+}
+
 .navigation-bar{
       background: transparent;
   border: none;
@@ -38,6 +47,91 @@ p{
 
 .navigation-bar .button{
     font-size:24px;
+}
+
+.dialog{
+    color:#b50;
+    background:#fffeee;
+    border-radius:5px;
+    width: 90%;
+    padding: 5%;
+    white-space: normal;
+    text-align: justify;
+    margin-left: 0%;
+    
+}
+
+.dialog p{
+      margin: 35px 0px 20px 0px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 20px;
+  clear:both;
+}
+
+.dialog input{
+    width:100%;
+    margin:10px 0px;
+    border-color:#b50;
+    
+}
+
+.dialog .control-btn{
+    width: 48%;
+    height: 50px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #b50;
+    color: #fffeee;
+    margin-top:30px;
+}
+
+.dialog .control-btn:first{
+    margin-right:4%;
+}
+
+.dialog .wide-btn{
+    width: 100%;
+    text-align: center;
+}
+
+.button-bar__button, .dialog input{
+    color: #b50;
+    font-size: 20px;
+    line-height: 40px;
+    height: auto;
+}
+
+.button-bar__item.active > .button-bar__button, :checked + .button-bar__button {
+  background-color: #b50;
+  color: #fffeee;
+}
+
+.button-bar__item:first-child > .button-bar__button, .button-bar__item:last-child > .button-bar__button {
+  border-color: #b50;
+}
+
+.infolist{
+    background:transparent;
+    border:none;
+}
+
+.infolist .list__item{
+    color:#fffeee;
+    font-size:20px;
+    line-height: 24px;
+    padding: 10px 0px;
+    text-align: justify;
+    border: none;
+}
+
+.infolist .list__item:first-child:last-child{
+    border: none;
 }
 
 h1.logo{
@@ -129,7 +223,7 @@ img.tkyvol{
   border-color:#b50;
 }
 
-.foot_ctrl .button.wide {
+.foot_ctrl .button.wide, .foot_ctrl .button.wide-btn {
     width:94%;
 }
 
@@ -141,4 +235,13 @@ img.tkyvol{
 
 .foot_ctrl .button span.fa{
     padding-right:10px;
+}
+
+.zeta{
+    text-transform: lowercase;
+    font-family: serif;
+    font-size: 30px;
+    padding-right: 10px;
+    line-height: 0px;
+    vertical-align: sub;
 }
