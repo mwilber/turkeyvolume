@@ -1,0 +1,20 @@
+<ons-page ng-controller="PhotoCtrl">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+    </ons-toolbar>
+
+    <div style="text-align: center">
+        <h1>Photograph the space</h1>
+        <div id="spacializer">
+            <h2>{{canvasMsg}}</h2>
+            <canvas id="picturizer" width="{{canvasWidth}}" height="{{canvasHeight}}" style="{{canvasStyle}}"></canvas>
+        </div>
+    </div>
+    
+    <div style="clear:both;"></div>
+    
+    <form class="foot_ctrl">
+        <ons-button ng-click="GetPicture()" ng-class="{wide: canvasHide}"><span class="fa fa-camera fa-lg"></span> Take Picture</ons-button>
+        <ons-button class="capture-btn" ng-click="StorePhoto()" ng-if="!canvasHide" should-spin="{{canvasHide}}" animation="zoom-in"><span class="fa fa-picture-o fa-lg"></span>Use This</ons-button>
+    </form>
+</ons-page>

@@ -10,11 +10,13 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     $scope.canvasMarginTop = -($element[0].clientWidth*1.06);
     $scope.canvasMarginLeft = ($element[0].clientWidth*0.03);
     $scope.canvasScale = ($element[0].clientWidth*0.94)/1024
-    $scope.canvasStyle = "margin-left:"+$scope.canvasMarginLeft+"px; margin-top:"+$scope.canvasMarginTop+"px; -ms-transform-origin:0%; -webkit-transform-origin: 0%; transform-origin: 0%; -ms-transform: scale("+$scope.canvasScale+"); -webkit-transform: scale("+$scope.canvasScale+"); transform: scale("+$scope.canvasScale+");"
+    $scope.canvasStyle = "-ms-transform-origin:0% 0%; -webkit-transform-origin: 0% 0%; transform-origin: 0% 0%; -ms-transform: scale("+$scope.canvasScale+"); -webkit-transform: scale("+$scope.canvasScale+"); transform: scale("+$scope.canvasScale+");"
     $scope.actualHeight = "(not set)";
     $scope.actualWidth = "(not set)";
     $scope.actualDepth = "(not set)";
     $scope.fillReady = "true";
+    $scope.canvasHide = false;
+    $scope.canvasMsg = "Loading...";
     
     $scope.ddim = "h";
     $scope.dval = "";
@@ -27,7 +29,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     $scope.Init = function(){
         //alert("Take Pic Here");
         var tkyOpts = {
-            'extrude_multiplier':250,
+            'extrude_multiplier':150,
             'copy_margin':50,
             'line_size':10,
             'dot_size':10,
@@ -61,6 +63,9 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     };
     
     $scope.TurkeyFill = function(){
+        
+        $scope.canvasMsg = "COUNTING TURKEYS";
+        $scope.canvasHide = true;
         
         $scope.tkyVol.Fill();
         var img = $scope.tkyVol.stage.canvas.toDataURL("image/png");

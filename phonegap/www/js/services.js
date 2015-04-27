@@ -25,7 +25,7 @@ tvgaServices.service('cameraPhoto', [
                 return imagedata;
             },
             SetPhoto: function(value) {
-                imagedata = "data:image/jpeg;base64,"+value;
+                imagedata = value;
                 //localStorage.setItem("imagedata", imagedata);
             }
         };

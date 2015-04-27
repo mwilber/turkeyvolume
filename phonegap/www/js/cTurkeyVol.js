@@ -15,8 +15,8 @@ function TurkeyVol(options){
     this.DOT_COLOR = "rgba(0,255,0,0.6)";
     this.TAB_COLOR = "rgba(255,255,255,0.8)";
     this.TAB_RADIUS = options.tab_radius;
-    this.TURKEY_SPACE = 1;
-    this.TURKEY_SIZE = 1.25;
+    this.TURKEY_SPACE = 1.5;
+    this.TURKEY_SIZE = 1.75;
     this.START_RECT = options.start_rect;
     this.canvas = options.element;
     this.realsize = {
