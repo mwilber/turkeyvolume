@@ -49,7 +49,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
         };
         $scope.tkyVol = new TurkeyVol(tkyOpts);
         
-        //$scope.tkyVol.InitDim('h',3.5);
+        //$scope.tkyVol.InitDim('w',4);
     };
     
     $scope.OpenDimModal = function(){
@@ -58,7 +58,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     
     $scope.SetDim = function(){
         //var th = prompt("enter height");
-        $scope.tkyVol.InitDim($scope.ddim,$scope.dval);
+        $scope.tkyVol.InitDim($scope.ddim,$scope.dval, $scope.dunit);
         mdim.hide();
     };
     
@@ -80,15 +80,15 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     };
     
     $(document).bind("seth", function(){
-        $scope.actualHeight = (parseFloat($scope.tkyVol.GetDim('h')).round(1))+" feet";
+        $scope.actualHeight = (parseFloat($scope.tkyVol.GetDim('h')).round(1))+" "+$scope.tkyVol.GetUnit();
         $scope.$apply();
     });
     $(document).bind("setw", function(){
-        $scope.actualWidth = (parseFloat($scope.tkyVol.GetDim('w')).round(1))+" feet";
+        $scope.actualWidth = (parseFloat($scope.tkyVol.GetDim('w')).round(1))+" "+$scope.tkyVol.GetUnit();
         $scope.$apply();
     });
     $(document).bind("setd", function(){
-        $scope.actualDepth = (parseFloat($scope.tkyVol.GetDim('d')).round(1))+" feet";
+        $scope.actualDepth = (parseFloat($scope.tkyVol.GetDim('d')).round(1))+" "+$scope.tkyVol.GetUnit();
         $scope.$apply();
     });
     

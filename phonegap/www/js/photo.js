@@ -45,6 +45,8 @@ function($scope, $filter, $element, cameraPhoto) {
     $scope.PhotoSuccess = function(imageData) {
         $scope.canvasHide = false;
         $scope.tkyFrame.SetPbImage("data:image/jpeg;base64,"+imageData);
+        $scope.tkyFrame.fstage.update();
+        $scope.$apply();
         //cameraPhoto.SetPhoto(imageData);
         //myNavigator.pushPage('volumizer.html');
     };

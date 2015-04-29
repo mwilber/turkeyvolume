@@ -23,6 +23,7 @@ function TurkeyVol(options){
         height:null,
         width:null,
         depth:null,
+        unit:"f",
     }
 
 
@@ -111,8 +112,9 @@ function TurkeyVol(options){
 
 };
 
-TurkeyVol.prototype.InitDim = function(pDim, pVal){
+TurkeyVol.prototype.InitDim = function(pDim, pVal, pUnit){
     console.log('InitDim');
+    this.realsize.unit = pUnit;
     switch(pDim){
         case 'h':
             this.SetDim('h',pVal);
@@ -157,6 +159,14 @@ TurkeyVol.prototype.GetDim = function(pDim){
         case 'd':
             return this.realsize.depth;
             break;
+    }
+};
+
+TurkeyVol.prototype.GetUnit = function(){
+    if( this.realsize.unit == "m" ){
+        return "meters";
+    }else{
+        return "feet";
     }
 };
 
@@ -474,6 +484,16 @@ TurkeyVol.prototype.UpdateCubeP = function(){
 
 TurkeyVol.prototype.Fill = function(){
     if( this.CheckDim() ){
+        
+        if( this.realsize.unit == "m" ){
+            console.log("converting meters to feet");
+            this.realsize.height *= 3.28084;
+            this.realsize.width *= 3.28084;
+            this.realsize.depth *= 3.28084;
+        }
+        
+        
+        var renderct = 0;
 
         var bdot = new createjs.Shape();
         bdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.bface.x, this.bface.y, this.bface.getTransformedBounds().width, this.bface.getTransformedBounds().height);
@@ -497,53 +517,9 @@ TurkeyVol.prototype.Fill = function(){
         var xoffset = ((this.stage.getBounds().width/2)-(this.stage.getBounds().width-this.tabp.x))/(this.stage.getBounds().width/2);
         var yoffset = ((this.stage.getBounds().height/2)-(this.stage.getBounds().height-this.tabp.y))/(this.stage.getBounds().height/2);
         var ddx = this.dscale;
-
-        //ddx = 1;
-
-        while(ddx < 1){
-
-            console.log("ddx", ddx);
-            console.log("xoffset", (xoffset), "percent", (((1-ddx)*1)/(1-this.dscale)));
-            console.log("xoffsetb", (xoffset*(((1-ddx)*1)/(1-this.dscale))));
-
-
-            hct = (this.fface.getTransformedBounds().width*ddx)/(this.TURKEY_SPACE*ddx);
-            hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
-             if(hct%1 > .5){
-                 hct = Math.ceil(hct);
-             }else{
-                 hct = Math.floor(hct);
-             }
-            vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SPACE*ddx);
-            vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
-             if(vct%1 > .5){
-                 vct = Math.ceil(vct);
-             }else{
-                 vct = Math.floor(vct);
-             }
-
-            for(var idx=0; idx<hct; idx++){
-
-                for(var jdx=0; jdx<vct; jdx++){
-                    this.bitmap = new createjs.Bitmap(this.imgtky);
-                    this.stage.addChild(this.bitmap);
-                    this.bitmap.rotation = Math.floor((Math.random() * 30) -15);
-                    this.bitmap.x = (this.fface.x+(this.fface.getTransformedBounds().width/2)-((this.fface.getTransformedBounds().width*ddx)/2)) + (((this.fface.getTransformedBounds().width*ddx)/hct)*idx) - ((xoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
-                    this.bitmap.y = (this.fface.y+(this.fface.getTransformedBounds().height/2)-((this.fface.getTransformedBounds().height*ddx)/2)) + (((this.fface.getTransformedBounds().height*ddx)/vct)*jdx) - ((yoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
-                    this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
-                    this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
-
-                }
-            }
-
-            ddx += .1;
-
-        }
-
-        ddx = 1;
-
-        hct = (this.fface.getTransformedBounds().width*ddx)/(this.TURKEY_SIZE*ddx);
-        hct = (parseFloat(this.realsize.width)*ddx)/(this.TURKEY_SIZE*ddx);
+        
+        //hct = (this.fface.getTransformedBounds().width)/(this.TURKEY_SIZE);
+        hct = (parseFloat(this.realsize.width))/(this.TURKEY_SIZE);
         // Store the decimal for the numeric output
         var thct = hct;
         if(hct%1 > .5){
@@ -555,8 +531,8 @@ TurkeyVol.prototype.Fill = function(){
         }
         //if( hct == 0 ) hct = 1;
         console.log('hct - 2',hct);
-        vct = (this.fface.getTransformedBounds().height*ddx)/(this.TURKEY_SIZE*ddx);
-        vct = (parseFloat(this.realsize.height)*ddx)/(this.TURKEY_SIZE*ddx);
+        //vct = (this.fface.getTransformedBounds().height)/(this.TURKEY_SIZE);
+        vct = (parseFloat(this.realsize.height))/(this.TURKEY_SIZE);
         // Store the decimal for the numeric output
         var tvct = vct;
          if(vct%1 > .5){
@@ -564,26 +540,9 @@ TurkeyVol.prototype.Fill = function(){
          }else{
           vct = Math.floor(vct);
         }
-        //if( vct == 0 ) vct = 1;
-        for(var idx=0; idx<hct; idx++){
-            for(var jdx=0; jdx<vct; jdx++){
-                this.bitmap = new createjs.Bitmap(this.imgtky);
-                this.stage.addChild(this.bitmap);
-                this.bitmap.rotation = Math.floor((Math.random() * 20) -10);
-                this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 5;
-                this.bitmap.y = this.fface.y + ((this.fface.getTransformedBounds().height*ddx)/vct)*jdx - 5;
-                this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
-                this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
-            }
-        }
-
-        var fdot = new createjs.Shape();
-        fdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.fface.x, this.fface.y, this.fface.getTransformedBounds().width, this.fface.getTransformedBounds().height);
-        fdot.shadow = new createjs.Shadow("#FFFFFF", 0, 0, 5);
-        this.stage.addChild(fdot);
-
+        
         dct = (parseFloat(this.realsize.depth))/(this.TURKEY_SIZE);
-        if(dct <= 0){
+        if(dct <= 1){
             dct = 1;
         }
         // Store the decimal for the numeric output
@@ -593,20 +552,53 @@ TurkeyVol.prototype.Fill = function(){
         // }else{
         //  dct = Math.ceil(dct);
         // }
-        tvol = thct * tvct * tdct;
+        tvol = hct * vct * dct;
 
-        console.log('Turkey Volume', tvol, hct, vct, dct);
+        console.log('Turkey Volume', tvol, thct, tvct, tdct);
         
         var tmprnd = 1 || 10;
         tvol = parseFloat( tvol.toFixed(tmprnd) );
+        
+        
 
-        // var textshadow = new createjs.Text(tvol+" TURKEYS", this.FONT_SHADOW_STYLE, this.FONT_SHADOW_COLOR);
-        // textshadow.x = this.COPY_MARGIN-2;
-        // textshadow.y = this.stage.getBounds().height-this.COPY_MARGIN+2;
-        // textshadow.textBaseline = "alphabetic";
-        // this.stage.addChild(textshadow);
-        // textshadow.scaleX = (this.stage.getBounds().width-(this.COPY_MARGIN*2-4))/textshadow.getBounds().width;
-        // textshadow.scaleY = (this.stage.getBounds().width-(this.COPY_MARGIN*2-16))/textshadow.getBounds().width;
+
+        while(ddx < 1){
+            for(var idx=0; idx<hct; idx++){
+                for(var jdx=0; jdx<vct; jdx++){
+                    if( renderct < (tvol+1) ){
+                        this.bitmap = new createjs.Bitmap(this.imgtky);
+                        this.stage.addChild(this.bitmap);
+                        this.bitmap.rotation = Math.floor((Math.random() * 30) -15);
+                        this.bitmap.x = (this.fface.x+(this.fface.getTransformedBounds().width/2)-((this.fface.getTransformedBounds().width*ddx)/2)) + (((this.fface.getTransformedBounds().width*ddx)/hct)*idx) - ((xoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
+                        this.bitmap.y = (this.fface.y+(this.fface.getTransformedBounds().height/2)-((this.fface.getTransformedBounds().height*ddx)/2)) + (((this.fface.getTransformedBounds().height*ddx)/vct)*jdx) - ((yoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
+                        this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
+                        this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
+                    }
+                }
+            }
+            ddx += .1;
+        }
+
+        ddx = 1;
+        //if( vct == 0 ) vct = 1;
+        for(var idx=0; idx<hct; idx++){
+            for(var jdx=0; jdx<vct; jdx++){
+                if( renderct < (tvol+1) ){
+                    this.bitmap = new createjs.Bitmap(this.imgtky);
+                    this.stage.addChild(this.bitmap);
+                    this.bitmap.rotation = Math.floor((Math.random() * 20) -10);
+                    this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 5;
+                    this.bitmap.y = this.fface.y + ((this.fface.getTransformedBounds().height*ddx)/vct)*jdx - 5;
+                    this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
+                    this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
+                }
+            }
+        }
+
+        var fdot = new createjs.Shape();
+        fdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.fface.x, this.fface.y, this.fface.getTransformedBounds().width, this.fface.getTransformedBounds().height);
+        fdot.shadow = new createjs.Shadow("#FFFFFF", 0, 0, 5);
+        this.stage.addChild(fdot);
         
         var txtout = " TURKEY";
         if( tvol != 1 ) txtout += "S";
@@ -630,8 +622,6 @@ TurkeyVol.prototype.Fill = function(){
         console.log(text.getBounds());
         text.scaleX = (this.stage.getBounds().width-(this.COPY_MARGIN*2))/text.getBounds().width;
         text.scaleY = (this.stage.getBounds().width-(this.COPY_MARGIN*2))/text.getBounds().width;
-
-
 
         //Clear out the cube
         this.stage.removeChild(this.fface);

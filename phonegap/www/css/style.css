@@ -168,7 +168,7 @@ img.logo{
 }
 
 #picturizer{
-    background:#eee;
+    background:#eee url('../img/photo_bkg.png');
     border:solid 1px #ccc;
 }
 

@@ -14,6 +14,9 @@
     <div style="clear:both;"></div>
     
     <form class="foot_ctrl">
+        <ons-button ng-click="tkyFrame.ZoomIn()"><span class="fa fa-plus fa-lg"></span></ons-button>
+        <ons-button ng-click="tkyFrame.ZoomOut()"><span class="fa fa-minus fa-lg"></span></ons-button>
+        <p style="text-transform:initial; margin:10px 5% 5px 5%">Press the button to take a picture, then drag to position your picture.</p>
         <ons-button ng-click="GetPicture()" ng-class="{wide: canvasHide}"><span class="fa fa-camera fa-lg"></span> Take Picture</ons-button>
         <ons-button class="capture-btn" ng-click="StorePhoto()" ng-if="!canvasHide" should-spin="{{canvasHide}}" animation="zoom-in"><span class="fa fa-picture-o fa-lg"></span>Use This</ons-button>
     </form>
