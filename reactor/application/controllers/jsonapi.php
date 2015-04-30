@@ -41,6 +41,9 @@ class JSONAPI extends CI_Controller {
 		}
 	}
 
+	function wakeup(){
+		$this->_JSONout();
+	}
 
     function share(){
 
@@ -53,6 +56,18 @@ class JSONAPI extends CI_Controller {
 
         $obj->cloudName = "CrashOverride";
 
+		if( !isset($obj->cloudHeight)){
+			$obj->cloudHeight = 0;
+		}
+		if( !isset($obj->cloudWidth)){
+			$obj->cloudWidth = 0;
+		}
+		if( !isset($obj->cloudDepth)){
+			$obj->cloudDepth = 0;
+		}
+		$obj->cloudDataStart = $obj->cloudHeight."x".$obj->cloudWidth."x".$obj->cloudDepth;
+
+
         $this->_response->request = $obj;
         if( isset($obj->cloudImage)){
         if( $obj->cloudImage != "" ){
@@ -62,7 +77,7 @@ class JSONAPI extends CI_Controller {
             $obj->cloudImage = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
         }
         // Validation passes
-        $nId = $this->$model_ref->Add(array('cloudName'=>$obj->cloudName,'cloudImage'=>$obj->cloudImage));
+        $nId = $this->$model_ref->Add(array('cloudName'=>$obj->cloudName,'cloudImage'=>$obj->cloudImage,'cloudDataStart'=>$obj->cloudDataStart));
         $this->_response->id = IdObfuscator::encode($nId);
 		$this->_response->url = str_replace("reactor/", "", base_url())."t/".$this->_response->id;
 		$this->_response->img = $obj->cloudImage;
