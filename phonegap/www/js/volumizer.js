@@ -71,6 +71,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
         var img = $scope.tkyVol.stage.canvas.toDataURL("image/png");
         //console.log(img);
         tvgaImage.SetImage(img);
+        tvgaImage.SetDims($scope.tkyVol.GetDim('h'), $scope.tkyVol.GetDim('w'), $scope.tkyVol.GetDim('d'));
         myNavigator.pushPage('share.html');
         
     };

@@ -403,24 +403,33 @@ TurkeyVol.prototype.TabInitP = function(){
 
 
 TurkeyVol.prototype.UpdateCubeH = function(){
+    
+    
+    if( (this.tabp.y - this.tabh.y) > this.TAB_RADIUS && this.tabh.y > (this.TAB_RADIUS) ){
 
-    this.fface.scaleY = (((this.fface.y+(this.fface.getTransformedBounds().height/2))-this.tabh.y)/(this.fface.getBounds().height/2));
-    this.bface.scaleY = (this.fface.scaleY)/(1-( (this.tabd.x-(this.fface.x+this.fface.getTransformedBounds().width))/(this.fface.getBounds().width)));
-
-    if( this.GetDim('h') != null ){
-        this.SetDim('h',this._CalcHeight(this.GetDim('w')));
+        this.fface.scaleY = (((this.fface.y+(this.fface.getTransformedBounds().height/2))-this.tabh.y)/(this.fface.getBounds().height/2));
+        this.bface.scaleY = (this.fface.scaleY)/(1-( (this.tabd.x-(this.fface.x+this.fface.getTransformedBounds().width))/(this.fface.getBounds().width)));
+    
+        if( this.GetDim('h') != null ){
+            this.SetDim('h',this._CalcHeight(this.GetDim('w')));
+        }
+    
     }
 
     this.UpdateCubeP();
 };
 
 TurkeyVol.prototype.UpdateCubeW = function(){
+    
+    if( (this.tabp.x - this.tabw.x) > this.TAB_RADIUS && this.tabw.x > (this.TAB_RADIUS) ){
 
     this.fface.scaleX = (((this.fface.x+(this.fface.getTransformedBounds().width/2))-this.tabw.x)/(this.fface.getBounds().width/2));
     this.bface.scaleX = (this.fface.scaleX)/(1-( (this.tabd.x-(this.fface.x+this.fface.getTransformedBounds().width))/(this.fface.getBounds().width)));
 
     if( this.GetDim('w') != null ){
         this.SetDim('w',this._CalcWidth(this.GetDim('h')));
+    }
+    
     }
 
     this.UpdateCubeP();
@@ -429,6 +438,12 @@ TurkeyVol.prototype.UpdateCubeW = function(){
 TurkeyVol.prototype.UpdateCubeD = function(){
 
     this.dscale = ( ((this.tabd.x-(this.fface.x+this.fface.getTransformedBounds().width))/(this.fface.getTransformedBounds().width))+1 );
+    if(this.dscale < 0.1 ){
+        this.dscale = 0.1;
+    }
+    if(this.dscale > 1){
+        this.dscale = 1;
+    }
     this.bface.scaleX = (this.fface.scaleX)*this.dscale;
     this.bface.scaleY = (this.fface.scaleY)*this.dscale;
 
@@ -491,7 +506,6 @@ TurkeyVol.prototype.Fill = function(){
             this.realsize.width *= 3.28084;
             this.realsize.depth *= 3.28084;
         }
-        
         
         var renderct = 0;
 

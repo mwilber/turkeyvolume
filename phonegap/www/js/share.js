@@ -32,6 +32,9 @@ function($scope, $element, $http, tvgaImage) {
         var postData = {
             cloudName: 'TVGApp',
     		cloudImage: $scope.tkyImage,
+            cloudHeight: tvgaImage.GetDims().height,
+            cloudWidth: tvgaImage.GetDims().width,
+            cloudDepth: tvgaImage.GetDims().depth,
     		cloudDataStart: '',
     		cloudDataFinish: '',
     		profileId: '',
@@ -60,7 +63,7 @@ function($scope, $element, $http, tvgaImage) {
         }catch(exception){
             console.log("ga fail");
         }
-        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=360989144063992&link="+escape($scope.shareUrl)+"&picture="+escape($scope.metadata.image)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
+        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=1646252625586188&link="+escape($scope.shareUrl)+"&picture="+escape($scope.metadata.image)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
         window.open(fbcontent, '_system');
         return false;
     };
