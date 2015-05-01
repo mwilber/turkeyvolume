@@ -9,7 +9,8 @@ class Profile_Model extends CI_Model
 	var $fields = array(
 		 'profileNickname' => array('label'=>'Nickname','type'=>'varchar','constraint'=>50),
 		 'profileFullname' => array('label'=>'Full Name','type'=>'varchar','constraint'=>50),
-		 'profilePicture' => array('label'=>'Picture','type'=>'varchar','constraint'=>200)
+		 'profilePicture' => array('label'=>'Picture','type'=>'varchar','constraint'=>200),
+		 'profileEmail' => array('label'=>'Email','type'=>'varchar','constraint'=>200)
 		);
 
 	 	 	 	

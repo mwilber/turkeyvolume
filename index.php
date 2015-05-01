@@ -25,22 +25,60 @@
         <div class="main-container">
             <div class="main wrapper clearfix">
 
-                <h1>Coming Fall 2015</h1>
+                <div class="animation">
+                    <p class="one">From the creator of JAWS Converter</p>
+
+                    <p class="two">An app that takes animal based measurement into the third dimension</p>
+
+                    <p class="three">Coming November 2015</p> 
+                       <form class="three">
+                           <label>Receive Updates: </label>
+                            <input type="text" id="email" name="email" placeholder="email"/><button>Submit</button>
+                        </form>
+                </div>
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
+        
+        <div id="footer">
+              <a href="policy.php" onclick="ga('send', 'event', 'web', 'click', 'policy', 0);" class="policy">
+            Privacy Policy
+          </a>
+              <a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); ga('send', 'event', 'web', 'click', 'GreenZeta', 0); return false;" class="gz">
+            <span class="badge">&zeta;</span>
+            &nbsp;&nbsp;A GreenZeta Production
+          </a>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $('.animation form').submit(function(){
+                   $.post('./reactor/jsonapi/register',{email:$('#email').val()},function(){
+                       $('.animation form').empty().append($('<label>').html("Thank You."));
+                   });
+                  return false; 
+               });
+            });
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
+        <script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', '<?php if($_SERVER["HTTP_HOST"] != "gibson.loc"): ?>UA-76054-32<?php endif; ?>']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', '<?php if($_SERVER["HTTP_HOST"] != "gibson.loc"): ?>UA-76054-32<?php endif; ?>', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
     </body>
 </html>

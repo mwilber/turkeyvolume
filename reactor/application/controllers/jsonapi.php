@@ -90,7 +90,20 @@ class JSONAPI extends CI_Controller {
 		//list.shoplistId
 	}
 
-
+	function register(){
+		
+		$this->_response->error->type = -1;
+		$this->_response->error->message = "no address";
+		
+		if(isset($_POST['email'])){
+			$this->load->model('profile_model');
+			$nId = $this->profile_model->Add(array('profileEmail'=>$_POST['email']));
+			$this->_response->error->type = 0;
+			$this->_response->error->message = "success";
+		}
+		
+		$this->_JSONout();
+	}
 
 
 
