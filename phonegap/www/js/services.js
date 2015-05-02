@@ -7,6 +7,7 @@ tvgaServices.service('tvgaImage', [
             width:0,
             depth:0
         };
+        var tvol = 0;
 
         return {
             GetImage: function () {
@@ -23,6 +24,12 @@ tvgaServices.service('tvgaImage', [
                 dims.height = pH;
                 dims.width = pW;
                 dims.depth = pD;
+            },
+            GetVol: function(){
+                return tvol;
+            },
+            SetVol: function(value) {
+                tvol = value;
             },
         };
     }

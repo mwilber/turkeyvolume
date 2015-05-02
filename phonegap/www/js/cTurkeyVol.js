@@ -19,10 +19,10 @@ function TurkeyVol(options){
     this.VEGAN_MODE = options.vegan_mode;
     if(this.VEGAN_MODE){
         this.TURKEY_SPACE = 1.6;
-        this.TURKEY_SIZE = 1.59;
+        this.TURKEY_SIZE = 1.1;
     }else{
-        this.TURKEY_SPACE = 1.4;
-        this.TURKEY_SIZE = 1.75;
+        this.TURKEY_SPACE = 2;
+        this.TURKEY_SIZE = 1.5;
     }
     this.canvas = options.element;
     this.realsize = {
@@ -565,7 +565,7 @@ TurkeyVol.prototype.Fill = function(){
         //if( hct == 0 ) hct = 1;
         console.log('hct - 2',hct);
         //vct = (this.fface.getTransformedBounds().height)/(this.TURKEY_SIZE);
-        vct = (parseFloat(this.realsize.height))/(this.TURKEY_SIZE);
+        vct = (parseFloat(this.realsize.height))/(this.TURKEY_SIZE*0.66);
         // Store the decimal for the numeric output
         var tvct = vct;
          if(vct%1 > .5){
@@ -585,7 +585,7 @@ TurkeyVol.prototype.Fill = function(){
         // }else{
         //  dct = Math.ceil(dct);
         // }
-        tvol = hct * vct * dct;
+        tvol = thct * tvct * tdct;
 
         console.log('Turkey Volume', tvol, thct, tvct, tdct);
         
@@ -598,15 +598,20 @@ TurkeyVol.prototype.Fill = function(){
         while(ddx < 1){
             for(var idx=0; idx<hct; idx++){
                 for(var jdx=0; jdx<vct; jdx++){
-                    if( renderct < (tvol+1) ){
+                    if( renderct < (tvol) ){
                         renderct++;
                         this.bitmap = new createjs.Bitmap(this.imgtky);
                         this.stage.addChild(this.bitmap);
                         this.bitmap.rotation = Math.floor((Math.random() * 30) -15);
-                        this.bitmap.x = (this.fface.x+(this.fface.getTransformedBounds().width/2)-((this.fface.getTransformedBounds().width*ddx)/2)) + (((this.fface.getTransformedBounds().width*ddx)/hct)*idx) - ((xoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
-                        this.bitmap.y = (this.fface.y+(this.fface.getTransformedBounds().height/2)-((this.fface.getTransformedBounds().height*ddx)/2)) + (((this.fface.getTransformedBounds().height*ddx)/vct)*jdx) - ((yoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -5;
-                        this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
-                        this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
+                        this.bitmap.x = (this.fface.x+(this.fface.getTransformedBounds().width/2)-((this.fface.getTransformedBounds().width*ddx)/2)) + (((this.fface.getTransformedBounds().width*ddx)/hct)*idx) - ((xoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -0;
+                        this.bitmap.y = (this.fface.y+(this.fface.getTransformedBounds().height/2)-((this.fface.getTransformedBounds().height*ddx)/2)) + (((this.fface.getTransformedBounds().height*ddx)/vct)*jdx) - ((yoffset*(((1-ddx)*1)/(1-this.dscale)))*this.EXTRUDE_MULTIPLIER) -0;
+                        if( this.fface.getTransformedBounds().height > this.fface.getTransformedBounds().width ){
+                            this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
+                            this.bitmap.scaleY = this.bitmap.scaleX;
+                        }else{
+                            this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
+                            this.bitmap.scaleX = this.bitmap.scaleY;
+                        }
                     }
                 }
             }
@@ -617,15 +622,20 @@ TurkeyVol.prototype.Fill = function(){
         //if( vct == 0 ) vct = 1;
         for(var idx=0; idx<hct; idx++){
             for(var jdx=0; jdx<vct; jdx++){
-                if( renderct < (tvol+1) ){
+                if( renderct < (tvol) ){
                     renderct++;
                     this.bitmap = new createjs.Bitmap(this.imgtky);
                     this.stage.addChild(this.bitmap);
                     this.bitmap.rotation = Math.floor((Math.random() * 20) -10);
-                    this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 5;
-                    this.bitmap.y = this.fface.y + ((this.fface.getTransformedBounds().height*ddx)/vct)*jdx - 5;
-                    this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
-                    this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
+                    this.bitmap.x = this.fface.x + ((this.fface.getTransformedBounds().width*ddx)/hct)*idx - 0;
+                    this.bitmap.y = this.fface.y + ((this.fface.getTransformedBounds().height*ddx)/vct)*jdx - 0;
+                    if( this.fface.getTransformedBounds().height > this.fface.getTransformedBounds().width ){
+                        this.bitmap.scaleX = (((this.fface.getTransformedBounds().width*ddx)/hct)/this.bitmap.image.width)*this.TURKEY_SPACE;
+                        this.bitmap.scaleY = this.bitmap.scaleX;
+                    }else{
+                        this.bitmap.scaleY = (((this.fface.getTransformedBounds().height*ddx)/vct)/this.bitmap.image.height)*this.TURKEY_SPACE;
+                        this.bitmap.scaleX = this.bitmap.scaleY;
+                    }
                 }
             }
         }
@@ -675,5 +685,7 @@ TurkeyVol.prototype.Fill = function(){
         this.stage.removeChild(this.tabp);
 
         this.stage.update();
+        
+        return tvol;
     }
 };

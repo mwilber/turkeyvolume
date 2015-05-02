@@ -50,7 +50,7 @@ function($scope, $element, $http, tvgaImage, cameraPhoto, veganMode) {
         };
         $scope.tkyVol = new TurkeyVol(tkyOpts);
         
-        $scope.tkyVol.InitDim('w',4);
+        $scope.tkyVol.InitDim('w',3);
     };
     
     $scope.OpenDimModal = function(){
@@ -84,11 +84,12 @@ function($scope, $element, $http, tvgaImage, cameraPhoto, veganMode) {
         $scope.canvasMsg = "COUNTING TURKEYS";
         $scope.canvasHide = true;
         
-        $scope.tkyVol.Fill();
+        tvgaImage.SetVol($scope.tkyVol.Fill());
         var img = $scope.tkyVol.stage.canvas.toDataURL("image/png");
         //console.log(img);
         tvgaImage.SetImage(img);
         tvgaImage.SetDims($scope.tkyVol.GetDim('h'), $scope.tkyVol.GetDim('w'), $scope.tkyVol.GetDim('d'));
+        
         myNavigator.pushPage('share.html');
         
     };

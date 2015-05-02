@@ -41,7 +41,7 @@ function($scope, $element, $http, tvgaImage) {
             cloudWidth: tvgaImage.GetDims().width,
             cloudDepth: tvgaImage.GetDims().depth,
     		cloudDataStart: '',
-    		cloudDataFinish: '',
+    		cloudDataFinish: tvgaImage.GetVol(),
     		profileId: '',
     		cloudComment: '',
     		checkinTwitter: '',

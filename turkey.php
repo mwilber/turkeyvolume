@@ -31,7 +31,7 @@
 		    echo $e->getMessage();
 		    }
 
-		$stmt = $dbh->prepare("SELECT cloudImage FROM tblCloud WHERE cloudId=".$_GET['t']);
+		$stmt = $dbh->prepare("SELECT cloudImage, cloudDataFinish FROM tblCloud WHERE cloudId=".$_GET['t']);
 		$stmt->execute();
 		if( $stmt->rowCount() <= 0 ){
 			//
@@ -45,7 +45,7 @@
 		}else{
 			$titleRS = $stmt->fetch();
 			//print_r($titleRS['cloudImage']);
-			$pgTitle = "Turkey Volume";
+			$pgTitle = $titleRS['cloudDataFinish']." Turkeys Will Fit In This Space";
 			$social['image'] = $titleRS['cloudImage'];
 		}
 	}
