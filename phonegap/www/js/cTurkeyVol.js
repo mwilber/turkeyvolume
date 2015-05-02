@@ -15,9 +15,15 @@ function TurkeyVol(options){
     this.DOT_COLOR = "rgba(0,255,0,0.6)";
     this.TAB_COLOR = "rgba(255,255,255,0.8)";
     this.TAB_RADIUS = options.tab_radius;
-    this.TURKEY_SPACE = 1.4;
-    this.TURKEY_SIZE = 1.75;
     this.START_RECT = options.start_rect;
+    this.VEGAN_MODE = options.vegan_mode;
+    if(this.VEGAN_MODE){
+        this.TURKEY_SPACE = 1.6;
+        this.TURKEY_SIZE = 1.59;
+    }else{
+        this.TURKEY_SPACE = 1.4;
+        this.TURKEY_SIZE = 1.75;
+    }
     this.canvas = options.element;
     this.realsize = {
         height:null,
@@ -58,7 +64,11 @@ function TurkeyVol(options){
 
     // load the source image:
 	var image = new Image();
-	image.src = "img/roast_turkey.png";
+    if(this.VEGAN_MODE){
+        image.src = "img/tofurky.png";
+    }else{
+	    image.src = "img/roast_turkey.png";
+    }
 	image.onload = function(self){
         return function(event){
             self.imgtky = event.target;
@@ -628,6 +638,9 @@ TurkeyVol.prototype.Fill = function(){
         fdot.scaleY = 1;
         
         var txtout = " TURKEY";
+        if(this.VEGAN_MODE){
+            txtout = " TOFU TURKEY";
+        }
         if( tvol != 1 ) txtout += "S";
 
         var subtext = new createjs.Text("WILL FIT IN THIS SPACE", this.FONT_STYLE, this.FONT_COLOR);

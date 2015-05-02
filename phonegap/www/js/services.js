@@ -44,3 +44,19 @@ tvgaServices.service('cameraPhoto', [
         };
     }
 ]);
+
+tvgaServices.service('veganMode', [
+    function(){
+        
+        var veganMode = false;
+
+        return {
+            Get: function () {
+                return veganMode;
+            },
+            Set: function(value) {
+                veganMode = value;
+            }
+        };
+    }
+]);

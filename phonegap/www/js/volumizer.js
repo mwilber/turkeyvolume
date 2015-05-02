@@ -1,5 +1,5 @@
-tvgaControllers.controller('VolumizerCtrl', ['$scope', '$element', '$http', 'tvgaImage', 'cameraPhoto', 
-function($scope, $element, $http, tvgaImage, cameraPhoto) {
+tvgaControllers.controller('VolumizerCtrl', ['$scope', '$element', '$http', 'tvgaImage', 'cameraPhoto', 'veganMode', 
+function($scope, $element, $http, tvgaImage, cameraPhoto, veganMode) {
     
     $scope.tkyVol;
     $scope.showHelp = false;
@@ -46,10 +46,11 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
                 y:($scope.canvasHeight/9),
             },
             'backgroundData':cameraPhoto.GetPhoto(),
+            'vegan_mode':veganMode.Get(),
         };
         $scope.tkyVol = new TurkeyVol(tkyOpts);
         
-        //$scope.tkyVol.InitDim('w',4);
+        $scope.tkyVol.InitDim('w',4);
     };
     
     $scope.OpenDimModal = function(){

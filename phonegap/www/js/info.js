@@ -1,6 +1,17 @@
-tvgaControllers.controller('InfoCtrl', ['$scope', '$http', 
-function($scope, $http) {
+tvgaControllers.controller('InfoCtrl', ['$scope', '$http', 'veganMode', 
+function($scope, $http, veganMode) {
    
+   $scope.veganset = veganMode.Get();
+   
+   $scope.$watch('veganset', function() {
+       console.log('veganmode has changed!', $scope.veganset);
+       if( $scope.veganset ){
+           veganMode.Set(true);
+       }else{
+           veganMode.Set(false);
+       }
+       
+   });
     
     $scope.ViewGZPage = function(){
         try{
@@ -11,6 +22,8 @@ function($scope, $http) {
         window.open('http://www.greenzeta.com/home/listing/product', '_system', 'location=no');
     };
     
-    
+    $scope.CkVeganMode = function(evt){
+        console.log(evt);
+    };
 
 }]);

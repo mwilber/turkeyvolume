@@ -7,8 +7,8 @@ function($scope, $element, $http, tvgaImage) {
     $scope.shareUrlRoot = "";
     $scope.metadata = {
         title:"Turkey Volume", 
-        link:"http://www.turkeyvolume.com", 
-        image:"http://www.turkeyvolume.com/icons/icon_256.png",
+        link:"http://www.turkeyvolumeguessingapp.com", 
+        image:"http://www.turkeyvolumeguessingapp.com/img/share.gif",
         message:"How many turkeys will fill this space?",
         description:"How many turkeys will fill this space?"
     };
