@@ -53,16 +53,32 @@ function($scope, $element, $http, tvgaImage, cameraPhoto) {
     };
     
     $scope.OpenDimModal = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'dim_open', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         mdim.show('modal');
     };
     
     $scope.SetDim = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'dim_set', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         //var th = prompt("enter height");
         $scope.tkyVol.InitDim($scope.ddim,$scope.dval, $scope.dunit);
         mdim.hide();
     };
     
     $scope.TurkeyFill = function(){
+        
+        try{
+            ga('send', 'event', 'button', 'click', 'turkey_get', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         
         $scope.canvasMsg = "COUNTING TURKEYS";
         $scope.canvasHide = true;

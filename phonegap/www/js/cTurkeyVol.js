@@ -15,7 +15,7 @@ function TurkeyVol(options){
     this.DOT_COLOR = "rgba(0,255,0,0.6)";
     this.TAB_COLOR = "rgba(255,255,255,0.8)";
     this.TAB_RADIUS = options.tab_radius;
-    this.TURKEY_SPACE = 1.5;
+    this.TURKEY_SPACE = 1.4;
     this.TURKEY_SIZE = 1.75;
     this.START_RECT = options.start_rect;
     this.canvas = options.element;
@@ -27,7 +27,7 @@ function TurkeyVol(options){
     }
 
 
-    this.stage; this.imgtky; this.imgbkg; this.bitmap; this.background;
+    this.stage; this.imgtky; this.imgdot; this.imgbkg; this.bitmap; this.background;
     this.mouseTarget;	// the display object currently under the mouse, or being dragged
     this.dragStarted;	// indicates whether we are currently in a drag operation
     this.offset;
@@ -62,6 +62,15 @@ function TurkeyVol(options){
 	image.onload = function(self){
         return function(event){
             self.imgtky = event.target;
+        };
+    }(this);
+    
+    // load the source image:
+    imageb = new Image();
+	imageb.src = "img/dot.png";
+	imageb.onload = function(self){
+        return function(event){
+            self.imgdot = event.target;
         };
     }(this);
 
@@ -510,12 +519,12 @@ TurkeyVol.prototype.Fill = function(){
         var renderct = 0;
 
         var bdot = new createjs.Shape();
-        bdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.bface.x, this.bface.y, this.bface.getTransformedBounds().width, this.bface.getTransformedBounds().height);
+        bdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginBitmapStroke(this.imgdot).drawRect(this.bface.x, this.bface.y, this.bface.getTransformedBounds().width, this.bface.getTransformedBounds().height);
         this.stage.addChild(bdot);
 
         // Draw out the connecting lines
         var mdot = new createjs.Shape();
-        mdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR)
+        mdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginBitmapStroke(this.imgdot)
             .moveTo(this.fface.x, this.fface.y)
             .lineTo(this.bface.x, this.bface.y)
             .moveTo(this.fface.x+this.fface.getTransformedBounds().width, this.fface.y)
@@ -580,6 +589,7 @@ TurkeyVol.prototype.Fill = function(){
             for(var idx=0; idx<hct; idx++){
                 for(var jdx=0; jdx<vct; jdx++){
                     if( renderct < (tvol+1) ){
+                        renderct++;
                         this.bitmap = new createjs.Bitmap(this.imgtky);
                         this.stage.addChild(this.bitmap);
                         this.bitmap.rotation = Math.floor((Math.random() * 30) -15);
@@ -598,6 +608,7 @@ TurkeyVol.prototype.Fill = function(){
         for(var idx=0; idx<hct; idx++){
             for(var jdx=0; jdx<vct; jdx++){
                 if( renderct < (tvol+1) ){
+                    renderct++;
                     this.bitmap = new createjs.Bitmap(this.imgtky);
                     this.stage.addChild(this.bitmap);
                     this.bitmap.rotation = Math.floor((Math.random() * 20) -10);
@@ -610,9 +621,11 @@ TurkeyVol.prototype.Fill = function(){
         }
 
         var fdot = new createjs.Shape();
-        fdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginStroke(this.DOT_COLOR).drawRect(this.fface.x, this.fface.y, this.fface.getTransformedBounds().width, this.fface.getTransformedBounds().height);
+        fdot.graphics.clear().setStrokeStyle(this.DOT_SIZE).beginBitmapStroke(this.imgdot).drawRect(this.fface.x, this.fface.y, this.fface.getTransformedBounds().width, this.fface.getTransformedBounds().height);
         fdot.shadow = new createjs.Shadow("#FFFFFF", 0, 0, 5);
         this.stage.addChild(fdot);
+        fdot.scaleX = 1;
+        fdot.scaleY = 1;
         
         var txtout = " TURKEY";
         if( tvol != 1 ) txtout += "S";

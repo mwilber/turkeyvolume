@@ -27,6 +27,11 @@ function($scope, $filter, $element, cameraPhoto) {
     };
     
     $scope.GetPicture = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'photo_get', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         if( navigator.camera ){
             navigator.camera.getPicture($scope.PhotoSuccess, $scope.PhotoFail, { 
                 quality: 80,
@@ -43,6 +48,11 @@ function($scope, $filter, $element, cameraPhoto) {
     };
     
     $scope.PhotoSuccess = function(imageData) {
+        try{
+            ga('send', 'event', 'button', 'click', 'photo_set', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         $scope.canvasHide = false;
         $scope.tkyFrame.SetPbImage("data:image/jpeg;base64,"+imageData);
         $scope.tkyFrame.fstage.update();
@@ -52,11 +62,21 @@ function($scope, $filter, $element, cameraPhoto) {
     };
     
     $scope.PhotoFail = function(message) {
+        try{
+            ga('send', 'event', 'button', 'click', 'photo_fail', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         console.log('Failed because: ' + message);
         myNavigator.pushPage('volumizer.html');
     };
     
     $scope.StorePhoto = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'photo_save', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         var img = $scope.tkyFrame.fstage.canvas.toDataURL("image/png");
         cameraPhoto.SetPhoto(img);
         myNavigator.pushPage('volumizer.html');

@@ -25,6 +25,11 @@ function($scope, $element, $http, tvgaImage) {
     };
     
     $scope.TurkeySave = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'share_save', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         $scope.publishStatus = true;
         //var img = $scope.tkyVol.stage.canvas.toDataURL("image/png");
         //console.log(img);
