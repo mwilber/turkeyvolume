@@ -77,7 +77,7 @@ class JSONAPI extends CI_Controller {
             $obj->cloudImage = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
         }
         // Validation passes
-        $nId = $this->$model_ref->Add(array('cloudName'=>$obj->cloudName,'cloudImage'=>$obj->cloudImage,'cloudDataStart'=>$obj->cloudDataStart));
+        $nId = $this->$model_ref->Add(array('cloudName'=>$obj->cloudName,'cloudImage'=>$obj->cloudImage,'cloudDataStart'=>$obj->cloudDataStart,'cloudDataFinish'=>$obj->cloudDataFinish));
         $this->_response->id = IdObfuscator::encode($nId);
 		$this->_response->url = "http://www.turkeyvolumeguessingapp.com/t/".$this->_response->id;
 		$this->_response->img = $obj->cloudImage;
