@@ -1,3 +1,13 @@
+<?php
+
+	$listTitle = "Turkey Volume Guessing App";
+
+	$social = array();
+	$social['title'] = "Turkey Volume Guessing App";
+	$social['description'] = "InsertDescriptionHere";
+	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.gif";
+	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -6,14 +16,32 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
+        <title><?=$pgTitle?></title>
+		<meta name="description" content="<?=$social['description']?>">
+		<meta name="author" content="Matthew Wilber">
+		<meta property="og:title" content="<?=$social['title']?>" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="<?=$social['link']?>" />
+		<meta property="og:image" content="<?=$social['image']?>" />
+		<meta property="og:site_name" content="<?=$social['title']?>" />
+		<meta property="fb:admins" content="631337813" />
+		<meta property="og:description" content="<?=$social['description']?>" />
+
+
+		<!-- Twitter Summary Card -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@greenzeta">
+		<meta name="twitter:title" content="<?=$social['title']?>">
+		<meta name="twitter:description" content="<?=$social['description']?>">
+		<meta name="twitter:creator" content="@greenzeta">
+		<meta name="twitter:image:src" content="<?=$social['image']?>">
+		<meta name="twitter:domain" content="turkeyvolumeguessingapp.com">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/promo.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -30,7 +58,7 @@
 
                     <p class="two">An app that takes animal based measurement into the third dimension</p>
 
-                    <p class="three">Coming November 2015</p> 
+                    <p class="three">Coming November 2015</p>
                        <form class="three">
                            <label>Receive Updates: </label>
                             <input type="text" id="email" name="email" placeholder="email"/><button>Submit</button>
@@ -39,7 +67,7 @@
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
-        
+
         <div id="footer">
               <a href="policy.php" onclick="ga('send', 'event', 'web', 'click', 'policy', 0);" class="policy">
             Privacy Policy
@@ -52,14 +80,14 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        
+
         <script type="text/javascript">
             $(document).ready(function(){
                $('.animation form').submit(function(){
                    $.post('./reactor/jsonapi/register',{email:$('#email').val()},function(){
                        $('.animation form').empty().append($('<label>').html("Thank You."));
                    });
-                  return false; 
+                  return false;
                });
             });
         </script>

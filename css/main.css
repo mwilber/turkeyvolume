@@ -161,68 +161,38 @@ html, body{
 }
 
 body{
-    background: #000 url('../img/3d-theater.gif') center center no-repeat;
+    background: #b50;
     background-size: cover;
     -webkit-background-size: cover;
     color:#fff;
 }
 
-.animation{
-    position:absolute;
-    top:0%;
-    left:0%;
-    height:100%;
-    width:100%;
-    overflow: hidden;
-}
-
-.animation p{
-    position:absolute;
-    top:30%;
-    width:70%;
-    margin: 0% 15%;
-    text-align:center;
-    text-transform: uppercase;
-    font-family: 'Anton', sans-serif;
-    font-size:3em;
-    line-height: 1.1em;
-}
-
-.animation form{
-    display:block;
-    position:absolute;
-    top:50%;
-    width: 100%;
-    margin-top: 10%;
-    text-align:center;
-    color:#000;
-}
-
-.animation form input{
-    padding:2px 5px;
-    margin: 0px 2px;
-    height: 25px;
-}
-
-.animation form button{
-        height: 34px;
-  padding: 4px 5px;
-}
-
-.animation form label{
+a{
     color:#fff;
 }
 
-.animation .one{
-    top:10%;
+.page-header{
+    margin: 0% 2%;
 }
 
-.animation .two{
-    top:40%;
+.page-header .logo{
+    display:block;
+    float:left;
+    width:100px;
 }
 
-.animation .three{
-    top:80%;
+.page-header h1{
+    float:left;
+    font-family:'Anton', sans-serif;
+    font-size: 3em;
+    font-weight:400;
+    margin: 0.5em 0.5em;
+    line-height: 1em;
+}
+
+img.turkeys{
+    width:50%;
+    margin:2% 25%;
 }
 
 #footer{
@@ -271,168 +241,37 @@ body{
   background: #7cb750;
   line-height: 36px;
   font-family: serif;
-  padding: 0px 15px 4px 15px;
+  padding: 4px 15px 6px 15px;
   margin: 0px;
-}
-
-@-webkit-keyframes fadeina {
-  0%   { 
-      opacity: 0; 
-      top:40%;
-      -webkit-transform: scale(0);
-      -moz-transform: scale(0);
-      transform: scale(0);
-  }
-  10%   { 
-      opacity: 0; 
-      top:40%;
-      -webkit-transform: scale(0);
-      -moz-transform: scale(0);
-      transform: scale(0);
-  }
-  20% { 
-      opacity: 1;
-      -webkit-transform: scale(0.8);
-      -moz-transform: scale(0.8);
-      transform: scale(0.8);
-  }
-  35% { 
-      opacity: 1; 
-      -webkit-transform: scale(1);
-      -moz-transform: scale(1);
-      transform: scale(1);
-  }
-  40% { 
-      opacity: 0; 
-      -webkit-transform: scale(5);
-      -moz-transform: scale(5);
-      transform: scale(5);
-  }
-  100% {
-      top:40%;
-      opacity: 0; 
-      -webkit-transform: scale(5);
-      -moz-transform: scale(5);
-      transform: scale(5);
-  }
-}
-@-moz-keyframes fadeina {
-
-}
-@-o-keyframes fadeina {
-
-}
-@keyframes fadeina {
-
-}
-
-.animation .one{
-	-webkit-animation: fadeina 15s linear 0s 1 normal forwards;
-	-moz-animation:    fadeina 15s linear 0s 1 normal forwards;
-	-o-animation:      fadeina 15s linear 0s 1 normal forwards;
-	animation:         fadeina 15s linear 0s 1 normal forwards;
-}
-.animation .two{
-	-webkit-animation: fadeinb 15s linear 0s 1 normal forwards;
-	-moz-animation:    fadeinb 15s linear 0s 1 normal forwards;
-	-o-animation:      fadeinb 15s linear 0s 1 normal forwards;
-	animation:         fadeinb 15s linear 0s 1 normal forwards;
-}
-.animation .three{
-	-webkit-animation: fadeinc 15s linear 0s 1 normal forwards;
-	-moz-animation:    fadeinc 15s linear 0s 1 normal forwards;
-	-o-animation:      fadeinc 15s linear 0s 1 normal forwards;
-	animation:         fadeinc 15s linear 0s 1 normal forwards;
-}
-
-@-webkit-keyframes fadeinb {
-  0%   { 
-      opacity: 0; 
-      top:40%;
-      -webkit-transform: scale(0);
-      -moz-transform: scale(0);
-      transform: scale(0);
-  }
-  40%   { 
-      opacity: 0; 
-      top:40%;
-      -webkit-transform: scale(0);
-      -moz-transform: scale(0);
-      transform: scale(0);
-  }
-  45% { 
-      opacity: 1;
-      -webkit-transform: scale(0.8);
-      -moz-transform: scale(0.8);
-      transform: scale(0.8);
-  }
-  65% { 
-      opacity: 1; 
-      -webkit-transform: scale(1);
-      -moz-transform: scale(1);
-      transform: scale(1);
-  }
-  70% { 
-      opacity: 0; 
-      -webkit-transform: scale(5);
-      -moz-transform: scale(5);
-      transform: scale(5);
-  }
-  100% {
-      top:40%;
-      opacity: 0; 
-      -webkit-transform: scale(5);
-      -moz-transform: scale(5);
-      transform: scale(5);
-  }
-}
-@-moz-keyframes fadeinb {
-
-}
-@-o-keyframes fadeinb {
-
-}
-@keyframes fadeinb {
-
-}
-
-@-webkit-keyframes fadeinc {
-  0%   { 
-      opacity: 0; 
-      top:40%;
-  }
-  70%   { 
-      opacity: 0; 
-      top:40%;
-  }
-  85% { 
-      opacity: 1; 
-      -webkit-transform: scale(1);
-      -moz-transform: scale(1);
-      transform: scale(1);
-  }
-  100% {
-      top:40%;
-  }
-}
-@-moz-keyframes fadeinc {
-
-}
-@-o-keyframes fadeinc {
-
-}
-@keyframes fadeinc {
-
 }
 
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-@media only screen and (max-width: 480px) {
-    .animation p{
-        font-size:1.5em;
-        line-height: 1.1em;
+@media only screen and (max-width: 760px) {
+    .page-header{
+        margin: 0% 1%;
+    }
+
+    .page-header .logo{
+        display:block;
+        float:left;
+        width:50px;
+    }
+
+    .page-header h1{
+        float:left;
+        font-family:'Anton', sans-serif;
+        font-size: 1.5em;
+        font-weight:400;
+        margin: 0.5em 0.25em;
+        line-height: 1em;
+    }
+
+    img.turkeys{
+        width:80%;
+        margin:2% 10%;
     }
 }
 

@@ -1,12 +1,12 @@
 <?php
 
-	$listTitle = "My Listmas";
+	$listTitle = "Turkey Volume Guessing App";
 
 	$social = array();
-	$social['title'] = "InsertTitleHere";
+	$social['title'] = "Turkey Volume Guessing App";
 	$social['description'] = "InsertDescriptionHere";
-	$social['image'] = "http://www.turkeyvolume.com/icons/icon_256.png";
-	$social['link'] = "http://www.turkeyvolume.com".$_SERVER[REQUEST_URI];
+	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.gif";
+	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
 
 	if(isset($_GET['t'])){
 		define('BASEPATH', str_replace('\\', '/', $system_path));
@@ -72,11 +72,11 @@
 		<!-- Twitter Summary Card -->
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@greenzeta">
-		<meta name="twitter:title" content="My Listmas">
+		<meta name="twitter:title" content="<?=$social['title']?>">
 		<meta name="twitter:description" content="<?=$social['description']?>">
 		<meta name="twitter:creator" content="@greenzeta">
 		<meta name="twitter:image:src" content="<?=$social['image']?>">
-		<meta name="twitter:domain" content="mylistmas.com">
+		<meta name="twitter:domain" content="turkeyvolumeguessingapp.com">
 
 		<!--<meta name="twitter:card" content="app">
 		<meta name="twitter:description" content="<?=$social['description']?>">
@@ -94,12 +94,10 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link href='fonts/opensans_regular_macroman/stylesheet.css' rel='stylesheet' type='text/css'>
-		<link href='fonts/opensans_bold_macroman' rel='stylesheet' type='text/css'>
 		<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+		<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/list.css" />
-    <link rel="stylesheet" type="text/css" href="css/color.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>Turkey Volume</title>
 
     <script type="text/javascript">
@@ -112,8 +110,24 @@
 		</script>
     </head>
     <body>
-
-		<img src="<?=$titleRS['cloudImage']?>"/>
+		<div class="page-header">
+			<a href="index.php">
+				<img class="logo" src="../img/logo_512.png"/>
+				<h1>Turkey Volume Guessing App</h1>
+			</a>
+		</div>
+		<div class="page-content">
+			<img class="turkeys" src="<?=$titleRS['cloudImage']?>"/>
+		</div>
+		<div id="footer">
+              <a href="policy.php" onclick="ga('send', 'event', 'web', 'click', 'policy', 0);" class="policy">
+            Privacy Policy
+          </a>
+              <a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); ga('send', 'event', 'web', 'click', 'GreenZeta', 0); return false;" class="gz">
+            <span class="badge">&zeta;</span>
+            &nbsp;&nbsp;A GreenZeta Production
+          </a>
+        </div>
 
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
         <script type="text/javascript" src="js/socialshare.js"></script>
@@ -123,7 +137,7 @@
         <script type="text/javascript">
 
 		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', '<?php if($_SERVER["HTTP_HOST"] != "gibson.loc"): ?>UA-00000-00<?php endif; ?>']);
+		  _gaq.push(['_setAccount', '<?php if($_SERVER["HTTP_HOST"] != "gibson.loc"): ?>UA-76054-32<?php endif; ?>']);
 		  _gaq.push(['_trackPageview']);
 
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -131,7 +145,7 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		  ga('create', '<?php if($_SERVER["HTTP_HOST"] != "gibson.loc"): ?>UA-76054-30<?php endif; ?>', 'auto');
+		  ga('create', '<?php if($_SERVER["HTTP_HOST"] != "gibson.loc"): ?>UA-76054-32<?php endif; ?>', 'auto');
 		  ga('send', 'pageview');
 
 		</script>
