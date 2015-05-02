@@ -4,7 +4,7 @@
 
 	$social = array();
 	$social['title'] = "Turkey Volume Guessing App";
-	$social['description'] = "InsertDescriptionHere";
+	$social['description'] = "From the creator of JAWS Converter. An app that takes animal based measurement into the third dimension. Coming November 2015.";
 	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.gif";
 	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
 ?>
