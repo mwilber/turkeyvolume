@@ -190,6 +190,68 @@ a{
     line-height: 1em;
 }
 
+#content, #eyepad{
+    width:600px;
+    float:left;
+}
+
+#content p{
+	  width: 90%;
+  font-size: 20px;
+  float: left;
+  margin-left: 5%;
+  text-align: justify;
+}
+
+#content #logo{
+	  float: left;
+  width: 100%;
+  margin-left: 0%;
+  text-align: center;
+}
+
+#content #logo img{
+	   float: left;
+  width: 70%;
+  margin: -5% 15%;
+}
+
+#content #logo h1{
+    float: left;
+  font-family: 'Anton', sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+  margin: 20px 0px 0px 0px;
+  line-height: 1.1em;
+  text-transform: uppercase;
+  text-align: center;
+  width:100%;
+}
+
+#content #try{
+	float:right;
+}
+
+#playstore{
+	clear:both;
+	width: 135px;
+	display: block;
+	margin: 0px auto;
+}
+
+#eyepad{
+	width:420px;
+	height:620px;
+	background-image:url('../img/eyepad.png');
+	float:right;
+}
+
+#eyepad iframe{
+	width: 320px;
+	height: 480px;
+	margin: 65px 0px 0px 49px;
+}
+
 img.turkeys{
     width:50%;
     margin:2% 25%;

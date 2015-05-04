@@ -196,6 +196,7 @@ body{
     margin-top: 10%;
     text-align:center;
     color:#000;
+    font-size:3em;
 }
 
 .animation form input{
@@ -218,11 +219,16 @@ body{
 }
 
 .animation .two{
-    top:40%;
+    top:30%;
 }
 
 .animation .three{
     top:80%;
+    font-size:3em;
+}
+
+.animation form.three{
+    font-size:1em;
 }
 
 #footer{
@@ -278,14 +284,14 @@ body{
 @-webkit-keyframes fadeina {
   0%   {
       opacity: 0;
-      top:40%;
+      top:30%;
       -webkit-transform: scale(0);
       -moz-transform: scale(0);
       transform: scale(0);
   }
   10%   {
       opacity: 0;
-      top:40%;
+      top:30%;
       -webkit-transform: scale(0);
       -moz-transform: scale(0);
       transform: scale(0);
@@ -309,7 +315,7 @@ body{
       transform: scale(5);
   }
   100% {
-      top:40%;
+      top:30%;
       opacity: 0;
       -webkit-transform: scale(5);
       -moz-transform: scale(5);
@@ -319,14 +325,14 @@ body{
 @-moz-keyframes fadeina {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
     }
     10%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
@@ -350,7 +356,7 @@ body{
         transform: scale(5);
     }
     100% {
-        top:40%;
+        top:30%;
         opacity: 0;
         -webkit-transform: scale(5);
         -moz-transform: scale(5);
@@ -360,14 +366,14 @@ body{
 @-o-keyframes fadeina {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
     }
     10%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
@@ -391,7 +397,7 @@ body{
         transform: scale(5);
     }
     100% {
-        top:40%;
+        top:30%;
         opacity: 0;
         -webkit-transform: scale(5);
         -moz-transform: scale(5);
@@ -401,14 +407,14 @@ body{
 @keyframes fadeina {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
     }
     10%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
@@ -432,7 +438,7 @@ body{
         transform: scale(5);
     }
     100% {
-        top:40%;
+        top:30%;
         opacity: 0;
         -webkit-transform: scale(5);
         -moz-transform: scale(5);
@@ -462,14 +468,14 @@ body{
 @-webkit-keyframes fadeinb {
   0%   {
       opacity: 0;
-      top:40%;
+      top:30%;
       -webkit-transform: scale(0);
       -moz-transform: scale(0);
       transform: scale(0);
   }
   40%   {
       opacity: 0;
-      top:40%;
+      top:30%;
       -webkit-transform: scale(0);
       -moz-transform: scale(0);
       transform: scale(0);
@@ -493,7 +499,7 @@ body{
       transform: scale(5);
   }
   100% {
-      top:40%;
+      top:30%;
       opacity: 0;
       -webkit-transform: scale(5);
       -moz-transform: scale(5);
@@ -503,14 +509,14 @@ body{
 @-moz-keyframes fadeinb {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
     }
     40%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
@@ -534,7 +540,7 @@ body{
         transform: scale(5);
     }
     100% {
-        top:40%;
+        top:30%;
         opacity: 0;
         -webkit-transform: scale(5);
         -moz-transform: scale(5);
@@ -544,14 +550,14 @@ body{
 @-o-keyframes fadeinb {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
     }
     40%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
@@ -575,7 +581,7 @@ body{
         transform: scale(5);
     }
     100% {
-        top:40%;
+        top:30%;
         opacity: 0;
         -webkit-transform: scale(5);
         -moz-transform: scale(5);
@@ -585,14 +591,14 @@ body{
 @keyframes fadeinb {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
     }
     40%   {
         opacity: 0;
-        top:40%;
+        top:30%;
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         transform: scale(0);
@@ -616,7 +622,7 @@ body{
         transform: scale(5);
     }
     100% {
-        top:40%;
+        top:30%;
         opacity: 0;
         -webkit-transform: scale(5);
         -moz-transform: scale(5);
@@ -627,11 +633,11 @@ body{
 @-webkit-keyframes fadeinc {
   0%   {
       opacity: 0;
-      top:40%;
+      top:30%;
   }
   70%   {
       opacity: 0;
-      top:40%;
+      top:30%;
   }
   85% {
       opacity: 1;
@@ -640,17 +646,17 @@ body{
       transform: scale(1);
   }
   100% {
-      top:40%;
+      top:30%;
   }
 }
 @-moz-keyframes fadeinc {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
     }
     70%   {
         opacity: 0;
-        top:40%;
+        top:30%;
     }
     85% {
         opacity: 1;
@@ -659,17 +665,17 @@ body{
         transform: scale(1);
     }
     100% {
-        top:40%;
+        top:30%;
     }
 }
 @-o-keyframes fadeinc {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
     }
     70%   {
         opacity: 0;
-        top:40%;
+        top:30%;
     }
     85% {
         opacity: 1;
@@ -678,17 +684,17 @@ body{
         transform: scale(1);
     }
     100% {
-        top:40%;
+        top:30%;
     }
 }
 @keyframes fadeinc {
     0%   {
         opacity: 0;
-        top:40%;
+        top:30%;
     }
     70%   {
         opacity: 0;
-        top:40%;
+        top:30%;
     }
     85% {
         opacity: 1;
@@ -697,7 +703,7 @@ body{
         transform: scale(1);
     }
     100% {
-        top:40%;
+        top:30%;
     }
 }
 
@@ -705,10 +711,29 @@ body{
    Media Queries
    ========================================================================== */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 650px) {
+    .animation p{
+        font-size:2.5em;
+        line-height: 1.1em;
+    }
+    .animation form.three{
+        margin-top:15%;
+    }
+    .animation .three{
+    font-size:2.3em;
+    }
+}
+
+@media only screen and (max-width: 500px) {
     .animation p{
         font-size:1.5em;
         line-height: 1.1em;
+    }
+    .animation form.three{
+        margin-top:20%;
+    }
+    .animation .three{
+    font-size:2em;
     }
 }
 
