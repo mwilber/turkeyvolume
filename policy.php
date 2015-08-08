@@ -53,7 +53,7 @@
             }
             function SetSlide(pOff){
                 idx+=pOff;
-                if(idx>0){ idx=-2; }else if(idx<-2){ idx=0; }
+                if(idx>0){ idx=-4; }else if(idx<-4){ idx=0; }
                 document.getElementById('slide').style.transform = 'translate('+(idx*320)+'px,0px)';
             }
         </script>
@@ -64,53 +64,29 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="container">
+		<div class="container">
 			<div class="content">
 				<div class="col1">&nbsp;</div>
-                <div id="content" class="col5 clearfix">
-                    <div id="logo">
-                        <h1>Turkey Volume<br/>Guessing App</h1>
-            		  <img src="img/logo_512.png"/>
+				<div id="content" class="col5 clearfix">
+					<div id="logo">
+						<h1>Turkey Volume<br/>Guessing App</h1>
+					  <img src="img/logo_512.png"/>
 
-                    </div>
-    	        	<p>Every space in the universe can be measured in terms of how many turkeys will fill it. Express your space in terms of Turkeys!</p>
-    				<a id="playstore" class="appstore" href="https://play.google.com/store/apps/details?id=com.greenzeta.greenzeta.hoursaround" target="_blank"><img src="img/playstore.png" style="height:45px;"/></a>
-    				<a id="appstore" class="appstore" href="https://itunes.apple.com/us/app/hours-around/id650401729?ls=1&mt=8" target="_blank"><img src="img/appstore.png" style="height:45px;"/></a>
-    			</div>
-				<div class="col6">
-	    	        <div id="eyepad">
-		    	        	<div id="carousel">
-								<table id="slide">
-				                    <tr>
-				                        <!--<td>
-				                            <img src="img/01.jpg"/>
-				                        </td>-->
-				                        <td>
-				                            <img src="img/02.jpg"/>
-				                        </td>
-				                        <!--<td>
-				                            <img src="img/03.jpg"/>
-				                        </td>-->
-				                        <td>
-				                            <img src="img/04.jpg"/>
-				                        </td>
-				                        <td>
-				                            <img src="img/05.jpg"/>
-				                        </td>
-				                    </tr>
-				                </table>
-							</div>
-							<div id="btnl" class="btn fa fa-angle-left" onclick="clearInterval(to); SetSlide(1);"></div>
-							<div id="btnr" class="btn fa fa-angle-right" onclick="clearInterval(to); SetSlide(-1);"></div>
-	    	        </div>
+					</div>
 				</div>
-            </div> <!-- #main -->
-        </div> <!-- #main-container -->
+				<div class="col6">
+					<div id="policy">
+	                    <h2>PRIVACY POLICY</h2>
+	                    <p>Turkey Volume Guessing App does not collect any personal information from users of this app. Anonymous statistics are collected only for counting total users and total guesses made.</p>
+	                    <p>Turkeys deserve to be left alone, and so do you, except on Thanksgiving. If Turkey Volume Guessing App ever were to collect personal information about you, may the creator be eaten alive by rafter of wild turkeys!</p>
+	                    <p>The creator of Turkey Volume Guessing App does not hold any liability for any turkey related injuries as a result of using this app.</p>
+	                    <a href="index.php">Back to the main page.</a>
+	                </div>
+				</div>
+			</div> <!-- #main -->
+		</div> <!-- #main-container -->
 
         <div id="footer">
-              <a href="policy.php" onclick="ga('send', 'event', 'web', 'click', 'policy', 0);" class="policy">
-            Privacy Policy
-          </a>
               <a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); ga('send', 'event', 'web', 'click', 'GreenZeta', 0); return false;" class="gz">
             <span class="badge">&zeta;</span>
             &nbsp;&nbsp;A GreenZeta Production
@@ -120,16 +96,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script type="text/javascript">
-            $(document).ready(function(){
-               $('.animation form').submit(function(){
-                   $.post('./reactor/jsonapi/register',{email:$('#email').val()},function(){
-                       $('.animation form').empty().append($('<label>').html("Thank You."));
-                   });
-                  return false;
-               });
-            });
-        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script type="text/javascript">

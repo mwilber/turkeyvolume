@@ -1,0 +1,192 @@
+html {
+    -moz-box-shadow: inset 0 0 25em rgba(0,0,0,0.75);
+    -webkit-box-shadow: inset 0 0 25em rgba(0,0,0,0.75);
+    box-shadow: inset 0 0 25em rgba(0,0,0,0.75);
+    min-height: 100%;
+    background: #b50;
+    color:#fff;
+}
+
+#content{
+    margin-bottom:40px;
+}
+
+#content p{
+	  width: 90%;
+  font-size: 20px;
+  float: left;
+  margin-left: 5%;
+  text-align: justify;
+}
+
+#content #logo{
+	  float: left;
+  width: 100%;
+  margin-left: 0%;
+  text-align: center;
+}
+
+#content #logo img{
+    float: left;
+    width: 50%;
+    margin: 0% 25%;
+}
+
+#content #logo h1{
+    float: left;
+  font-family: 'Anton', sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+  margin: 20px 0px 0px 0px;
+  line-height: 1.1em;
+  text-transform: uppercase;
+  text-align: center;
+  width:100%;
+}
+
+.appstore{
+    float: left;
+    width: 40%;
+    margin: 25px 0% 10px 5%;
+    text-align: center;
+}
+
+#eyepad{
+    width:420px;
+	height:556px;
+    padding: 64px 50px;
+	background: transparent url('../img/eyepad.png') top left no-repeat;
+}
+
+
+#eyepad #carousel{
+    position:relative;
+    width: 320px;
+    height: 546px;
+    margin: 0px 0px 0px 0px;
+    overflow: hidden;
+}
+
+
+#eyepad .btn{
+    position: relative;
+    top: -260px;
+    left: -33px;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    border: solid 2px #fff;
+    border-radius: 50%;
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#eyepad #btnr{
+    left: 292px;
+}
+
+#eyepad #slide{
+    position:absolute;
+    left:0px;
+    /*border:solid 1px #f00;*/
+    height:100%;
+    width:960px;
+    transition: left 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+#eyepad #slide td{
+    /*border:solid 1px #00f;*/
+    height:100%;
+    width:320px;
+    text-align:center;
+    padding:0px;
+}
+
+#eyepad #slide td span{
+    font-size:24px;
+    color:#6a3;
+    line-height:96px;
+}
+
+#policy h2{
+    margin:20% 0px 20px 0px;
+}
+
+#policy p{
+    margin:20px;
+}
+
+#policy a{
+    color:#fff;
+    font-weight:bold;
+}
+
+#footer{
+  position: fixed;
+  float:right;
+  width: 100%;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  font-family:sans-serif;
+}
+
+#footer .policy{
+  background: rgba(255,255,255,0.8);
+  font-size: 12px;
+  color: #333;
+  line-height: 12px;
+  margin-left: 10px;
+  padding: 3px 10px;
+  font-weight: bold;
+  float: left;
+}
+
+#footer a.gz {
+  width: auto;
+  color: #fff;
+  line-height: 18px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  background: rgba(0,0,0,0.8);
+  padding: 0px 15px 4px 0px;
+  text-decoration: none;
+  overflow: hidden;
+  margin: 0px 0px;
+  display: block;
+  float: right;
+}
+
+#footer a.gz .badge {
+  color: #fff;
+  text-align: center;
+  font-weight: normal;
+  font-size: 30px;
+  background: #7cb750;
+  line-height: 36px;
+  font-family: serif;
+  padding: 4px 15px 6px 15px;
+  margin: 0px;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (max-width: 460px) {
+
+
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    #eyepad{ display:none;}
+
+}
