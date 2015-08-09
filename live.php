@@ -4,7 +4,7 @@
 
 	$social = array();
 	$social['title'] = "Turkey Volume Guessing App";
-	$social['description'] = "From the creator of JAWS Converter. An app that takes animal based measurement into the third dimension. Coming November 2015.";
+	$social['description'] = "Express your space in terms of Turkeys!";
 	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.gif";
 	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
 ?>
@@ -65,6 +65,16 @@
         <![endif]-->
 
         <div class="container">
+			<div class="content">
+				<div class="col12">
+					<div class="sociallinks">
+						<a href="https://twitter.com/home?status=<?=urlencode($social['title'])?>:%20<?=urlencode($social['link'])?>%20<?=urlencode($social['description'])?>" class="fa fa-twitter" target="_blank"></a>
+						<a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+						<a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=<?=urlencode($social['image'])?>&description=<?=urlencode($social['title'])?><?=urlencode('! ')?><?=urlencode($social['description'])?><?=urlencode('.')?>" class="fa fa-pinterest" target="_blank"></a>
+						<a href="https://www.facebook.com/dialog/feed?app_id=1646252625586188&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+					</div>
+				</div>
+			</div>
 			<div class="content">
 				<div class="col1">&nbsp;</div>
                 <div id="content" class="col5 clearfix">

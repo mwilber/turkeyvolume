@@ -70,7 +70,7 @@
 				<div id="content" class="col5 clearfix">
 					<div id="logo">
 						<h1>Turkey Volume<br/>Guessing App</h1>
-					  <img src="img/logo_512.png"/>
+					  <img src="../img/logo_512.png"/>
 
 					</div>
 				</div>

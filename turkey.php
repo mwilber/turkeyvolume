@@ -4,7 +4,7 @@
 
 	$social = array();
 	$social['title'] = "Turkey Volume Guessing App";
-	$social['description'] = "InsertDescriptionHere";
+	$social['description'] = "Express your space in terms of Turkeys!";
 	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.gif";
 	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
 
@@ -46,6 +46,7 @@
 			$titleRS = $stmt->fetch();
 			//print_r($titleRS['cloudImage']);
 			$pgTitle = $titleRS['cloudDataFinish']." Turkeys Will Fit In This Space";
+			$social['title'] = $pgTitle;
 			$social['image'] = $titleRS['cloudImage'];
 		}
 	}
@@ -96,9 +97,10 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
 		<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <title>Turkey Volume</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/normalize.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="css/responsiveboilerplate.css">
+	<link rel="stylesheet" href="css/mainb.css">
 
     <script type="text/javascript">
 		var social = [];
@@ -109,16 +111,37 @@
 
 		</script>
     </head>
-    <body>
-		<div class="page-header">
-			<a href="index.php">
-				<img class="logo" src="../img/logo_512.png"/>
-				<h1>Turkey Volume Guessing App</h1>
-			</a>
-		</div>
-		<div class="page-content">
-			<img class="turkeys" src="<?=$titleRS['cloudImage']?>"/>
-		</div>
+    <body class="turkey">
+
+
+
+		<div class="container">
+			<div class="content">
+				<div class="col1">&nbsp;</div>
+				<div class="col6">
+					<div class="sociallinks">
+						<a href="https://twitter.com/home?status=<?=urlencode($social['title'])?>:%20<?=urlencode($social['link'])?>%20<?=urlencode($social['description'])?>" class="fa fa-twitter" target="_blank"></a>
+						<a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+						<a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=<?=urlencode($social['image'])?>&description=<?=urlencode($social['title'])?><?=urlencode('! ')?><?=urlencode($social['description'])?><?=urlencode('.')?>" class="fa fa-pinterest" target="_blank"></a>
+						<a href="https://www.facebook.com/dialog/feed?app_id=1646252625586188&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+					</div>
+	    	        <img class="turkeys" src="<?=$titleRS['cloudImage']?>"/>
+				</div>
+
+                <div id="content" class="col5 clearfix">
+                    <div id="logo">
+                        <h1>Turkey Volume<br/>Guessing App</h1>
+            		  <img src="../img/logo_512.png"/>
+                    </div>
+    	        	<p>Every space in the universe can be measured in terms of how many turkeys will fill it. Express your space in terms of Turkeys!</p>
+					<a id="playstore" class="appstore" href="https://play.google.com/store/apps/details?id=com.greenzeta.greenzeta.hoursaround" target="_blank"><img src="../img/playstore.png" style="height:45px;"/></a>
+					<a id="appstore" class="appstore" href="https://itunes.apple.com/us/app/hours-around/id650401729?ls=1&mt=8" target="_blank"><img src="../img/appstore.png" style="height:45px;"/></a>
+    			</div>
+
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
+
+
 		<div id="footer">
               <a href="policy.php" onclick="ga('send', 'event', 'web', 'click', 'policy', 0);" class="policy">
             Privacy Policy
