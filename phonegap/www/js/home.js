@@ -6,14 +6,23 @@ function($scope, $filter, $http, cameraPhoto) {
     
     $scope.Init = function(){
         //alert(device.uuid); 
-        $http.get('https://grocerygamer.herokuapp.com/reactor/jsonapi/wakeup/').success(function(response){
+        $http.get('https://turkeyvolume.herokuapp.com/reactor/jsonapi/wakeup/').success(function(response){
                 
                 console.log("server awake",typeof response.data, response);
             });
             
+        $http.get('https://gzads.s3.amazonaws.com/index.json').success(function(response){         
+            console.log("ad downloaded", response);
+            for(var idx in response){
+                localStorage['gzad_'+idx] = response[idx];
+            }
+        });
+            
         myNavigator.on('postpush',function(event){
             try{
                 console.log('push', event);
+                console.log('page', event.enterPage.name);
+                //console.log('scope', event.enterPage.pageScope.$get(tkyFrame));
                 ga('send', 'event', 'panel', 'push', event.enterPage.name);
             }catch(exception){
                 console.log("ga fail");

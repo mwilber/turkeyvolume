@@ -25,7 +25,7 @@
         <div class="main-container">
             <div class="main wrapper clearfix">
 
-                <canvas id="volumizer" width="500" height="500"></canvas>
+                <canvas id="volumizer" width="1024" height="1024"></canvas>
                 <a id="btn_fill" href="#">Fill</a>
                 <a id="btn_height" href="#">Set Height</a>
                 <a id="btn_width" href="#">SetWidth</a>
@@ -44,10 +44,10 @@
 
             $(document).ready(function(){
                 var tkyOpts = {
-                    'extrude_multiplier':50,
+                    'extrude_multiplier':150,
                     'copy_margin':50,
-                    'line_size':5,
-                    'dot_size':3,
+                    'line_size':10,
+                    'dot_size':10,
                     'tab_radius':75,
                     'element':{
                         'id':'volumizer',
@@ -55,12 +55,13 @@
                         'width':$('#volumizer').width()
                     },
                     'start_rect':{
-                        width:300,
-                        height:300,
-                        x:100,
-                        y:50,
+                        width:$('#volumizer').height()-($('#volumizer').height()/3),
+                        height:$('#volumizer').height()-($('#volumizer').height()/3),
+                        x:($('#volumizer').height()/6),
+                        y:($('#volumizer').height()/9),
                     },
                     'backgroundData':dummyphoto,
+                    'vegan_mode':false
                 };
                 tkyVol = new TurkeyVol(tkyOpts);
 

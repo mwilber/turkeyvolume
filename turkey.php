@@ -15,7 +15,7 @@
 		include('reactor/application/helpers/idobfuscator_helper.php');
 
 		//
-		if($_SERVER["HTTP_HOST"] == "gibson.loc"){
+		if($_SERVER["HTTP_HOST"] == "gibson.loc" || $_SERVER["HTTP_HOST"] == "192.168.1.135"){
 			if( !is_numeric($_GET['t']) ) $_GET['t'] = IdObfuscator::decode($_GET['t']);
 		}else{
 			$_GET['t'] = IdObfuscator::decode($_GET['t']);

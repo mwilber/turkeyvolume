@@ -1,8 +1,9 @@
 <ons-page ng-controller="ShareCtrl">
     <div style="text-align: center">
-        <div class="listmas">
+        <!--<div class="listmas" dynamic="gzad_banner">
             Make your holiday wishlist at mylistmas.com
-        </div>
+        </div>-->
+        <iframe class="gzad_banner" id="gzad_banner" frameBorder="0"></iframe>
         <img class="tkyvol" src="{{ tkyImage }}"/>
     </div>
     
@@ -14,6 +15,6 @@
         <ons-button class="fb-btn share-btn" ng-click="FbShare()" ng-if="shareUrl"><ons-icon icon="facebook"></ons-icon></ons-button>
         <ons-button class="pn-btn share-btn" ng-click="PnShare()" ng-if="shareUrl"><ons-icon icon="pinterest"></ons-icon></ons-button>
         <ons-button class="gp-btn share-btn" ng-click="GpShare()" ng-if="shareUrl"><ons-icon icon="google-plus"></ons-icon></ons-button>
-        <ons-button class="capture-btn wide" ng-click="myNavigator.resetToPage('home.html')"><span class="fa fa-repeat fa-lg"></span>Do Another One</ons-button>
+        <ons-button class="restart-btn wide" ng-click="myNavigator.resetToPage('home.html')" style=""><span class="fa fa-repeat fa-lg"></span>Do Another One</ons-button>
     </form>
 </ons-page>

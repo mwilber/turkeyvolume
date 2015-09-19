@@ -50,6 +50,8 @@ function PbFrame(options){
     createjs.Ticker.setFPS(24);
 
     this.fstage = new createjs.Stage(this.canvas);
+    this.fstage.enableDOMEvents(false);
+    this.fstage.canvas = document.getElementById(this.canvas);
     this.fstage.autoClear = false;
     this.fstage.enableDOMEvents(true);
 
@@ -64,6 +66,17 @@ function PbFrame(options){
     this.fstage.addEventListener("mousedown", this.HandleMouseDown(this));
     //this.fstage.addEventListener("mouseup", this.HandleMouseUp(this));
     this.fstage.addEventListener("pressmove" , this.HandleMouseMove(this));
+
+};
+
+PbFrame.prototype.Destroy = function(){
+    
+    this.fstage.enableDOMEvents(false);
+    this.fstage.removeAllChildren();
+    this.fstage.clear();
+    this.fstage.update();
+    
+    return true;
 
 };
 

@@ -5,31 +5,32 @@
     
     <ons-modal var="mdim">
         <div class="dialog">
-            <ons-button class="close-btn" onclick="mdim.hide()"><ons-icon icon="times"></ons-icon></ons-button>
-            <p>Enter the actual height or width of the space:</p>
+            <!--<ons-button class="close-btn" onclick="mdim.hide()"><ons-icon icon="times"></ons-icon></ons-button>-->
+            <p>Enter the actual height or width of the space. You only need to enter one dimension, we'll figure out the rest:</p>
             <div class="button-bar" style="width:100%">
               <div class="button-bar__item">
-                <input type="radio" name="ddim" value="h" ng-model="ddim" checked>
+                <input type="radio" name="ddim" value="h" ng-model="ddim" ng-change="CkSizeInput()" checked>
                 <button class="button-bar__button">Height</button>
               </div>
               <div class="button-bar__item">
-                <input type="radio" name="ddim" value="w" ng-model="ddim">
+                <input type="radio" name="ddim" value="w" ng-model="ddim" ng-change="CkSizeInput()">
                 <button class="button-bar__button">Width</button>
               </div>
             </div>
-            <input id="dval" type="number" class="text-input" placeholder="10" width="100%" ng-model="dval"/>
+            <input id="dval" type="number" class="text-input" placeholder="Enter A Number" width="100%" ng-model="dval"/>
             <div class="button-bar" style="width:100%">
               <div class="button-bar__item">
-                <input type="radio" name="dunit" value="f" ng-model="dunit" checked>
+                <input type="radio" name="dunit" value="f" ng-model="dunit" ng-change="CkSizeInput()" checked>
                 <button class="button-bar__button">Feet</button>
               </div>
               <div class="button-bar__item">
-                <input type="radio" name="dunit" value="m" ng-model="dunit">
+                <input type="radio" name="dunit" value="m" ng-model="dunit" ng-change="CkSizeInput()">
                 <button class="button-bar__button">Meters</button>
               </div>
             </div>
             
-            <ons-button class="control-btn" ng-click="SetDim()" style="width:100%;"><ons-icon icon="check"></ons-icon></ons-button>
+            <ons-button class="control-btn" ng-click="SetDim()" style="width:74%; float:left;"><ons-icon icon="check"></ons-icon></ons-button>
+            <ons-button class="control-btn"  onclick="mdim.hide()" style="width:24%; float:right; background-color:rgba(187, 85, 0, 0.5)"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
 

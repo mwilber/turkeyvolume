@@ -19,7 +19,16 @@ function($scope, $http, veganMode) {
         }catch(exception){
             console.log("ga fail");
         }
-        window.open('http://www.greenzeta.com/home/listing/product', '_system', 'location=no');
+        window.open('http://apps.greenzeta.com/', '_system', 'location=no');
+    };
+    
+    $scope.ViewGZHomePage = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'gzprod', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
+        window.open('http://www.greenzeta.com/', '_system', 'location=no');
     };
     
     $scope.CkVeganMode = function(evt){

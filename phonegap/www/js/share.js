@@ -1,5 +1,5 @@
-tvgaControllers.controller('ShareCtrl', ['$scope', '$element', '$http', 'tvgaImage',
-function($scope, $element, $http, tvgaImage) {
+tvgaControllers.controller('ShareCtrl', ['$scope', '$element', '$http', 'tvgaImage', 'cacheDb', 
+function($scope, $element, $http, tvgaImage, cacheDb) {
     
     $scope.tkyImage;
     $scope.publishStatus = false;
@@ -9,19 +9,44 @@ function($scope, $element, $http, tvgaImage) {
         title:"Turkey Volume", 
         link:"http://www.turkeyvolumeguessingapp.com", 
         image:"http://www.turkeyvolumeguessingapp.com/img/share.gif",
-        message:"How many turkeys will fill this space?",
-        description:"How many turkeys will fill this space?"
+        message:"Express your space in terms of Turkeys!",
+        description:"Express your space in terms of Turkeys!"
     };
+    
+    //console.log('banner', $scope.gzad_banner);
 
     
-    console.log($element[0]);
+    //console.log($element[0]);
     
     //$scope.canvasHeight-($scope.canvasHeight/3)
     
+    console.log('share.js');
+    
     $scope.Init = function(){
-        $scope.tkyImage = tvgaImage.GetImage();
-        console.log("share", $scope.tkyImage);
-        $scope.$apply();
+        
+        console.log('initting');
+        
+        //Set up the ad here
+        if( localStorage['gzad_banner'] ){
+            try{
+               console.log('found banner');
+                var doc = document.getElementById('gzad_banner').contentWindow.document;
+                doc.open();
+                doc.write(atob(localStorage['gzad_banner']));
+                doc.close();
+            }catch(e){
+                console.log('something went horribly wrong with the ad.');
+            }
+        }
+        
+        console.log('getting the image');
+        cacheDb.Get('canvasComposite').then(function(result) {
+            $scope.tkyImage = result;
+            //console.log("share", $scope.tkyImage);
+            $scope.$apply();
+        }).catch(function(error) {
+            console.log('catching for some reason');
+        });
     };
     
     $scope.TurkeySave = function(){
@@ -54,6 +79,7 @@ function($scope, $element, $http, tvgaImage) {
             console.log(response);
             $scope.shareUrl = response.url;
             $scope.metadata.image = response.img;
+            $scope.metadata.title = tvgaImage.GetVol()+" Turkeys Will Fit In This Space";
             $scope.publishStatus = false;
 
         }).error(function(){
