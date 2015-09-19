@@ -25,6 +25,7 @@
         var tvgaControllers = angular.module('tvgaControllers', []);
         var tvgaServices = angular.module('tvgaServices', []);
     </script>
+    <script src="js/gzadinator.js"></script>
     <script src="js/cTurkeyVol.js"></script>
     <script src="js/cPbFrame.js"></script>
     <script src="js/services.js"></script>
@@ -62,6 +63,13 @@
                 
                 //alert('adding class '+device.platform);
                 $('body').addClass(device.platform);
+                
+                var node = document.createElement('style');
+                node.innerHTML = ".expanded .gzad_banner{height:"+$(window).height()+"px;} .expanded img.tkyvol, .expanded form.tkyvol{-webkit-transform: translateY("+($(window).height()-90)+"px); transform: translateY("+($(window).height()-90)+"px);}";
+                document.body.appendChild(node);
+                
+                
+    
                 
             }, false);
     </script>

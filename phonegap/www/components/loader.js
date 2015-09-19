@@ -9,37 +9,21 @@
 /*** <Start:monaca-cordova-loader> ***/
 /*** <Start:monaca-cordova-loader LoadJs:"components/monaca-cordova-loader/cordova-loader.js"> ***/
 (function(){
-
   if ((navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/iPhone|iPad|iPod/i))) {
-
     if (typeof location.href === "string") {
-
       var relativePath = location.href.split("/www")[1];
-
       var paths = relativePath.split("/");
-
       var cordovaJsUrl = ""; 
-
       for (var i = 0; i < paths.length - 2; i++) {
-
         cordovaJsUrl += "../";
-
       }
-
       document.write("<script src=\"" + cordovaJsUrl+ "cordova.js" + "\"></script>");
-
     }
-
   } else if ((navigator.userAgent.match(/MSIE\s10.0/)) && (navigator.userAgent.match(/Windows\sNT\s6.2/))) {
-
     var elm = document.createElement('script');
-
     elm.setAttribute("src", "cordova.js");
-
     document.getElementsByTagName("head")[0].appendChild(elm);
-
   };
-
 })();
 /*** <End:monaca-cordova-loader LoadJs:"components/monaca-cordova-loader/cordova-loader.js"> ***/
 /*** <End:monaca-cordova-loader> ***/
@@ -243,12 +227,33 @@ window.monaca = window.monaca || {};
     /**
      * base method for send log.
      */
+    monaca.console.sendLog = function(level, url, line, char, arguments) {
+        var message;
+        for (var i=0; i<arguments.length; i++){
+            if (typeof arguments[i] == "string") {
+                message = arguments[i];
+            } else {
+                message = JSON.stringify(arguments[i]);
+            }
 
+            if (isIOS) {
+                var head = message.substr(0, 5);
+                if (window.monaca.isDeviceReady !== true || (head != 'ERROR' && head != 'WARN:')) {
+                    var xhr = new XMLHttpRequest();
+                    var path = "monaca://log?level=" + encodeURIComponent(level) + "&message=" + encodeURIComponent(message);
+                    xhr.open("GET", path);
+                    xhr.send();
+                }
+            } else {
+                window.console[level](message);
+            }
+        }
+    }
 
     /**
      * monaca console methods
      */
-/*    var methods = ["debug", "info", "log", "warn", "error"];
+    var methods = ["debug", "info", "log", "warn", "error"];
     for (var i=0; i<methods.length; i++) {
         var method = methods[i];
         monaca.console[method] = function(method) {
@@ -257,11 +262,11 @@ window.monaca = window.monaca || {};
             };
         }(method);
     }
-    */
+    
     /** Replace window.console if iOS **/
-    /*if (isIOS) {
+    if (isIOS) {
       window.console = window.monaca.console;
-    }*/
+    }
     /* Comment out for now
     window.onerror = function (desc, page, line, char) {
       monaca.console.sendLog("error", page, line, char, [desc]);

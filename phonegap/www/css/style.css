@@ -295,12 +295,19 @@ img.gluten{
 }
 
 img.tkyvol{
-    width: 94%;
-    border: solid 1px rgba(255,255,255,0.75);
-    margin-top: 2%;
+    width: 100%;
+    border-top: solid 1px #b50;
+    margin-top: 0%;
+    position: absolute;
+    top: 90px;
+    left: 0px;
 }
 
 .gzad_banner{
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 90px;
     margin: 0px;
@@ -308,6 +315,57 @@ img.tkyvol{
     color:#ccc;
     padding:0px;
     overflow: hidden;
+    -webkit-transition: height 0.25s linear 0.25s, -webkit-transform 0.25s linear 0.25s;
+    transition: height 0.25s linear 0.25s, transform 0.25s linear 0.25s;
+}
+
+.expanded .gzad_banner{
+    height:600px;
+    -webkit-transition: height 0.5s linear 0s, -webkit-transform 0.5s linear 0s;
+    transition: height 0.5s linear 0s, transform 0.5s linear 0s;
+}
+
+img.tkyvol, form.tkyvol{
+    z-index:500;
+    -webkit-transition: height 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0s, -webkit-transform 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0s;
+    transition: height 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0s, transform 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0s;
+}
+
+.expanded img.tkyvol, .expanded form.tkyvol{
+    -webkit-transform: translateY(510px);
+    transform: translateY(510px);
+    -webkit-transition: height 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0.25s, -webkit-transform 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0.25s;
+    transition: height 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0.25s, transform 0.5s cubic-bezier(0.445, 0.050, 0.550, 0.950) 0.25s;
+}
+
+.banner_close, .first-run .banner_close{
+    display:none;
+}
+
+.expanded .banner_close{
+    display:block;
+}
+
+.first-run .banner_close{
+    display:none;
+}
+
+.banner_close{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    top: 75px;
+    right: 6px;
+    z-index: 60000;
+    background: #000;
+    border-radius: 50%;
+    border: solid 2px #fff;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    line-height: 36px;
 }
 
 .foot_ctrl{
@@ -343,6 +401,10 @@ img.tkyvol{
   color:#bb5500;
 }
 
+form.tkyvol.foot_ctrl .button {
+    margin: 0% 0% 3% 3%;
+}
+
 .effeckt-button > .spinner {
   border-color:#b50;
 }
@@ -375,6 +437,16 @@ and (max-height: 480px) {
     
     .gluten{
         display:none;
+    }
+    
+    /*img.tkyvol{
+        top: 60px;
+    }*/
+    
+    form.tkyvol.foot_ctrl .button {
+        line-height: 22px;
+        margin: 0% 0% 1% 3%;
+        font-size: 12px;
     }
     
     .foot_ctrl h3{
