@@ -43,7 +43,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/normalize.min.css">
 		<link rel="stylesheet" type="text/css" media="all" href="css/responsiveboilerplate.css">
-        <link rel="stylesheet" href="css/mainb.css">
+        <link rel="stylesheet" href="css/recipe.css">
 		<script type="text/javascript">
             var idx=0;
 			var to;
@@ -64,25 +64,76 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+		<div id="banner_group" style="height: 90px; margin-bottom: 10px;">
+	<div id="gzad_container" style="position:absolute; z-index:10000; margin: 0px; width: 100%; height:100%; -webkit-transition: height 0.25s linear 0.25s, -webkit-transform 0.25s linear 0.25s; transition: height 0.25s linear 0.25s, transform 0.25s linear 0.25s;">
+	<a id="banner_close" href="#" onclick="GZAD_collapse(); return false;" class="banner_close fa fa-times" style="margin-top:75px; margin-left:90%; display: none; position: absolute; width: 36px; height: auto; z-index: 60000; background: #000; border-radius: 50%; border: solid 2px #fff; color: #fff; font-size: 24px; font-weight: bold; text-decoration: none; text-align: center; line-height: 32px;"></a>
+	<iframe id="gzad_banner" src="" scrolling="no" border="0" marginwidth="0" style="width:100%; height:100%; /*border:solid 1px #e3343f;*/ margin-bottom:0px; position: absolute; padding:0px; overflow: hidden; -webkit-transition: height 0.25s linear 0.25s, -webkit-transform 0.25s linear 0.25s; transition: height 0.25s linear 0.25s, transform 0.25s linear 0.25s;  -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;" frameborder="0"></iframe>
+	</div>
+	</div>
+	<script type="text/javascript">
+		function GZAD_externallink(pURL){
+		    //'?utm_source=gzad&utm_medium=app&utm_campaign=gzad_banner'
+		    window.open(pURL,'_system');
+		}
+
+		function GZAD_expand(){
+		    //alert('expand here');
+		    //$('#banner_group').addClass('expanded');
+		    document.getElementById('gzad_container').style.height = '100%';
+		    document.getElementById('banner_close').style.display = "block";
+		}
+
+		function GZAD_collapse(){
+		    //alert('expand here');
+		    document.getElementById('gzad_container').style.height = '90px';
+		    document.getElementById('banner_close').style.display = "none";
+		}
+		//$(document).ready(function(){
+			var al = 'https://s3.amazonaws.com/gzads/live.html';
+			var ifrm = document.getElementById('gzad_banner');
+			var request = new XMLHttpRequest();
+			request.open('GET', al, true);
+
+			request.onload = function() {
+				if (request.status >= 200 && request.status < 400) {
+				    // Success!
+					ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+					ifrm.document.open();
+					ifrm.document.write(request.responseText);
+					ifrm.document.close();
+					setTimeout(function(){GZAD_collapse();},10000)
+					} else {
+					// We reached our target server, but it returned an error
+					document.getElementById('gzad_banner').src = 'https://s3.amazonaws.com/gzads/backup.html';
+					}
+			};
+
+			request.onerror = function() {
+					// There was a connection error of some sort
+					document.getElementById('gzad_banner').src = 'https://s3.amazonaws.com/gzads/backup.html';
+			};
+
+			request.send();
+
+		//});
+	</script>
+
 		<div class="container">
 			<div class="content">
-				<div class="col1">&nbsp;</div>
-				<div id="content" class="col5 clearfix">
+				<div id="content" class="col12 clearfix">
 					<div id="logo">
-						<h1>Turkey Volume<br/>Guessing App</h1>
-					  <img src="./img/logo_512.png"/>
-
+						<h1><img src="./img/logo_512.png"/> Turkey Volume Guessing App</h1>
 					</div>
 				</div>
-				<div class="col6">
-					<div id="policy">
-	                    <h2>PRIVACY POLICY</h2>
-	                    <p>Turkey Volume Guessing App does not collect any personal information from users of this app. Anonymous statistics are collected only for counting total users and total guesses made.</p>
-	                    <p>Turkeys deserve to be left alone, and so do you, except on Thanksgiving. If Turkey Volume Guessing App ever were to collect personal information about you, may the creator be eaten alive by rafter of wild turkeys!</p>
-	                    <p>The creator of Turkey Volume Guessing App does not hold any liability for any turkey related injuries as a result of using this app.</p>
-	                    <a href="index.php">Back to the main page.</a>
-	                </div>
+			</div> <!-- #main -->
+			<div class="content">
+				<div class="col3">&nbsp;</div>
+				<div id="recipe" class="col6">
+					<div style="padding:5%">
+						INSERTRECIPEHERE
+					</div>
 				</div>
+				<div class="col3">&nbsp;</div>
 			</div> <!-- #main -->
 		</div> <!-- #main-container -->
 

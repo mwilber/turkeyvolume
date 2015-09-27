@@ -40,6 +40,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/promo.css">
 
@@ -49,6 +50,58 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+		<div id="banner_group" style="height: 90px; margin-bottom: 10px;">
+		<div id="gzad_container" style="position:absolute; z-index:10000; margin: 0px; width: 100%; height:90px; -webkit-transition: height 0.25s linear 0.25s, -webkit-transform 0.25s linear 0.25s; transition: height 0.25s linear 0.25s, transform 0.25s linear 0.25s;">
+		<a id="banner_close" href="#" onclick="GZAD_collapse(); return false;" class="banner_close fa fa-times" style="margin-top:75px; margin-left:90%; display: none; position: absolute; width: 36px; height: auto; z-index: 60000; background: #000; border-radius: 50%; border: solid 2px #fff; color: #fff; font-size: 24px; font-weight: bold; text-decoration: none; text-align: center; line-height: 32px;"></a>
+		<iframe id="gzad_banner" src="" scrolling="no" border="0" marginwidth="0" style="width:100%; height:100%; /*border:solid 1px #e3343f;*/ margin-bottom:20px; position: absolute; padding:0px; overflow: hidden; -webkit-transition: height 0.25s linear 0.25s, -webkit-transform 0.25s linear 0.25s; transition: height 0.25s linear 0.25s, transform 0.25s linear 0.25s;  -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;" frameborder="0"></iframe>
+		</div>
+		</div>
+		<script type="text/javascript">
+			function GZAD_externallink(pURL){
+			    //'?utm_source=gzad&utm_medium=app&utm_campaign=gzad_banner'
+			    window.open(pURL,'_system');
+			}
+
+			function GZAD_expand(){
+			    //alert('expand here');
+			    //$('#banner_group').addClass('expanded');
+			    document.getElementById('gzad_container').style.height = '620px';
+			    document.getElementById('banner_close').style.display = "block";
+			}
+
+			function GZAD_collapse(){
+			    //alert('expand here');
+			    document.getElementById('gzad_container').style.height = '90px';
+			    document.getElementById('banner_close').style.display = "none";
+			}
+			//$(document).ready(function(){
+				var al = 'https://s3.amazonaws.com/gzads/live.html';
+				var ifrm = document.getElementById('gzad_banner');
+				var request = new XMLHttpRequest();
+				request.open('GET', al, true);
+
+				request.onload = function() {
+					if (request.status >= 200 && request.status < 400) {
+					    // Success!
+						ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+						ifrm.document.open();
+						ifrm.document.write(request.responseText);
+						ifrm.document.close();
+						} else {
+						// We reached our target server, but it returned an error
+						document.getElementById('gzad_banner').src = 'https://s3.amazonaws.com/gzads/backup.html';
+						}
+				};
+
+				request.onerror = function() {
+						// There was a connection error of some sort
+						document.getElementById('gzad_banner').src = 'https://s3.amazonaws.com/gzads/backup.html';
+				};
+
+				request.send();
+
+			//});
+		</script>
 
         <div class="main-container">
             <div class="main wrapper clearfix">
