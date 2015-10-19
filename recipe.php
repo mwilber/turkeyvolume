@@ -130,7 +130,62 @@
 				<div class="col3">&nbsp;</div>
 				<div id="recipe" class="col6">
 					<div style="padding:5%">
-						INSERTRECIPEHERE
+						<h1>Turkey Volume Guessing App Sweet Tea Turkey</h1>
+
+						<p>The key to this turkey is the sweet tea brine which infuses the turkey with a unique sweet citrus flavor. This recipe requires a bit of planning ahead as the turkey must sit in the brine 24 hours before cooking. The other secret in this recipe is the rotating of the turkey during the cooking process. By starting the turkey upside down, it allows the juices to flow downward into the breast and prevent it from drying out.</p>
+
+						<h2>Prepare the Sweet Tea Brine</h2>
+
+						<p>Prep Time: 30 mins ( plus 24 hours waiting )</p>
+
+						<p>Prepare 1 gallon for every 10 pounds of the total turkey weight.</br>
+							<strong>Per 1 gallon of water:</strong>
+							<ul>
+								<li>2 cups of white sugar</li>
+								<li>1 cup kosher salt</li>
+								<li>1 orange</li>
+								<li>0.5 oz <a href="http://www.adagio.com/flavors/cranberry.html" target="_blank">loose cranberry tea leaves</a> (about ¼ cup)</li>
+							</ul>
+						</p>
+						<ol>
+							<li>Add water to a pot large enough to cover your turkey. Bring to a boil.</li>
+							<li>Remove from heat and add tea leaves. Steep for 7 minutes.</li>
+							<li>Pour out pot of tea, through a strainer, into another pot to remove the tea leaves. Return tea to original pot and bring to boil again.</li>
+							<li>Dissolve sugar and salt in tea to create brine. Slice orange and add to brine.</li>
+							<li>Place brine in refrigerator until chilled.</li>
+							<li>Wash turkey and remove innards.</li>
+							<li>Submerge turkey in brine. Refrigerate for 24 hours.</li>
+						</ol>
+
+						
+						<h2>Roast the Turkey</h2>
+
+						<p>Prep Time: 45 minutes (Spread throughout total cooking time.)</p>
+						<ul>
+							<li>1 apple
+							<li>1 orange
+							<li>5 sprigs fresh rosemary
+							<li>¼ lb butter
+							<li>Olive oil
+							<li>Black Pepper
+						</ul>
+						<ol>
+							<li>Preheat oven to 400°
+							<li>Remove turkey from brine and pat dry. Place in roasting pan rack breast side up.</li>
+							<li>Core and slice apple into equal size pieces, 8 works well. Slice orange into circles. Place half of orange and apple slices in turkey cavity along with 3 sprigs of rosemary. Set aside remaining orange, apple and rosemary.</li>
+							<li>Truss turkey and lightly coat top with oil.</li>
+							<li>Flip turkey over (breast down), liberally cover with oil.</li>
+							<li>Fill bottom of roasting pan with about ½ inch of water. Water should not come in contact with turkey.</li>
+							<li>Place in center of oven. Roast at 400° until underside (side facing up) is dark brown (about 60 minutes, it’s alright if the edges char slightly).</li>
+							<li>While you’re waiting. Remove rosemary leaves from the stems and chop finely. Remove skin from remaining apple slices and dice.</li>
+							<li>Remove turkey from oven, reduce temperature to 350°.</li>
+							<li>Melt butter (microwave does the job fast). Mix rosemary and apple into the butter.</li>
+							<li>Flip turkey over (I use washable silicone oven mitts for this) and return to roasting pan breast side up.</li>
+							<li>Liberally coat turkey with butter mixture. Place orange slices on top.</li>
+							<li>Return turkey to oven at 350°.</li>
+							<li>When top becomes golden brown, loosely cover with aluminum foil.</li>
+							<li>Continue to roast until done. (The temperature of the turkey must reach a safe minimum internal temperature of 165 °F. Check the temperature in the innermost part of the thigh and wing and the thickest part of the breast.) http://www.fsis.usda.gov/wps/portal/fsis/topics/food-safety-education/get-answers/food-safety-fact-sheets/poultry-preparation/turkey-basics-safe-cooking/CT_Index</li>
+						</ol>
 					</div>
 				</div>
 				<div class="col3">&nbsp;</div>
