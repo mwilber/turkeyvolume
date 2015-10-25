@@ -70,6 +70,9 @@
 	<iframe id="gzad_banner" src="" scrolling="no" border="0" marginwidth="0" style="width:100%; height:100%; /*border:solid 1px #e3343f;*/ margin-bottom:0px; position: absolute; padding:0px; overflow: hidden; -webkit-transition: height 0.25s linear 0.25s, -webkit-transform 0.25s linear 0.25s; transition: height 0.25s linear 0.25s, transform 0.25s linear 0.25s;  -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;" frameborder="0"></iframe>
 	</div>
 	</div>
+	<div id="banner_print">
+		<img src="img/print_banner.png"/>
+	</div>
 	<script type="text/javascript">
 		function GZAD_externallink(pURL){
 		    //'?utm_source=gzad&utm_medium=app&utm_campaign=gzad_banner'
@@ -121,32 +124,38 @@
 		<div class="container">
 			<div class="content">
 				<div id="content" class="col12 clearfix">
-					<div id="logo">
+					<a id="logo" href="index.php">
 						<h1><img src="./img/logo_512.png"/> Turkey Volume Guessing App</h1>
-					</div>
+					</a>
 				</div>
 			</div> <!-- #main -->
 			<div class="content">
-				<div class="col3">&nbsp;</div>
-				<div id="recipe" class="col6">
-					<div style="padding:5%">
-						<h1>Turkey Volume Guessing App Sweet Tea Turkey</h1>
+				<div class="col2">&nbsp;</div>
+				<div id="recipe" class="col8">
+					<a id="print" href="javascript:window.print();">
+						<i class="fa fa-print"></i> Print
+					</a>
+					<div class="clearfix"></div>
+					<div class="buffertop" style="">
+						<img id="logo_print" src="img/logo_print.png"/>
+						<h1>Turkey Volume Guessing App</br>Cranberry Sweet Tea Turkey</h1>
+						
+						<p id="roast"><img src="img/roast.jpg"/></p>
 
-						<p>The key to this turkey is the sweet tea brine which infuses the turkey with a unique sweet citrus flavor. This recipe requires a bit of planning ahead as the turkey must sit in the brine 24 hours before cooking. The other secret in this recipe is the rotating of the turkey during the cooking process. By starting the turkey upside down, it allows the juices to flow downward into the breast and prevent it from drying out.</p>
-
+						<p>The key to this turkey is the cranberry sweet tea brine which creates a unique sweet citrus flavor. This recipe requires a bit of planning ahead as the turkey must sit in the brine 24 hours before cooking. The roasting requires a little hands-on attention in the middle. By starting the turkey upside down, it allows the juices to flow downward into the breast and prevent it from drying out. The end result is a perfectly roasted turkey that's juicy throughout.</p>
+						
 						<h2>Prepare the Sweet Tea Brine</h2>
 
-						<p>Prep Time: 30 mins ( plus 24 hours waiting )</p>
+						<p><em>Prep Time: 30 mins ( plus 24 hour wait )</em></p>
 
-						<p>Prepare 1 gallon for every 10 pounds of the total turkey weight.</br>
-							<strong>Per 1 gallon of water:</strong>
-							<ul>
-								<li>2 cups of white sugar</li>
-								<li>1 cup kosher salt</li>
-								<li>1 orange</li>
-								<li>0.5 oz <a href="http://www.adagio.com/flavors/cranberry.html" target="_blank">loose cranberry tea leaves</a> (about ¼ cup)</li>
-							</ul>
-						</p>
+						<p><em>* Prepare 1 gallon for every 10 pounds of the total turkey weight.</em></p>
+						<strong style="margin-left:20px">Per 1 gallon of water:</strong>
+						<ul>
+							<li>2 cups of white sugar</li>
+							<li>1 cup kosher salt</li>
+							<li>1 orange</li>
+							<li>0.5 oz <a href="http://www.adagio.com/flavors/cranberry.html" target="_blank">cranberry tea</a> (about ¼ cup)</li>
+						</ul>
 						<ol>
 							<li>Add water to a pot large enough to cover your turkey. Bring to a boil.</li>
 							<li>Remove from heat and add tea leaves. Steep for 7 minutes.</li>
@@ -157,10 +166,18 @@
 							<li>Submerge turkey in brine. Refrigerate for 24 hours.</li>
 						</ol>
 
-						
+					</div>
+				</div>
+				<div class="col2">&nbsp;</div>
+			</div> <!-- #main -->
+			<div class="page-break"></div>
+			<div id="page2" class="content">
+				<div class="col2">&nbsp;</div>
+				<div id="recipe" class="col8">
+					<div class="bufferbottom" style="">
 						<h2>Roast the Turkey</h2>
 
-						<p>Prep Time: 45 minutes (Spread throughout total cooking time.)</p>
+						<p><em>Prep Time: 45 minutes (Spread throughout total cooking time.)</em></p>
 						<ul>
 							<li>1 apple
 							<li>1 orange
@@ -173,7 +190,7 @@
 							<li>Preheat oven to 400°
 							<li>Remove turkey from brine and pat dry. Place in roasting pan rack breast side up.</li>
 							<li>Core and slice apple into equal size pieces, 8 works well. Slice orange into circles. Place half of orange and apple slices in turkey cavity along with 3 sprigs of rosemary. Set aside remaining orange, apple and rosemary.</li>
-							<li>Truss turkey and lightly coat top with oil.</li>
+							<li><a href="https://www.youtube.com/watch?v=auQB7D_xB0I" target="_blank">Truss the turkey</a> and lightly coat top with oil.</li>
 							<li>Flip turkey over (breast down), liberally cover with oil.</li>
 							<li>Fill bottom of roasting pan with about ½ inch of water. Water should not come in contact with turkey.</li>
 							<li>Place in center of oven. Roast at 400° until underside (side facing up) is dark brown (about 60 minutes, it’s alright if the edges char slightly).</li>
@@ -184,11 +201,11 @@
 							<li>Liberally coat turkey with butter mixture. Place orange slices on top.</li>
 							<li>Return turkey to oven at 350°.</li>
 							<li>When top becomes golden brown, loosely cover with aluminum foil.</li>
-							<li>Continue to roast until done. (The temperature of the turkey must reach a safe minimum internal temperature of 165 °F. Check the temperature in the innermost part of the thigh and wing and the thickest part of the breast.) http://www.fsis.usda.gov/wps/portal/fsis/topics/food-safety-education/get-answers/food-safety-fact-sheets/poultry-preparation/turkey-basics-safe-cooking/CT_Index</li>
+							<li>Continue to roast until done. (<a href="http://www.fsis.usda.gov/wps/portal/fsis/topics/food-safety-education/get-answers/food-safety-fact-sheets/poultry-preparation/turkey-basics-safe-cooking/CT_Index" target="_blank">The temperature of the turkey must reach a safe minimum internal temperature of 165 °F. Check the temperature in the innermost part of the thigh and wing and the thickest part of the breast.</a>)</li>
 						</ol>
 					</div>
 				</div>
-				<div class="col3">&nbsp;</div>
+				<div class="col2">&nbsp;</div>
 			</div> <!-- #main -->
 		</div> <!-- #main-container -->
 
