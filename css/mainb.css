@@ -29,7 +29,7 @@ html {
 #content #logo img{
     float: left;
     width: 50%;
-    margin: 0% 25%;
+    margin: -5% 25% 2% 25%;
 }
 
 #content #logo h1{
@@ -51,11 +51,20 @@ html {
     text-align: center;
 }
 
+#recipe{
+	    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    float: left;
+}
+
 #eyepad{
     width:420px;
 	height:556px;
     padding: 64px 50px;
 	background: transparent url('../img/eyepad.png') top left no-repeat;
+	margin-top: 30px;
 }
 
 
@@ -132,7 +141,7 @@ html {
   width: 100%;
   right: 0px;
   bottom: 0px;
-  overflow: hidden;
+  overflow: visible;
   font-family:sans-serif;
 }
 
@@ -177,7 +186,7 @@ html {
 
 .sociallinks{
   float:right;
-  margin:2%;
+  margin: 1% 0% 0% 0%;
 }
 
 .sociallinks a{
