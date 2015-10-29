@@ -112,10 +112,10 @@
                     <p class="two">An app that takes animal based measurement into the third dimension</p>
 
                     <p class="three">Coming November 2015</p>
-                       <form class="three">
+                       <!--<form class="three">
                            <label>Receive Updates: </label>
                             <input type="text" id="email" name="email" placeholder="email"/><button>Submit</button>
-                        </form>
+                        </form>-->
                 </div>
 
             </div> <!-- #main -->
