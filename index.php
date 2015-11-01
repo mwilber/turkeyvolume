@@ -95,8 +95,8 @@
 
                     </div>
     	        	<p>Every space in the universe can be measured in terms of how many turkeys will fill it. Define your space in terms of Turkeys!</p>
-    				<a id="playstore" class="appstore" href="https://play.google.com/store/apps/details?id=com.greenzeta.greenzeta.hoursaround" target="_blank"><img src="img/playstore.png" style="height:45px;"/></a>
-    				<a id="appstore" class="appstore" href="https://itunes.apple.com/us/app/hours-around/id650401729?ls=1&mt=8" target="_blank"><img src="img/appstore.png" style="height:45px;"/></a>
+    				<a id="playstore" class="appstore" href="https://play.google.com/store/apps/details?id=com.greenzeta.turkeyvolume" target="_blank"><img src="img/playstore.png" style="height:45px;"/></a>
+    				<a id="appstore" class="appstore" href="https://itunes.apple.com/us/app/turkey-volume-guessing-app/id1032811496?mt=8" target="_blank"><img src="img/appstore.png" style="height:45px;"/></a>
     				<a id="recipe" href="recipe.php"><img src="img/recipecard.png"/></a>
 				</div>
 				<div class="col4">
@@ -134,7 +134,7 @@
 				</div>
 			</div>
         </div> <!-- #main-container -->
-		
+
         <div id="footer">
               <a href="policy.php" onclick="ga('send', 'event', 'web', 'click', 'policy', 0);" class="policy">
             Privacy Policy
