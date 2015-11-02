@@ -65,7 +65,7 @@
         <![endif]-->
 
         <div class="container">
-			<div class="content">
+			<div id="banner_content" class="content">
 				<div class="col2">&nbsp;</div>
 				<div class="col8">
 					<div id="banner_group" style="height: 90px; margin-bottom: 10px;">

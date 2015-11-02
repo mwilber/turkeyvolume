@@ -267,7 +267,7 @@ ol li{
     border: solid 1px #000;
     border-radius: 3px;
     padding: 5px 7px;
-    clear: both;	
+    clear: both;
 }
 
 .buffertop{
@@ -287,12 +287,20 @@ ol li{
 	h1 {
     font-size: 1.1em;
 	}
-	
+
 	h2 {
     font-size: 1em;
 	}
-	
 
+    #content #logo h1 {
+        font-size: 1.6em;
+    }
+
+    #content #logo img {
+        width: 100px;
+        margin: -0.8em 0px 0% 4%;
+        float: left;
+    }
 
 }
 
@@ -302,33 +310,36 @@ ol li{
 	.buffertop{
 		padding:0% 5% 5% 5%;
 	}
-	
+
 	.bufferbottom{
 		padding:5% 5% 5% 5%;
 	}
-	
-		#content #logo h1 {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.5em;
-    font-weight: 400;
-    margin: 0px;
-    line-height: 1.2em;
-    text-transform: uppercase;
-    text-align: center;
-    width: auto;
-    padding: 1em 0em;
-}
 
-#content #logo img {
-    width: 100px;
-    margin: -0.8em 0px 0% 4%;
-    float: left;
 }
+@media only screen and (max-width: 767px) {
+
+    #content #logo h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.9em;
+        font-weight: 400;
+        margin: 0px;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: center;
+        width: auto;
+        padding: 1em 0em;
+    }
+
+    #content #logo img {
+        width: 100px;
+        margin: -0.5em 0px 0% 4%;
+        float: left;
+    }
 
 }
 
 @media print{
-	
+
 	.page-break	{ display: block; page-break-before: always; }
 	html, body{
 		background:#fff;
@@ -365,6 +376,6 @@ ol li{
 	#footer{
 		display:none;
 	}
-	
-	
+
+
 }
