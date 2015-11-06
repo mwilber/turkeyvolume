@@ -26,6 +26,7 @@
 		<?php endforeach; ?>
 		<th width="100"></th>
 		<th width="100"></th>
+		<th width="100"></th>
 	</tr>
 	<?if(isset($records) && is_array($records) && count($records)>0):?>
 		<?foreach($records as $record):?>
@@ -40,6 +41,7 @@
 				<td><?=  (strlen($record->$name) > 30) ? substr($record->$name,0,40).'...' : $record->$name;?></td>
 			<?php endif; ?>
 			<?php endforeach; ?>
+			<td><a href='http://www.turkeyvolumeguessingapp.com/t/<?=$record->hash?>' target='_blank'>View</a></td>
 			<td><a href='<?=base_url()?><?=$this->uri->segment(1);?>/edit/<?=$record->$pk?>'>Edit</a></td>
 			<td><a href='<?=base_url()?><?=$this->uri->segment(1);?>/delete/<?=$record->$pk?>'>Delete</a></td>
 		</tr>
