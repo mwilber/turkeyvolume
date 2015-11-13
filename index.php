@@ -5,7 +5,7 @@
 	$social = array();
 	$social['title'] = "Turkey Volume Guessing App";
 	$social['description'] = "Define your space in terms of Turkeys!";
-	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.gif";
+	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.png";
 	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
 ?>
 <!doctype html>
@@ -16,7 +16,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><?=$pgTitle?></title>
+        <title><?=$social['title']?></title>
 		<meta name="description" content="<?=$social['description']?>">
 		<meta name="author" content="Matthew Wilber">
 		<meta property="og:title" content="<?=$social['title']?>" />

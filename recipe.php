@@ -2,7 +2,7 @@
 	$listTitle = "Turkey Volume Guessing App";
 
 	$social = array();
-	$social['title'] = "Turkey Volume Guessing App";
+	$social['title'] = "Cranberry Sweet Tea Turkey Recipe - Turkey Volume Guessing App";
 	$social['description'] = "Change up your turkey with a cranberry sweet tea brine! This recipe, brought to you by GreenZeta and Turkey Volume Guessing App, adds an exotic sweet citrus flavor that's like nothing you've had before.";
 	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/roast.jpg";
 	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><?=$pgTitle?></title>
+        <title><?=$social['title']?></title>
 		<meta name="description" content="<?=$social['description']?>">
 		<meta name="author" content="Matthew Wilber">
 		<meta property="og:title" content="<?=$social['title']?>" />
