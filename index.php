@@ -97,6 +97,7 @@
     	        	<p>Every space in the universe can be measured in terms of how many turkeys will fill it. Define your space in terms of Turkeys!</p>
     				<a id="playstore" class="appstore" href="https://play.google.com/store/apps/details?id=com.greenzeta.turkeyvolume" target="_blank"><img src="img/playstore.png" style="height:45px;"/></a>
     				<a id="appstore" class="appstore" href="https://itunes.apple.com/us/app/turkey-volume-guessing-app/id1032811496?mt=8" target="_blank"><img src="img/appstore.png" style="height:45px;"/></a>
+					<a id="fullstory" href="http://www.mwilber.com/archives/20151107/turkey-volume-guessing-app/" target="_blank">Read The Full Story</a>
     				<a id="recipe" href="recipe.php"><img src="img/recipecard.png"/></a>
 				</div>
 				<div class="col4">
