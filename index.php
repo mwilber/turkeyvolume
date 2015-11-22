@@ -5,7 +5,7 @@
 	$social = array();
 	$social['title'] = "Turkey Volume Guessing App";
 	$social['description'] = "Define your space in terms of Turkeys!";
-	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/social.png";
+	$social['image'] = "http://www.turkeyvolumeguessingapp.com/img/og_share.jpg";
 	$social['link'] = "http://www.turkeyvolumeguessingapp.com".$_SERVER[REQUEST_URI];
 ?>
 <!doctype html>
